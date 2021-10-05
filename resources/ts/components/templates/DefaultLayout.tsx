@@ -1,9 +1,9 @@
 import { VFC } from "react";
 import styled from "styled-components";
-import { Header } from "../organisms/Header";
-
-// import { Footer } from "../organisms/layout/Footer";
-// import { Header } from "../organisms/layout/Header";
+import { SCenter } from "../atoms/style/SCenter";
+import { SFooterFixed } from "../atoms/style/SFooterFixed";
+import { Footer } from "../organisms/layout/Footer";
+import { Header } from "../organisms/layout/Header";
 
 type PropsType = {
     children: React.ReactElement;
@@ -12,21 +12,10 @@ type PropsType = {
 export const DefaultLayout: VFC<PropsType> = (props) => {
     const { children } = props;
     return (
-        <SComponentContainer>
+        <SFooterFixed>
             <Header />
-            {children}
-            {/* <Footer /> */}
-        </SComponentContainer>
+            <SCenter>{children}</SCenter>
+            <Footer />
+        </SFooterFixed>
     );
 };
-
-const SComponentContainer = styled.div`
-    //ページ共通のスタイル
-    color: white;
-    background-color: #294286;
-    width: 100%;
-    //フッターの固定
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-`;

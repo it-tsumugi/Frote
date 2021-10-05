@@ -1,4 +1,4 @@
-import React, { VFC } from "react";
+import React, { useEffect, useState, VFC } from "react";
 import { Route, Redirect } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 import { useAuthContext } from "../providers/AuthProvider";
@@ -10,8 +10,11 @@ type propsType = {
 
 export const AuthRoute: VFC<propsType> = (props) => {
     const { isLogin } = useAuthContext();
-    useAuth();
     const { path, children } = props;
+
+    useAuth();
+    console.log("AuthRoute:isLogin = " + isLogin);
+
     return (
         <Route
             path={path}

@@ -23,10 +23,12 @@ class LoginController extends Controller
     {
         // バリデーション
         $this->validateLogin($request);
+
         $result = false;
         $status = 401;
         $message = 'ユーザが見つかりません';
         $credentials = $request->only('email', 'password');
+        
         if (Auth::attempt($credentials)) {
             $result = true;
             $status = 200;

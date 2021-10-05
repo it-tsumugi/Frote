@@ -33,8 +33,10 @@ if (document.getElementById("app")) {
 }
 
 const SComponentContainer = styled.div`
-    background-color: blue;
-    .MuiInputLabel-root {
-        color: blue;
-    }
+    //ページ共通のスタイル
+    color: white;
+    background-color: #294286;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80vw;
 `;
