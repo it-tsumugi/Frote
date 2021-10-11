@@ -14,9 +14,9 @@ type usersType = [
 
 export const User: VFC = () => {
     const [users, setUsers] = useState<usersType>();
-    useEffect(() => {
-        getUsers();
-    }, []);
+    // useEffect(() => {
+    //     getUsers();
+    // }, []);
 
     const getUsers = async () => {
         const response = await axios.get("/api/users");

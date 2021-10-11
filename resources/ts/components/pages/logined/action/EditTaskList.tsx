@@ -1,5 +1,5 @@
 import { VFC } from "react";
 
-export const Edit: VFC = () => {
+export const EditTaskList: VFC = () => {
     return <h1>Editページ</h1>;
 };

@@ -1,18 +1,19 @@
-import { useContext, useEffect, VFC } from "react";
-import { useHistory } from "react-router";
-import axios from "axios";
+import { VFC } from "react";
 
-import { useAuth } from "../../../hooks/useAuth";
-import { useGetUser } from "../../../hooks/useGetUser";
-import { useAuthContext } from "../../../providers/AuthProvider";
-import { useUserContext } from "../../../providers/UserInfoProvder";
 import { CardList } from "../../organisms/CardList";
-import { allTaskLists } from "../../../assets/data/allTaskLists";
+
+import { useTaskListsContext } from "../../../providers/TaskListsProvider";
+import { useGetTaskLists } from "../../../hooks/useGetTaskLists";
+import { TaskListsButtonArea } from "../../molecules/task/TaskListsButtonArea";
 
 export const Home: VFC = () => {
+    const { taskLists } = useTaskListsContext();
+    useGetTaskLists();
+
     return (
         <>
-            <CardList data={allTaskLists} />
+            <CardList data={taskLists} />
+            <TaskListsButtonArea />
         </>
     );
 };

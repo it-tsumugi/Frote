@@ -9,7 +9,7 @@ type PropsType = {
     children: React.ReactElement;
 };
 
-export const DefaultLayout: VFC<PropsType> = (props) => {
+export const NavLessLayout: VFC<PropsType> = (props) => {
     const { children } = props;
     return (
         <SFooterFixed>

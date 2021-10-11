@@ -1,17 +1,18 @@
 import { VFC } from "react";
-import styled from "styled-components";
-import { SCenter } from "../atoms/style/SCenter";
-import { SFooterFixed } from "../atoms/style/SFooterFixed";
-import { Footer } from "../organisms/layout/Footer";
+
 import { Header } from "../organisms/layout/Header";
 import { Nav } from "../organisms/layout/Nav";
+import { Footer } from "../organisms/layout/Footer";
+import { SCenter } from "../atoms/style/SCenter";
+import { SFooterFixed } from "../atoms/style/SFooterFixed";
 
 type PropsType = {
     children: React.ReactElement;
 };
 
-export const ActionLayout: VFC<PropsType> = (props) => {
+export const NavLayout: VFC<PropsType> = (props) => {
     const { children } = props;
+
     return (
         <SFooterFixed>
             <Header />

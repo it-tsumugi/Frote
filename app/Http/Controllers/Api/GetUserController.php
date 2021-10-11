@@ -17,12 +17,10 @@ class GetUserController extends Controller
      */
     public function __invoke()
     {
-        // if(Auth::check()){
-            $id = Auth::id();
-            //こいつ自体が配列
-            $user = DB::table('users')->where("users.id",$id)->get();
-            return response()->json(['user' => $user]);
-        // }
+        $id = Auth::id();
+        //こいつ自体が配列
+        $user = DB::table('users')->where("users.id",$id)->get();
+        return response()->json(['user' => $user]);
     }
     
 }

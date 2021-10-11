@@ -8,35 +8,32 @@ import { MuiThemeProvider } from "@material-ui/core/styles";
 import { theme } from "./assets/styles/theme";
 
 import { ComponentRouter } from "./router/ComponentRouter";
-import { UserInfoProvider } from "./providers/UserInfoProvder";
 import { AuthProvider } from "./providers/AuthProvider";
-import styled from "styled-components";
+import { TaskListsProvider } from "./providers/TaskListsProvider";
+import { UrgProvider } from "./providers/UrgProvider";
+import { GroupProvider } from "./providers/GroupProvider";
+import { ImpProvider } from "./providers/ImpProvider";
 
 export const App: VFC = () => {
     return (
-        <AuthProvider>
-            <UserInfoProvider>
-                <StylesProvider injectFirst>
-                    <MuiThemeProvider theme={theme}>
-                        {/* <SComponentContainer> */}
-                        <ComponentRouter />
-                        {/* </SComponentContainer> */}
-                    </MuiThemeProvider>
-                </StylesProvider>
-            </UserInfoProvider>
-        </AuthProvider>
+        <UrgProvider>
+            <GroupProvider>
+                <ImpProvider>
+                    <TaskListsProvider>
+                        <AuthProvider>
+                            <StylesProvider injectFirst>
+                                <MuiThemeProvider theme={theme}>
+                                    <ComponentRouter />
+                                </MuiThemeProvider>
+                            </StylesProvider>
+                        </AuthProvider>
+                    </TaskListsProvider>
+                </ImpProvider>
+            </GroupProvider>
+        </UrgProvider>
     );
 };
 
 if (document.getElementById("app")) {
     ReactDOM.render(<App />, document.getElementById("app"));
 }
-
-const SComponentContainer = styled.div`
-    //ページ共通のスタイル
-    color: white;
-    background-color: #294286;
-    margin-left: auto;
-    margin-right: auto;
-    width: 80vw;
-`;

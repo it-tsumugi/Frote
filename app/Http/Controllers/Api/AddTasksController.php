@@ -6,6 +6,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+
+use App\Models\Group;
+use App\Models\Task;
+use App\Models\TaskList;
 
 class AddTasksController extends Controller
 {
@@ -17,15 +22,20 @@ class AddTasksController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $id = Auth::id();
+        // Log::debug($request);
 
-        DB::table('groups')->insert(["group"=>$request->group]);
-        $group_id = DB::getPdo()->lastInsertId();
-        DB::table('task_lists')->insert(["importance" => $request->imp,"urgency"=>$request->urg,"group_id"=>$group_id]);
+        $group_id = Group::where("group",$request->group)->value("id");
+        TaskList::create(["importance" => $request->imp,"urgency"=> $request->urg,"group_id"=> $group_id]);
+        
         $task_list_id = DB::getPdo()->lastInsertId();
-        foreach($request->tasks as $task){
-            DB::table('tasks')->insert(["user_id" => $id,"task"=>$task,"task_list_id"=>$task_list_id]);
+        $id = Auth::id();
+        $tasks = $request->tasks;
+        for($i=0;$i<count($tasks);$i++){
+            $task = $tasks[$i]["task"];
+            Task::create(["user_id" => $id,"task"=>$task,"task_list_id"=>$task_list_id]);
         }
-        return response();
+
+        $result = true;
+        return response(["result"=>$result]);
     }
 }

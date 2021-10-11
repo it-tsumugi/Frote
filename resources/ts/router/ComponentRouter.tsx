@@ -8,16 +8,23 @@ import { Top } from "../components/pages/Top";
 import { Register } from "../components/pages/Register";
 import { AuthRoute } from "./AuthRoute";
 import { GuestRoute } from "./GuestRoute";
-import { DefaultLayout } from "../components/templates/DefaultLayout";
-import { LoginedLayout } from "../components/templates/LoginedLayout";
+import { NavLessLayout } from "../components/templates/NavLessLayout";
+import { NavLayout } from "../components/templates/NavLayout";
 import { AddGroup } from "../components/pages/logined/action/AddGroup";
-import { Quadrant } from "../components/pages/logined/Quadrant";
-import { Group } from "../components/pages/logined/Group";
-import { Edit } from "../components/pages/logined/action/Edit";
+import { GroupDisplay } from "../components/pages/logined/GroupDisplay";
+import { EditTaskList } from "../components/pages/logined/action/EditTaskList";
 import { Help } from "../components/pages/Help";
+import { AddTaskList } from "../components/pages/logined/action/AddTaskList";
+import { Test } from "../components/pages/logined/Test";
+import { InsertTask } from "../components/pages/logined/action/InsertTask";
+import { QuadrantDisplay } from "../components/pages/logined/QuadrantDisplay";
+import { Group } from "../components/pages/logined/Group";
+
 import { path } from "../assets/data/path";
+import { EditGroup } from "../components/pages/logined/action/EditGroup";
+import { ImpDisplay } from "../components/pages/logined/ImpDisplay";
+import { UrgDisplay } from "../components/pages/logined/UrgDisplay";
 import { AddTask } from "../components/pages/logined/action/AddTask";
-import { ActionLayout } from "../components/templates/ActionLayout";
 
 export const ComponentRouter: VFC = () => {
     return (
@@ -25,56 +32,91 @@ export const ComponentRouter: VFC = () => {
             <BrowserRouter>
                 <Switch>
                     <Route exact path={path.top}>
-                        <DefaultLayout>
+                        <NavLessLayout>
                             <Top />
-                        </DefaultLayout>
+                        </NavLessLayout>
                     </Route>
                     <Route path={path.help}>
-                        <DefaultLayout>
+                        <NavLessLayout>
                             <Help />
-                        </DefaultLayout>
+                        </NavLessLayout>
                     </Route>
                     <GuestRoute path={path.login}>
-                        <DefaultLayout>
+                        <NavLessLayout>
                             <Login />
-                        </DefaultLayout>
+                        </NavLessLayout>
                     </GuestRoute>
                     <GuestRoute path={path.register}>
-                        <DefaultLayout>
+                        <NavLessLayout>
                             <Register />
-                        </DefaultLayout>
+                        </NavLessLayout>
                     </GuestRoute>
 
                     <AuthRoute path={path.home}>
-                        <LoginedLayout>
+                        <NavLayout>
                             <Home />
-                        </LoginedLayout>
+                        </NavLayout>
                     </AuthRoute>
-                    <AuthRoute path={path.quadrant}>
-                        <LoginedLayout>
-                            <Quadrant />
-                        </LoginedLayout>
+                    <AuthRoute path={path.quadrantDisplay}>
+                        <NavLayout>
+                            <QuadrantDisplay />
+                        </NavLayout>
+                    </AuthRoute>
+                    <AuthRoute path={path.groupDisplay}>
+                        <NavLayout>
+                            <GroupDisplay />
+                        </NavLayout>
+                    </AuthRoute>
+                    <AuthRoute path={path.impDisplay}>
+                        <NavLayout>
+                            <ImpDisplay />
+                        </NavLayout>
+                    </AuthRoute>
+                    <AuthRoute path={path.urgDisplay}>
+                        <NavLayout>
+                            <UrgDisplay />
+                        </NavLayout>
                     </AuthRoute>
                     <AuthRoute path={path.group}>
-                        <LoginedLayout>
+                        <NavLayout>
                             <Group />
-                        </LoginedLayout>
+                        </NavLayout>
+                    </AuthRoute>
+                    <AuthRoute path={path.test}>
+                        <NavLayout>
+                            <Test />
+                        </NavLayout>
                     </AuthRoute>
 
-                    <AuthRoute path={path.edit}>
-                        <ActionLayout>
-                            <Edit />
-                        </ActionLayout>
-                    </AuthRoute>
-                    <AuthRoute path={path.addgroup}>
-                        <ActionLayout>
+                    <AuthRoute path={path.addGroup}>
+                        <NavLayout>
                             <AddGroup />
-                        </ActionLayout>
+                        </NavLayout>
                     </AuthRoute>
-                    <AuthRoute path={path.addtask}>
-                        <ActionLayout>
+                    <AuthRoute path={path.addTask}>
+                        <NavLayout>
                             <AddTask />
-                        </ActionLayout>
+                        </NavLayout>
+                    </AuthRoute>
+                    <AuthRoute path={path.addTaskList}>
+                        <NavLayout>
+                            <AddTaskList />
+                        </NavLayout>
+                    </AuthRoute>
+                    <AuthRoute path={path.editTaskList}>
+                        <NavLayout>
+                            <EditTaskList />
+                        </NavLayout>
+                    </AuthRoute>
+                    <AuthRoute path={path.editGroup}>
+                        <NavLayout>
+                            <EditGroup />
+                        </NavLayout>
+                    </AuthRoute>
+                    <AuthRoute path={path.insertTask}>
+                        <NavLayout>
+                            <InsertTask />
+                        </NavLayout>
                     </AuthRoute>
 
                     <Route path="*">

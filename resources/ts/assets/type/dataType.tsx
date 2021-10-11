@@ -8,12 +8,21 @@ export type userInfoType = {
     remember_token: string;
 };
 
-export type allListsType = {
+export type taskListType = {
     task_list_id: number;
     priority: number;
     group: string;
-    tasks: {
+    task: {
         task_id: number;
-        task: string;
+        text: string;
     }[];
+};
+
+export type DBType = {
+    task_id: number;
+    task_list_id: number;
+    importance: -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4;
+    urgency: -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4;
+    group: string;
+    task: string;
 };

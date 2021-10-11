@@ -8,9 +8,10 @@ export const Nav: VFC = () => {
     return (
         <SComponentContainer>
             <NavButton to={path.home}>一覧表示</NavButton>
-            <NavButton to={path.group}>グループごとに表示</NavButton>
-            <NavButton to={path.quadrant}>象限ごとに表示</NavButton>
-            {/* <NavButton to={path.user}>ユーザー</NavButton> */}
+            <NavButton to={path.groupDisplay}>グループ表示</NavButton>
+            <NavButton to={path.quadrantDisplay}>象限表示</NavButton>
+            <NavButton to={path.impDisplay}>重要度表示</NavButton>
+            <NavButton to={path.urgDisplay}>緊急度表示表示</NavButton>
         </SComponentContainer>
     );
 };

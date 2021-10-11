@@ -18,8 +18,9 @@ class CreateTaskListsTable extends Migration
             $table->unsignedBigInteger("group_id");
             $table->integer("importance");
             $table->integer("urgency");
-            $table->timestamps();
-
+            $table->dateTime('created_at')->nullable();
+            $table->dateTime('updated_at')->nullable();
+            
             //外部キー制約
             $table->foreign('group_id')->references('id')->on('groups')->OnDelete('cascade');
         });
