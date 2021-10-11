@@ -68,7 +68,7 @@ export const AddTaskList: VFC = () => {
         <form onSubmit={handleSubmit((data, e) => sendTasks({ e, data }))}>
             <SColumnContainer>
                 <h3>タスクの内容</h3>
-                {/* {fields.map((field, index) => (
+                {fields.map((field, index) => (
                     <div key={field.id}>
                         <SFlexContainer>
                             <SColumnContainer>
@@ -94,7 +94,7 @@ export const AddTaskList: VFC = () => {
                             ) : null}
                         </SFlexContainer>
                     </div>
-                ))} */}
+                ))}
                 <Button
                     style={{ width: "100px" }}
                     type="button"
