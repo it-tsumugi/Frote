@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, VFC } from "react";
+import { useGroupListContext } from "./GroupListProvider";
 
 const GroupContext = createContext(
     {} as {
@@ -12,6 +13,7 @@ type propsType = {
 };
 
 export const GroupProvider: VFC<propsType> = (props) => {
+    const { groupList } = useGroupListContext();
     const { children } = props;
     const [group, setGroup] = useState("その他");
     return (

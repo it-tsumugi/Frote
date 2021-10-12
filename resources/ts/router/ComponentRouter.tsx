@@ -108,7 +108,7 @@ export const ComponentRouter: VFC = () => {
                             <EditTaskList />
                         </NavLayout>
                     </AuthRoute>
-                    <AuthRoute path={path.editGroup}>
+                    <AuthRoute path={"/:id" + path.editGroup}>
                         <NavLayout>
                             <EditGroup />
                         </NavLayout>

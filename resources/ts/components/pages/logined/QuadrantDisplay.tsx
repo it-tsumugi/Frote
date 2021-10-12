@@ -1,11 +1,14 @@
 import { VFC } from "react";
-import { allTaskLists } from "../../../assets/data/allTaskLists";
-import { CardList } from "../../organisms/CardList";
+
+import { TaskLists } from "../../organisms/TaskLists";
+
+import { TaskListsButtonArea } from "../../molecules/task/TaskListsButtonArea";
 
 export const QuadrantDisplay: VFC = () => {
     return (
         <>
-            <CardList data={allTaskLists} />
+            <TaskLists />
+            <TaskListsButtonArea />
         </>
     );
 };

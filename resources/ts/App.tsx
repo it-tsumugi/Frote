@@ -13,24 +13,27 @@ import { TaskListsProvider } from "./providers/TaskListsProvider";
 import { UrgProvider } from "./providers/UrgProvider";
 import { GroupProvider } from "./providers/GroupProvider";
 import { ImpProvider } from "./providers/ImpProvider";
+import { GroupListProvider } from "./providers/GroupListProvider";
 
 export const App: VFC = () => {
     return (
-        <UrgProvider>
-            <GroupProvider>
-                <ImpProvider>
-                    <TaskListsProvider>
-                        <AuthProvider>
-                            <StylesProvider injectFirst>
-                                <MuiThemeProvider theme={theme}>
-                                    <ComponentRouter />
-                                </MuiThemeProvider>
-                            </StylesProvider>
-                        </AuthProvider>
-                    </TaskListsProvider>
-                </ImpProvider>
-            </GroupProvider>
-        </UrgProvider>
+        <GroupListProvider>
+            <UrgProvider>
+                <GroupProvider>
+                    <ImpProvider>
+                        <TaskListsProvider>
+                            <AuthProvider>
+                                <StylesProvider injectFirst>
+                                    <MuiThemeProvider theme={theme}>
+                                        <ComponentRouter />
+                                    </MuiThemeProvider>
+                                </StylesProvider>
+                            </AuthProvider>
+                        </TaskListsProvider>
+                    </ImpProvider>
+                </GroupProvider>
+            </UrgProvider>
+        </GroupListProvider>
     );
 };
 

@@ -4,12 +4,14 @@ import axios from "axios";
 import { SubmitHandler, useFieldArray, useForm } from "react-hook-form";
 import { useHistory } from "react-router";
 
-import { Button, NativeSelect } from "@material-ui/core";
-import { SelectItems } from "../../../organisms/SelectItems";
+import { Button } from "@material-ui/core";
 
 import { useImpContext } from "../../../../providers/ImpProvider";
 import { useUrgContext } from "../../../../providers/UrgProvider";
 import { useGroupContext } from "../../../../providers/GroupProvider";
+import { ImpSelect } from "../../../molecules/select/ImpSelect";
+import { UrgSelect } from "../../../molecules/select/UrgSelect";
+import { GroupSelect } from "../../../molecules/select/GroupSelect";
 
 type FormData = {
     tasks: {
@@ -64,6 +66,7 @@ export const AddTaskList: VFC = () => {
             console.log(err);
         }
     };
+
     return (
         <form onSubmit={handleSubmit((data, e) => sendTasks({ e, data }))}>
             <SColumnContainer>
@@ -111,7 +114,9 @@ export const AddTaskList: VFC = () => {
                     タスクの追加
                 </Button>
             </SColumnContainer>
-            <SelectItems />
+            <ImpSelect />
+            <UrgSelect />
+            <GroupSelect />
             <Button type="submit" color="default" variant="contained">
                 送信
             </Button>

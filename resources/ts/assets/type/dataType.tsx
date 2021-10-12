@@ -26,3 +26,8 @@ export type DBType = {
     group: string;
     task: string;
 };
+
+export type groupListType = {
+    id: number;
+    group: string;
+};

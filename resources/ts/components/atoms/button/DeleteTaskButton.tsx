@@ -22,8 +22,8 @@ export const DeleteTaskButton: VFC<propsType> = (props) => {
     const getTaskData = async () => {
         let dbData: DBType[] = [];
         try {
-            const res = await axios.get("/api/test");
-            console.log("getTaskData:データ取得に成功しました");
+            const res = await axios.get("/api/read/tasklists");
+            console.log("DeleteTaskButton:データ取得に成功しました");
             dbData = res.data.data;
         } catch (err) {
             console.log("Test:接続に失敗");

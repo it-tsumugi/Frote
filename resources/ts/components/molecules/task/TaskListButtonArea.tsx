@@ -20,7 +20,9 @@ export const TaskListButtonArea: VFC<propsType> = (props) => {
                 <SLabel htmlFor={"test" + taskList.task_list_id}>
                     すべて表示
                 </SLabel>
-            ) : null}
+            ) : (
+                <SEmpty>すべて表示</SEmpty>
+            )}
             <NavButton to={path.editTaskList}>編集</NavButton>
             <DeleteListButton taskList={taskList}>
                 リストを削除
@@ -54,4 +56,8 @@ const SLabel = styled.label`
         color: white;
         opacity: 0.6;
     }
+`;
+
+const SEmpty = styled(SLabel)`
+    visibility: hidden;
 `;
