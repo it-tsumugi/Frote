@@ -32,6 +32,7 @@ export const EditGroup: VFC = () => {
                 history.push({ pathname: "/group" });
             } else {
                 console.log("updateGroup:グループの追加に失敗");
+                window.alert("同名のグループが既に存在します");
             }
         } catch (err) {
             console.log("updateGroup:接続に失敗");

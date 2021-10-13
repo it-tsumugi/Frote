@@ -16,10 +16,18 @@ class UpdateGroupController extends Controller
      */
     public function __invoke(Request $request)
     {
-        DB::table("groups")
-            ->where("id",$request->id)
-            ->update(["group"=>$request->group]);
-        $result = true;
+        $isGroup = DB::table("groups")
+                    ->where("group", $request->group)
+                    ->exists();
+        if($isGroup){
+            $result = false;
+        }
+        else{
+            DB::table("groups")
+                ->where("id",$request->id)
+                ->update(["group"=>$request->group]);
+            $result = true;
+        }
         return response()->json(["result"=>$result]);
     }
 }
