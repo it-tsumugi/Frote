@@ -12,10 +12,13 @@ export type taskListType = {
     task_list_id: number;
     priority: number;
     group: string;
-    task: {
-        task_id: number;
-        text: string;
-    }[];
+    task: taskType[];
+};
+
+export type taskType = {
+    task_id: number;
+    text: string;
+    order: number;
 };
 
 export type DBType = {
@@ -25,6 +28,7 @@ export type DBType = {
     urgency: -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4;
     group: string;
     task: string;
+    order: number;
 };
 
 export type groupListType = {

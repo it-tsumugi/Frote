@@ -9,7 +9,7 @@ export const useAuth = async () => {
         setIsLogin(res.data.isLogin);
         console.log("useAuth:ログイン情報を取得しisLoginセットしました");
     } catch (error) {
-        console.log("useAuth:ログイン情報が取得出来ませんでした");
+        console.log("useAuth:エラー");
         setIsLogin(false);
     }
 };

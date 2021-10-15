@@ -4,9 +4,8 @@ import axios from "axios";
 
 import { DefaultButton } from "../../atoms/button/DefaultButton";
 
-import { DBType, taskListType } from "../../../assets/type/dataType";
+import { taskListType } from "../../../assets/type/dataType";
 import { useTaskListsContext } from "../../../providers/TaskListsProvider";
-import { convertDefault } from "../../../function/convertDefault";
 
 type propsType = {
     taskList: taskListType;
@@ -17,18 +16,17 @@ export const DeleteListButton: VFC<propsType> = (props) => {
     const { taskList, children } = props;
     const { setTaskLists } = useTaskListsContext();
 
-    const getTaskData = async () => {
-        let dbData: DBType[] = [];
+    const getTaskLists = async () => {
+        let dbData: taskListType[] = [];
         try {
             const res = await axios.get("/api/read/tasklists");
-            console.log("DeleteListButton:データ取得に成功しました");
+            console.log("DeleteTaskButton:データ取得に成功しました");
             dbData = res.data.data;
         } catch (err) {
-            console.log("Test:接続に失敗");
+            console.log("Test:エラー");
             console.log(err);
         }
-        const result = convertDefault(dbData);
-        setTaskLists(result);
+        setTaskLists(dbData);
     };
 
     const deleteTaskList = async () => {
@@ -41,7 +39,7 @@ export const DeleteListButton: VFC<propsType> = (props) => {
             } else {
                 console.log("deleteTaskList:タスクの削除に失敗しました");
             }
-            getTaskData();
+            getTaskLists();
         } catch (err) {
             console.log(err);
         }

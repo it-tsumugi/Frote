@@ -15,11 +15,11 @@ export const useGetGroup = (id: number) => {
                     id: id,
                 },
             });
-            console.log("useGetGroupLists:データ取得に成功しました");
+            console.log("useGetGroup:データ取得に成功しました");
             dbData = res.data.data;
             //groupの初期値の設定
         } catch (err) {
-            console.log("Test:接続に失敗");
+            console.log("useGetGroup:エラー");
             console.log(err);
         }
         setGroup(dbData[0].group);

@@ -26,6 +26,7 @@ export const TaskList: VFC<propsType> = (props) => {
             <STaskListContainer>
                 <Task
                     task={taskList.task[0]}
+                    task_list_id={taskList.task_list_id}
                     isDelete={isDelete}
                     isInsert={isInsert}
                 />
@@ -39,6 +40,7 @@ export const TaskList: VFC<propsType> = (props) => {
                             return (
                                 <Task
                                     task={task}
+                                    task_list_id={taskList.task_list_id}
                                     isDelete={true}
                                     isInsert={isInsert}
                                     key={task.task_id}

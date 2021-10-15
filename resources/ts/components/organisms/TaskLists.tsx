@@ -4,12 +4,14 @@ import Grid from "@material-ui/core/Grid";
 
 import { TaskList } from "./TaskList";
 import { SCard } from "../atoms/style/SCard";
-import { useTaskListsContext } from "../../providers/TaskListsProvider";
-import { useGetTaskLists } from "../../hooks/useGetTaskLists";
+import { taskListType } from "../../assets/type/dataType";
 
-export const TaskLists: VFC = () => {
-    const { taskLists } = useTaskListsContext();
-    useGetTaskLists();
+type propsType = {
+    taskLists: taskListType[];
+};
+
+export const TaskLists: VFC<propsType> = (props) => {
+    const { taskLists } = props;
 
     return (
         <Grid container spacing={2}>
@@ -19,7 +21,7 @@ export const TaskLists: VFC = () => {
                         item
                         xs={12}
                         sm={12}
-                        md={6}
+                        md={12}
                         lg={6}
                         key={taskList.task_list_id}
                     >

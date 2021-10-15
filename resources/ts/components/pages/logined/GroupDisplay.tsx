@@ -7,7 +7,7 @@ import { TaskListsButtonArea } from "../../molecules/task/TaskListsButtonArea";
 export const GroupDisplay: VFC = () => {
     return (
         <>
-            <TaskLists />
+            {/* <TaskLists /> */}
             <TaskListsButtonArea />
         </>
     );

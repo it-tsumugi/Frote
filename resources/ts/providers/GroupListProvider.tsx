@@ -1,9 +1,9 @@
 import React, { createContext, useContext, useState, VFC } from "react";
 import { groupListType } from "../assets/type/dataType";
 
-const GroupListContext = createContext(
+const GroupListsContext = createContext(
     {} as {
-        groupList: groupListType[];
+        groupLists: groupListType[];
         setGroupList: React.Dispatch<React.SetStateAction<groupListType[]>>;
     }
 );
@@ -12,16 +12,16 @@ type propsType = {
     children: React.ReactElement;
 };
 
-export const GroupListProvider: VFC<propsType> = (props) => {
+export const GroupListsProvider: VFC<propsType> = (props) => {
     const { children } = props;
-    const [groupList, setGroupList] = useState<groupListType[]>([]);
+    const [groupLists, setGroupList] = useState<groupListType[]>([]);
     return (
-        <GroupListContext.Provider value={{ groupList, setGroupList }}>
+        <GroupListsContext.Provider value={{ groupLists, setGroupList }}>
             {children}
-        </GroupListContext.Provider>
+        </GroupListsContext.Provider>
     );
 };
 
-export const useGroupListContext = () => {
-    return useContext(GroupListContext);
+export const useGroupListsContext = () => {
+    return useContext(GroupListsContext);
 };

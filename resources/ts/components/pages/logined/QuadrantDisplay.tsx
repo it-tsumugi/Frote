@@ -7,7 +7,7 @@ import { TaskListsButtonArea } from "../../molecules/task/TaskListsButtonArea";
 export const QuadrantDisplay: VFC = () => {
     return (
         <>
-            <TaskLists />
+            {/* <TaskLists /> */}
             <TaskListsButtonArea />
         </>
     );

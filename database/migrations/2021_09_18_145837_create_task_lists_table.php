@@ -16,6 +16,7 @@ class CreateTaskListsTable extends Migration
         Schema::create('task_lists', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("group_id");
+            $table->unsignedBigInteger("user_id");
             $table->integer("importance");
             $table->integer("urgency");
             $table->dateTime('created_at')->nullable();
@@ -23,6 +24,7 @@ class CreateTaskListsTable extends Migration
             
             //外部キー制約
             $table->foreign('group_id')->references('id')->on('groups')->OnDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->OnDelete('cascade');
         });
     }
 

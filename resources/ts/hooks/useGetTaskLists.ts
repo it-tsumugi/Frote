@@ -1,25 +1,23 @@
 import axios from "axios";
 import { useEffect } from "react";
 
-import { DBType, taskListType } from "../assets/type/dataType";
-import { convertDefault } from "../function/convertDefault";
+import { taskListType } from "../assets/type/dataType";
 import { useTaskListsContext } from "../providers/TaskListsProvider";
 
 export const useGetTaskLists = () => {
     const { setTaskLists } = useTaskListsContext();
 
     const getTaskLists = async () => {
-        let dbData: DBType[] = [];
+        let dbData: taskListType[] = [];
         try {
             const res = await axios.get("/api/read/tasklists");
             console.log("useGetTaskLists:データ取得に成功しました");
             dbData = res.data.data;
         } catch (err) {
-            console.log("Test:接続に失敗");
+            console.log("useGetTaskLists:エラー");
             console.log(err);
         }
-        const result: taskListType[] = convertDefault(dbData);
-        setTaskLists(result);
+        setTaskLists(dbData);
     };
 
     useEffect(() => {

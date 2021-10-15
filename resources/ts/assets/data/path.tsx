@@ -14,9 +14,9 @@ export const path = {
     test: "/test",
 
     addGroup: "/add-group",
-    addTask: "/add-task",
+    addTasks: "/add-tasks",
     addTaskList: "/add-task-list",
-    editTaskList: "/edit-task-list",
+    editTask: "/edit-task",
     editGroup: "/edit-group",
     insertTask: "/insert-task",
 

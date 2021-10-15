@@ -1,6 +1,7 @@
 import { VFC } from "react";
 import styled from "styled-components";
 import { path } from "../../../assets/data/path";
+import { taskType } from "../../../assets/type/dataType";
 
 import { DefaultButton } from "../../atoms/button/DefaultButton";
 
@@ -8,32 +9,39 @@ import { DeleteTaskButton } from "../../atoms/button/DeleteTaskButton";
 import { NavButton } from "../../atoms/button/NavButton";
 
 type propsType = {
-    task: {
-        task_id: number;
-        text: string;
-    };
+    task: taskType;
+    task_list_id: number;
     isDelete: boolean;
     isInsert: boolean;
 };
 
 export const Task: VFC<propsType> = (props) => {
-    const { task, isDelete, isInsert } = props;
-
+    const { task, task_list_id, isDelete, isInsert } = props;
     return (
         <>
             <STaskItemContainer>
                 <SText>{task.text}</SText>
                 <>
                     {isDelete ? (
-                        <DeleteTaskButton task={task}>削除</DeleteTaskButton>
+                        <DeleteTaskButton
+                            task={task}
+                            task_list_id={task_list_id}
+                        >
+                            削除
+                        </DeleteTaskButton>
                     ) : (
                         <EmptyButton>削除</EmptyButton>
                     )}
                     {isInsert ? (
-                        <NavButton to={path.insertTask}>挿入</NavButton>
+                        <NavButton to={`/${task.task_id}` + path.insertTask}>
+                            挿入
+                        </NavButton>
                     ) : (
                         <EmptyButton>挿入</EmptyButton>
                     )}
+                    <NavButton to={`/${task.task_id}` + path.editTask}>
+                        編集
+                    </NavButton>
                 </>
             </STaskItemContainer>
         </>

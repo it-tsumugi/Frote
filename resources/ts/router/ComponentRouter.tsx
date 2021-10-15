@@ -12,7 +12,7 @@ import { NavLessLayout } from "../components/templates/NavLessLayout";
 import { NavLayout } from "../components/templates/NavLayout";
 import { AddGroup } from "../components/pages/logined/action/AddGroup";
 import { GroupDisplay } from "../components/pages/logined/GroupDisplay";
-import { EditTaskList } from "../components/pages/logined/action/EditTaskList";
+import { EditTask } from "../components/pages/logined/action/EditTask";
 import { Help } from "../components/pages/Help";
 import { AddTaskList } from "../components/pages/logined/action/AddTaskList";
 import { Test } from "../components/pages/logined/Test";
@@ -24,7 +24,7 @@ import { path } from "../assets/data/path";
 import { EditGroup } from "../components/pages/logined/action/EditGroup";
 import { ImpDisplay } from "../components/pages/logined/ImpDisplay";
 import { UrgDisplay } from "../components/pages/logined/UrgDisplay";
-import { AddTask } from "../components/pages/logined/action/AddTask";
+import { AddTasks } from "../components/pages/logined/action/AddTasks";
 
 export const ComponentRouter: VFC = () => {
     return (
@@ -93,9 +93,9 @@ export const ComponentRouter: VFC = () => {
                             <AddGroup />
                         </NavLayout>
                     </AuthRoute>
-                    <AuthRoute path={path.addTask}>
+                    <AuthRoute path={"/:id" + path.addTasks}>
                         <NavLayout>
-                            <AddTask />
+                            <AddTasks />
                         </NavLayout>
                     </AuthRoute>
                     <AuthRoute path={path.addTaskList}>
@@ -103,9 +103,9 @@ export const ComponentRouter: VFC = () => {
                             <AddTaskList />
                         </NavLayout>
                     </AuthRoute>
-                    <AuthRoute path={path.editTaskList}>
+                    <AuthRoute path={"/:id" + path.editTask}>
                         <NavLayout>
-                            <EditTaskList />
+                            <EditTask />
                         </NavLayout>
                     </AuthRoute>
                     <AuthRoute path={"/:id" + path.editGroup}>
@@ -113,7 +113,7 @@ export const ComponentRouter: VFC = () => {
                             <EditGroup />
                         </NavLayout>
                     </AuthRoute>
-                    <AuthRoute path={path.insertTask}>
+                    <AuthRoute path={"/:id" + path.insertTask}>
                         <NavLayout>
                             <InsertTask />
                         </NavLayout>

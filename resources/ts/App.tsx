@@ -13,27 +13,30 @@ import { TaskListsProvider } from "./providers/TaskListsProvider";
 import { UrgProvider } from "./providers/UrgProvider";
 import { GroupProvider } from "./providers/GroupProvider";
 import { ImpProvider } from "./providers/ImpProvider";
-import { GroupListProvider } from "./providers/GroupListProvider";
+import { GroupListsProvider } from "./providers/GroupListProvider";
+import { TaskProvider } from "./providers/TaskProvider";
 
 export const App: VFC = () => {
     return (
-        <GroupListProvider>
-            <UrgProvider>
-                <GroupProvider>
-                    <ImpProvider>
-                        <TaskListsProvider>
-                            <AuthProvider>
-                                <StylesProvider injectFirst>
-                                    <MuiThemeProvider theme={theme}>
-                                        <ComponentRouter />
-                                    </MuiThemeProvider>
-                                </StylesProvider>
-                            </AuthProvider>
-                        </TaskListsProvider>
-                    </ImpProvider>
-                </GroupProvider>
-            </UrgProvider>
-        </GroupListProvider>
+        <TaskProvider>
+            <GroupListsProvider>
+                <UrgProvider>
+                    <GroupProvider>
+                        <ImpProvider>
+                            <TaskListsProvider>
+                                <AuthProvider>
+                                    <StylesProvider injectFirst>
+                                        <MuiThemeProvider theme={theme}>
+                                            <ComponentRouter />
+                                        </MuiThemeProvider>
+                                    </StylesProvider>
+                                </AuthProvider>
+                            </TaskListsProvider>
+                        </ImpProvider>
+                    </GroupProvider>
+                </UrgProvider>
+            </GroupListsProvider>
+        </TaskProvider>
     );
 };
 

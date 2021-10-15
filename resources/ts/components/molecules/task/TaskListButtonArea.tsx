@@ -23,11 +23,13 @@ export const TaskListButtonArea: VFC<propsType> = (props) => {
             ) : (
                 <SEmpty>すべて表示</SEmpty>
             )}
-            <NavButton to={path.editTaskList}>編集</NavButton>
+
             <DeleteListButton taskList={taskList}>
                 リストを削除
             </DeleteListButton>
-            <NavButton to={path.addTask}>末尾にタスクを追加</NavButton>
+            <NavButton to={`/${taskList.task_list_id}` + path.addTasks}>
+                末尾にタスクを追加
+            </NavButton>
         </SComponentContainer>
     );
 };

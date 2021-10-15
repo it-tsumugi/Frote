@@ -38,37 +38,37 @@ export const AddTaskList: VFC = () => {
             tasks: [{ task: "" }],
         },
     });
-    const { fields, append, remove } = useFieldArray({
+    const { fields, append, remove, insert } = useFieldArray({
         control,
         name: "tasks",
     });
 
-    const sendTasks: SubmitHandler<dataType> = async ({ e, data }) => {
+    const addTaskList: SubmitHandler<dataType> = async ({ e, data }) => {
         const tasks = data.tasks;
         e.preventDefault();
 
         try {
-            const res = await axios.post("/api/add/tasks", {
+            const res = await axios.post("/api/add/tasklist", {
                 tasks,
                 imp,
                 urg,
                 group,
             });
             if (res.data.result) {
-                console.log("AddTask:タスクの追加に成功");
+                console.log("addTaskList:タスクの追加に成功");
                 window.alert("タスクを追加しました");
                 history.push({ pathname: "/home" });
             } else {
-                console.log("AddTask:タスクの追加に失敗");
+                console.log("addTaskList:タスクの追加に失敗");
             }
         } catch (err) {
-            console.log("AddTask:接続に失敗");
+            console.log("addTaskList:接続に失敗");
             console.log(err);
         }
     };
 
     return (
-        <form onSubmit={handleSubmit((data, e) => sendTasks({ e, data }))}>
+        <form onSubmit={handleSubmit((data, e) => addTaskList({ e, data }))}>
             <SColumnContainer>
                 <h3>タスクの内容</h3>
                 {fields.map((field, index) => (
@@ -86,14 +86,24 @@ export const AddTaskList: VFC = () => {
                                 ></textarea>
                             </SColumnContainer>
                             {index > 0 ? (
-                                <Button
-                                    type="button"
-                                    color="default"
-                                    variant="contained"
-                                    onClick={() => remove(index)}
-                                >
-                                    Delete
-                                </Button>
+                                <>
+                                    <Button
+                                        type="button"
+                                        color="default"
+                                        variant="contained"
+                                        onClick={() => remove(index)}
+                                    >
+                                        削除
+                                    </Button>
+                                    <Button
+                                        type="button"
+                                        color="default"
+                                        variant="contained"
+                                        onClick={() => insert(index + 1, {})}
+                                    >
+                                        挿入
+                                    </Button>
+                                </>
                             ) : null}
                         </SFlexContainer>
                     </div>

@@ -19,6 +19,11 @@ class DeleteTaskController extends Controller
     public function __invoke(Request $request)
     {
         $task_id = $request->task_id;
+        $task_list_id = $request->task_list_id;
+        $order = $request->order;
+        Task::where("task_list_id",$task_list_id)
+            ->where("order",">",$order)
+            ->decrement("order");
         Task::find($task_id)
             ->delete();
         $result = true;

@@ -1,11 +1,12 @@
 import { useEffect, useState, VFC } from "react";
 import axios from "axios";
 import { useHistory } from "react-router";
-import styled from "styled-components";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 import { Button } from "@material-ui/core";
+
 import { NavButton } from "../../../atoms/button/NavButton";
+
 import { path } from "../../../../assets/data/path";
 
 type eventType = {
@@ -28,7 +29,7 @@ export const AddGroup: VFC = () => {
 
     const sendGroup: SubmitHandler<eventType> = async ({ e }) => {
         e.preventDefault();
-
+        //groupが主キーになってるからDB構造変えた方がいいかも
         try {
             const res = await axios.post("/api/add/group", {
                 group,
@@ -42,12 +43,12 @@ export const AddGroup: VFC = () => {
                 window.alert("既に同名のグループが存在します");
             }
         } catch (err) {
-            console.log("AddGroup:接続に失敗");
+            console.log("AddGroup:エラー");
             console.log(err);
         }
     };
     return (
-        <SComponentContainer>
+        <>
             <form onSubmit={(e) => handleSubmit(sendGroup({ e }))}>
                 <h3>追加するグループを入力してください</h3>
                 <input
@@ -55,14 +56,12 @@ export const AddGroup: VFC = () => {
                     {...register("group", { required: true })}
                     placeholder="グループ名"
                 />
-                {errors.subject && "件名を入力してください"}
+                {errors.group && "グループを入力してください"}
                 <Button type="submit" color="default" variant="contained">
                     送信
                 </Button>
             </form>
             <NavButton to={path.group}>グループの一覧</NavButton>
-        </SComponentContainer>
+        </>
     );
 };
-
-const SComponentContainer = styled.div``;

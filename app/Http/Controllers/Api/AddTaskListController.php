@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 use App\Models\Group;
 use App\Models\Task;
@@ -23,15 +24,16 @@ class AddTaskListController extends Controller
     {
         // Log::debug($request);
 
+        $id = Auth::id();
+        Log::info("",[$id]);
         $group_id = Group::where("group",$request->group)->value("id");
-        TaskList::create(["importance" => $request->imp,"urgency"=> $request->urg,"group_id"=> $group_id]);
+        TaskList::create(["importance" => $request->imp,"urgency"=> $request->urg,"group_id"=> $group_id,"user_id" => $id]);
         
         $task_list_id = DB::getPdo()->lastInsertId();
-        $id = Auth::id();
         $tasks = $request->tasks;
         for($i=0;$i<count($tasks);$i++){
             $task = $tasks[$i]["task"];
-            Task::create(["user_id" => $id,"task"=>$task,"task_list_id"=>$task_list_id]);
+            Task::create(["task"=>$task,"task_list_id"=>$task_list_id,"order"=>$i]);
         }
 
         $result = true;

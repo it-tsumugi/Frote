@@ -3,48 +3,48 @@ import { VFC } from "react";
 
 import { DefaultButton } from "../../atoms/button/DefaultButton";
 
-import { DBType } from "../../../assets/type/dataType";
-import { convertDefault } from "../../../function/convertDefault";
+import { taskListType, taskType } from "../../../assets/type/dataType";
 import { useTaskListsContext } from "../../../providers/TaskListsProvider";
 
 type propsType = {
-    task: {
-        task_id: number;
-        text: string;
-    };
+    task: taskType;
+    task_list_id: number;
     children: string;
 };
 
 export const DeleteTaskButton: VFC<propsType> = (props) => {
-    const { task, children } = props;
+    const { task, children, task_list_id } = props;
     const { setTaskLists } = useTaskListsContext();
 
-    const getTaskData = async () => {
-        let dbData: DBType[] = [];
+    const getTaskLists = async () => {
+        let dbData: taskListType[] = [];
         try {
             const res = await axios.get("/api/read/tasklists");
             console.log("DeleteTaskButton:データ取得に成功しました");
             dbData = res.data.data;
         } catch (err) {
-            console.log("Test:接続に失敗");
+            console.log("Test:エラー");
             console.log(err);
         }
-        const result = convertDefault(dbData);
-        setTaskLists(result);
+        setTaskLists(dbData);
     };
 
     const deleteTask = async () => {
+        const order: number = task.order;
         try {
             const res = await axios.delete("/api/delete/task", {
-                data: { task_id: task.task_id },
+                data: {
+                    task_id: task.task_id,
+                    task_list_id: task_list_id,
+                    order: order,
+                },
             });
             if (res.data.result) {
                 console.log("deleteTask:タスクの削除に成功しました");
             } else {
                 console.log("deleteTask:タスクの削除に失敗しました");
             }
-
-            await getTaskData();
+            await getTaskLists();
         } catch (err) {
             console.log(err);
         }

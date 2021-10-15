@@ -3,10 +3,8 @@ import { VFC } from "react";
 
 import { DefaultButton } from "../../atoms/button/DefaultButton";
 
-import { DBType, groupListType } from "../../../assets/type/dataType";
-import { convertDefault } from "../../../function/convertDefault";
-import { useTaskListsContext } from "../../../providers/TaskListsProvider";
-import { useGroupListContext } from "../../../providers/GroupListProvider";
+import { groupListType } from "../../../assets/type/dataType";
+import { useGroupListsContext } from "../../../providers/GroupListProvider";
 import { useGroupContext } from "../../../providers/GroupProvider";
 
 type propsType = {
@@ -16,7 +14,7 @@ type propsType = {
 
 export const DeleteGroupButton: VFC<propsType> = (props) => {
     const { id, children } = props;
-    const { setGroupList } = useGroupListContext();
+    const { setGroupList } = useGroupListsContext();
     const { setGroup } = useGroupContext();
 
     const getGroupList = async () => {

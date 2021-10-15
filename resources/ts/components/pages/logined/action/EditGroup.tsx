@@ -7,17 +7,12 @@ import { useGetGroup } from "../../../../hooks/useGetGroup";
 import { useGroupContext } from "../../../../providers/GroupProvider";
 import { NavButton } from "../../../atoms/button/NavButton";
 
-type formDataType = {
-    e: React.FormEvent<HTMLFormElement>;
-    id: number;
-};
-
 export const EditGroup: VFC = () => {
     const { id } = useParams<{ id: string }>();
-    const number_id: number = Number(id);
+    const group_id: number = Number(id);
     const { group, setGroup } = useGroupContext();
     const history = useHistory();
-    useGetGroup(number_id);
+    useGetGroup(group_id);
 
     const updateGroup = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
