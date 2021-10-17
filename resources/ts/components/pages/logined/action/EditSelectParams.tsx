@@ -19,7 +19,6 @@ export const EditSelectParams: VFC = () => {
     const { imp } = useImpContext();
     const { urg } = useUrgContext();
     const history = useHistory();
-    console.log();
     const updateSelectParams = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {

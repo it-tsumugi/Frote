@@ -58,11 +58,11 @@ export const ComponentRouter: VFC = () => {
                             <Home />
                         </NavLayout>
                     </AuthRoute>
-                    <AuthRoute path={path.quadrantDisplay}>
+                    {/* <AuthRoute path={path.quadrantDisplay}>
                         <NavLayout>
                             <QuadrantDisplay />
                         </NavLayout>
-                    </AuthRoute>
+                    </AuthRoute> */}
                     <AuthRoute path={path.groupDisplay}>
                         <NavLayout>
                             <GroupDisplay />

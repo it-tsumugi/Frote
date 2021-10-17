@@ -23,6 +23,9 @@ use App\Http\Controllers\Api\InsertTaskController;
 use App\Http\Controllers\Api\GetImpController;
 use App\Http\Controllers\Api\GetUrgController;
 use App\Http\Controllers\Api\UpdateSelectParamsController;
+use App\Http\Controllers\Api\GetGroupTaskListsController;
+use App\Http\Controllers\Api\GetImpTaskListsController;
+use App\Http\Controllers\Api\GetUrgTaskListsController;
 
 Route::get('/logout', LogoutController::class);
 Route::post('/login', LoginController::class);
@@ -37,11 +40,14 @@ Route::middleware('auth:sanctum')->get('/read/group',GetGroupController::class);
 Route::middleware('auth:sanctum')->get('/read/task',GetTaskController::class);
 Route::middleware('auth:sanctum')->get('/read/imp',GetImpController::class);
 Route::middleware('auth:sanctum')->get('/read/urg',GetUrgController::class);
+Route::middleware('auth:sanctum')->get('/read/group-tasklists',GetGroupTaskListsController::class);
 
 Route::middleware('auth:sanctum')->post('/add/group', AddGroupController::class);
 Route::middleware('auth:sanctum')->post('/add/tasklist', AddTaskListController::class);
 Route::middleware('auth:sanctum')->post('/add/tasks', AddTasksController::class);
 Route::middleware('auth:sanctum')->post('/insert/task', InsertTaskController::class);
+Route::middleware('auth:sanctum')->post('/read/imp-tasklists',GetImpTaskListsController::class);
+Route::middleware('auth:sanctum')->post('/read/urg-tasklists',GetUrgTaskListsController::class);
 
 Route::middleware('auth:sanctum')->delete('/delete/task', DeleteTaskController::class);
 Route::middleware('auth:sanctum')->delete('/delete/tasklist', DeleteTaskListController::class);

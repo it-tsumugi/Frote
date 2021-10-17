@@ -10,7 +10,7 @@ class Group extends Model
     use HasFactory;
     protected $table = 'groups';
     protected $fillable = [
-        'group',
+        'group',"user_id"
     ];
 
     // public function tasks(){

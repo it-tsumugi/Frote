@@ -25,8 +25,8 @@ class AddTaskListController extends Controller
         // Log::debug($request);
 
         $id = Auth::id();
-        Log::info("",[$id]);
         $group_id = Group::where("group",$request->group)->value("id");
+        Log::info("",[$request->group]);
         TaskList::create(["importance" => $request->imp,"urgency"=> $request->urg,"group_id"=> $group_id,"user_id" => $id]);
         
         $task_list_id = DB::getPdo()->lastInsertId();

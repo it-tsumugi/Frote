@@ -46,12 +46,10 @@ export const GroupSelect: VFC<propsType> = (props) => {
                     })}
                 </SSelect>
             </SFlexContainer>
-            {isLoading ? (
-                groupLists.length === 0 ? (
-                    <span>
-                        グループがないためリストを作成出来ません。先にグループを作成してください
-                    </span>
-                ) : null
+            {isLoading ? null : groupLists.length === 0 ? (
+                <span>
+                    グループがないためリストを作成出来ません。先にグループを作成してください
+                </span>
             ) : null}
         </SColumnContainer>
     );

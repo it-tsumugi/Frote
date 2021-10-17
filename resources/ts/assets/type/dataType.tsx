@@ -41,3 +41,21 @@ export type selectParamsType = {
     urg: number;
     group: string;
 };
+
+export type groupTaskListsType = {
+    taskLists: taskListType[];
+    group: string;
+    group_id: number;
+}[];
+
+export type impTaskListsType = {
+    taskLists: taskListType[];
+    text: string;
+    id: number;
+}[];
+
+export type urgTaskListsType = {
+    taskLists: taskListType[];
+    text: string;
+    id: number;
+}[];

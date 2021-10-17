@@ -12,6 +12,8 @@ import { useGroupContext } from "../../../../providers/GroupProvider";
 import { ImpSelect } from "../../../molecules/select/ImpSelect";
 import { UrgSelect } from "../../../molecules/select/UrgSelect";
 import { GroupSelect } from "../../../molecules/select/GroupSelect";
+import { NavButton } from "../../../atoms/button/NavButton";
+import { path } from "../../../../assets/data/path";
 
 type FormData = {
     tasks: {
@@ -130,6 +132,7 @@ export const AddTaskList: VFC = () => {
             <Button type="submit" color="default" variant="contained">
                 送信
             </Button>
+            <NavButton to={path.addGroup}>グループの追加</NavButton>
         </form>
     );
 };

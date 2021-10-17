@@ -18,8 +18,10 @@ class GetGroupListController extends Controller
      */
     public function __invoke(Request $request)
     {
+        $user_id = Auth::id();
         $data =  DB::table("groups")
                     ->select("id","group")
+                    ->where("user_id",$user_id)
                     ->get();
         return  response()->json(["data"=>$data]);
     }

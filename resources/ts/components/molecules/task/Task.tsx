@@ -1,12 +1,12 @@
 import { VFC } from "react";
 import styled from "styled-components";
-import { path } from "../../../assets/data/path";
-import { taskType } from "../../../assets/type/dataType";
 
 import { DefaultButton } from "../../atoms/button/DefaultButton";
-
 import { DeleteTaskButton } from "../../atoms/button/DeleteTaskButton";
 import { NavButton } from "../../atoms/button/NavButton";
+
+import { path } from "../../../assets/data/path";
+import { taskType } from "../../../assets/type/dataType";
 
 type propsType = {
     task: taskType;
@@ -20,7 +20,10 @@ export const Task: VFC<propsType> = (props) => {
     return (
         <>
             <STaskItemContainer>
-                <SText>{task.text}</SText>
+                <STaskTextarea>
+                    <SOrder>{task.order + 1 + " :"} </SOrder>
+                    <SText>{task.text}</SText>
+                </STaskTextarea>
                 <>
                     {isDelete ? (
                         <DeleteTaskButton
@@ -47,6 +50,16 @@ export const Task: VFC<propsType> = (props) => {
         </>
     );
 };
+
+const STaskTextarea = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`;
+
+const SOrder = styled.div`
+    margin: 0 5px;
+`;
 
 const SText = styled.div`
     text-align: left;

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 use App\Models\TaskList;
 
@@ -45,6 +46,8 @@ class GetTaskListsController extends Controller
                 "task" => $tasks,
             ];
         }
+        $priorities =  array_column($edit_data, "priority");
+        array_multisort($priorities, SORT_DESC, $edit_data);
         return  response()->json(["data"=>$edit_data]);
     }
 }

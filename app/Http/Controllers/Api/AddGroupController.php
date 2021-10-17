@@ -19,9 +19,12 @@ class AddGroupController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $isGroup = Group::where("group", $request->group)->exists();
+        $user_id = Auth::id();
+        $isGroup = Group::where("group", $request->group)
+        ->where("user_id",$user_id)
+        ->exists();
         if(!$isGroup){
-            Group::create(['group' => $request->group]);
+            Group::create(['group' => $request->group,"user_id"=>$user_id]);
             $result = true;
         }
         else {

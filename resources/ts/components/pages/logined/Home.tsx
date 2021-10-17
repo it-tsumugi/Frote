@@ -1,18 +1,22 @@
 import { VFC } from "react";
+import styled from "styled-components";
 
 import { TaskLists } from "../../organisms/TaskLists";
 
 import { TaskListsButtonArea } from "../../molecules/task/TaskListsButtonArea";
 import { useGetTaskLists } from "../../../hooks/useGetTaskLists";
 import { useTaskListsContext } from "../../../providers/TaskListsProvider";
-import styled from "styled-components";
 
 export const Home: VFC = () => {
     const { taskLists } = useTaskListsContext();
     useGetTaskLists();
     return (
         <>
-            <TaskLists taskLists={taskLists} />
+            {taskLists.length !== 0 ? (
+                <TaskLists taskLists={taskLists} />
+            ) : (
+                <h3>タスクは存在しません</h3>
+            )}
             <TaskListsButtonArea />
         </>
     );

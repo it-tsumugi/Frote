@@ -37,22 +37,20 @@ export const Header: VFC = () => {
     };
     return (
         <SComponentContainer>
-            <Link to={path.top}>Top</Link>
-            {!isLogin ? (
-                <>
-                    <Link to={path.login}>Login</Link>
-                    <Link to={path.register}>Register</Link>
-                </>
-            ) : null}
+            <div>
+                <SLink to={path.top}>Top</SLink>
+                {!isLogin ? (
+                    <div>
+                        <SLink to={path.login}>Login</SLink>
+                        <SLink to={path.register}>Register</SLink>
+                    </div>
+                ) : null}
+                {isLogin ? <SLink to={path.home}>Home</SLink> : null}
+                <SLink to={path.help}>Help</SLink>
+            </div>
             {isLogin ? (
-                <>
-                    <Link to={path.home}>Home</Link>
-                    <DefaultButton onClick={logout}>Logout</DefaultButton>
-                </>
+                <DefaultButton onClick={logout}>Logout</DefaultButton>
             ) : null}
-
-            <Link to={path.help}>Help</Link>
-            <Link to={path.test}>Test</Link>
         </SComponentContainer>
     );
 };
@@ -61,4 +59,15 @@ const SComponentContainer = styled.div`
     width: 100%;
     height: 5vh;
     background-color: #201a22;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+`;
+
+const SLink = styled(Link)`
+    color: white;
+    margin: 0 10px;
+    &:hover {
+        color: gray;
+    }
 `;

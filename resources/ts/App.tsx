@@ -16,30 +16,41 @@ import { ImpProvider } from "./providers/ImpProvider";
 import { GroupListsProvider } from "./providers/GroupListProvider";
 import { TaskProvider } from "./providers/TaskProvider";
 import { SelectParamsProvider } from "./providers/SelectParamsProvider";
+import { GroupTaskListsProvider } from "./providers/GroupTaskListsProvider";
+import { ImpTaskListsProvider } from "./providers/ImpTaskListsProvider";
+import { UrgTaskListsProvider } from "./providers/UrgTaskListsProvider";
 
 export const App: VFC = () => {
     return (
-        <SelectParamsProvider>
-            <TaskProvider>
-                <GroupListsProvider>
-                    <UrgProvider>
-                        <GroupProvider>
-                            <ImpProvider>
-                                <TaskListsProvider>
-                                    <AuthProvider>
-                                        <StylesProvider injectFirst>
-                                            <MuiThemeProvider theme={theme}>
-                                                <ComponentRouter />
-                                            </MuiThemeProvider>
-                                        </StylesProvider>
-                                    </AuthProvider>
-                                </TaskListsProvider>
-                            </ImpProvider>
-                        </GroupProvider>
-                    </UrgProvider>
-                </GroupListsProvider>
-            </TaskProvider>
-        </SelectParamsProvider>
+        <UrgTaskListsProvider>
+            <ImpTaskListsProvider>
+                <GroupTaskListsProvider>
+                    <SelectParamsProvider>
+                        <TaskProvider>
+                            <GroupListsProvider>
+                                <UrgProvider>
+                                    <GroupProvider>
+                                        <ImpProvider>
+                                            <TaskListsProvider>
+                                                <AuthProvider>
+                                                    <StylesProvider injectFirst>
+                                                        <MuiThemeProvider
+                                                            theme={theme}
+                                                        >
+                                                            <ComponentRouter />
+                                                        </MuiThemeProvider>
+                                                    </StylesProvider>
+                                                </AuthProvider>
+                                            </TaskListsProvider>
+                                        </ImpProvider>
+                                    </GroupProvider>
+                                </UrgProvider>
+                            </GroupListsProvider>
+                        </TaskProvider>
+                    </SelectParamsProvider>
+                </GroupTaskListsProvider>
+            </ImpTaskListsProvider>
+        </UrgTaskListsProvider>
     );
 };
 

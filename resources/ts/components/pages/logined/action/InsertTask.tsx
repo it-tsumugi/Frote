@@ -22,7 +22,6 @@ export const InsertTask: VFC = () => {
     } = useForm();
     const { id } = useParams<{ id: string }>();
     const task_id = Number(id);
-    console.log("task_id=", task_id);
 
     useEffect(() => {
         setTask(watch("task"));

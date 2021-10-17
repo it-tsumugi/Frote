@@ -8,6 +8,7 @@ import {
 
 import { useImpContext } from "../../../providers/ImpProvider";
 import { useGetImp } from "../../../hooks/useGetImp";
+import { impData } from "../../../assets/data/impData";
 
 type propsType = {
     task_list_id: number;
@@ -27,11 +28,13 @@ export const ImpSelect: VFC<propsType> = (props) => {
                 value={imp}
                 onChange={(e) => setImp(Number(e.target.value))}
             >
-                <option value={2}>自分の人生を大きく左右すること</option>
-                <option value={1}>自分のステップアップに必要なこと</option>
-                <option value={0}>第三者に出された課題</option>
-                <option value={-1}>日常生活に必要なこと</option>
-                <option value={-2}>重要でないがやりたいこと</option>
+                {impData.map((item) => {
+                    return (
+                        <option value={item.num} key={item.num}>
+                            {item.text}
+                        </option>
+                    );
+                })}
             </SSelect>
         </SFlexContainer>
     );
