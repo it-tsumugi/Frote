@@ -1,19 +1,20 @@
 import { VFC } from "react";
-import styled from "styled-components";
 import axios from "axios";
 import { SubmitHandler, useFieldArray, useForm } from "react-hook-form";
 import { useHistory } from "react-router";
 
-import { Button } from "@material-ui/core";
-
-import { useImpContext } from "../../../../providers/ImpProvider";
-import { useUrgContext } from "../../../../providers/UrgProvider";
-import { useGroupContext } from "../../../../providers/GroupProvider";
 import { ImpSelect } from "../../../molecules/select/ImpSelect";
 import { UrgSelect } from "../../../molecules/select/UrgSelect";
 import { GroupSelect } from "../../../molecules/select/GroupSelect";
 import { NavButton } from "../../../atoms/button/NavButton";
+import { AddTaskArea } from "../../../organisms/AddTaskArea";
+import { ActionButton } from "../../../atoms/button/ActionButton";
+
+import { useImpContext } from "../../../../providers/ImpProvider";
+import { useUrgContext } from "../../../../providers/UrgProvider";
+import { useGroupContext } from "../../../../providers/GroupProvider";
 import { path } from "../../../../assets/data/path";
+import { SubmitButton } from "../../../atoms/button/SubmitButton";
 
 type FormData = {
     tasks: {
@@ -71,77 +72,18 @@ export const AddTaskList: VFC = () => {
 
     return (
         <form onSubmit={handleSubmit((data, e) => addTaskList({ e, data }))}>
-            <SColumnContainer>
-                <h3>タスクの内容</h3>
-                {fields.map((field, index) => (
-                    <div key={field.id}>
-                        <SFlexContainer>
-                            <SColumnContainer>
-                                <span>{"タスク" + (index + 1)}</span>
-                                <textarea
-                                    rows={2}
-                                    cols={30}
-                                    {...register(
-                                        `tasks.${index}.task` as const
-                                    )}
-                                    placeholder="タスク内容を入力してください"
-                                ></textarea>
-                            </SColumnContainer>
-                            {index > 0 ? (
-                                <>
-                                    <Button
-                                        type="button"
-                                        color="default"
-                                        variant="contained"
-                                        onClick={() => remove(index)}
-                                    >
-                                        削除
-                                    </Button>
-                                    <Button
-                                        type="button"
-                                        color="default"
-                                        variant="contained"
-                                        onClick={() => insert(index + 1, {})}
-                                    >
-                                        挿入
-                                    </Button>
-                                </>
-                            ) : null}
-                        </SFlexContainer>
-                    </div>
-                ))}
-                <Button
-                    style={{ width: "100px" }}
-                    type="button"
-                    color="default"
-                    variant="contained"
-                    onClick={() => {
-                        if (fields.length < 10) append({});
-                        else
-                            window.alert(
-                                "リストが持てるタスクは１０個までです"
-                            );
-                    }}
-                >
-                    タスクの追加
-                </Button>
-            </SColumnContainer>
+            <AddTaskArea
+                fields={fields}
+                append={append}
+                remove={remove}
+                insert={insert}
+                register={register}
+            />
             <ImpSelect task_list_id={-1} />
             <UrgSelect task_list_id={-1} />
             <GroupSelect task_list_id={-1} />
-            <Button type="submit" color="default" variant="contained">
-                送信
-            </Button>
+            <SubmitButton>送信</SubmitButton>
             <NavButton to={path.addGroup}>グループの追加</NavButton>
         </form>
     );
 };
-
-const SColumnContainer = styled.div`
-    display: flex;
-    flex-flow: column;
-`;
-
-const SFlexContainer = styled.div`
-    display: flex;
-`;

@@ -6,6 +6,7 @@ import { NavButton } from "../../atoms/button/NavButton";
 import { path } from "../../../assets/data/path";
 import { taskListType } from "../../../assets/type/dataType";
 import { DeleteListButton } from "../../atoms/button/DeleteListButton";
+import { Link } from "react-router-dom";
 
 type propsType = {
     taskList: taskListType;
@@ -30,9 +31,13 @@ export const TaskListButtonArea: VFC<propsType> = (props) => {
             <NavButton to={`/${taskList.task_list_id}` + path.editTaskList}>
                 リストを編集
             </NavButton>
-            <NavButton to={`/${taskList.task_list_id}` + path.addTasks}>
-                末尾にタスクを追加
-            </NavButton>
+            {taskList.task.length < 20 ? (
+                <NavButton to={`/${taskList.task_list_id}` + path.addTasks}>
+                    末尾にタスクを追加
+                </NavButton>
+            ) : (
+                <SEmpty>末尾にタスクを追加</SEmpty>
+            )}
         </SComponentContainer>
     );
 };

@@ -13,15 +13,20 @@ type propsType = {
     task_list_id: number;
     isDelete: boolean;
     isInsert: boolean;
+    index: number;
 };
 
 export const Task: VFC<propsType> = (props) => {
-    const { task, task_list_id, isDelete, isInsert } = props;
+    const { task, task_list_id, isDelete, isInsert, index } = props;
     return (
         <>
             <STaskItemContainer>
                 <STaskTextarea>
-                    <SOrder>{task.order + 1 + " :"} </SOrder>
+                    {index < 9 ? (
+                        <SOrder>{"0" + (task.order + 1) + " :"} </SOrder>
+                    ) : (
+                        <SOrder>{task.order + 1 + " :"} </SOrder>
+                    )}
                     <SText>{task.text}</SText>
                 </STaskTextarea>
                 <>

@@ -29,6 +29,7 @@ export const TaskList: VFC<propsType> = (props) => {
                     task_list_id={taskList.task_list_id}
                     isDelete={isDelete}
                     isInsert={isInsert}
+                    index={0}
                 />
                 <SInput type="Checkbox" id={"test" + taskList.task_list_id} />
                 <SHiddenDetail className="HiddenDetail">
@@ -43,6 +44,7 @@ export const TaskList: VFC<propsType> = (props) => {
                                     task_list_id={taskList.task_list_id}
                                     isDelete={true}
                                     isInsert={isInsert}
+                                    index={index}
                                     key={task.task_id}
                                 />
                             );

@@ -4,9 +4,11 @@ import { Link } from "react-router-dom";
 import { useHistory } from "react-router";
 import styled from "styled-components";
 
+import { DefaultButton } from "../../atoms/button/DefaultButton";
+import { SFlexContainer } from "../../atoms/style/SelectStyle";
+
 import { path } from "../../../assets/data/path";
 import { useAuthContext } from "../../../providers/AuthProvider";
-import { DefaultButton } from "../../atoms/button/DefaultButton";
 
 export const Header: VFC = () => {
     const { isLogin, setIsLogin } = useAuthContext();
@@ -37,7 +39,7 @@ export const Header: VFC = () => {
     };
     return (
         <SComponentContainer>
-            <div>
+            <SFlexContainer>
                 <SLink to={path.top}>Top</SLink>
                 {!isLogin ? (
                     <div>
@@ -47,7 +49,7 @@ export const Header: VFC = () => {
                 ) : null}
                 {isLogin ? <SLink to={path.home}>Home</SLink> : null}
                 <SLink to={path.help}>Help</SLink>
-            </div>
+            </SFlexContainer>
             {isLogin ? (
                 <DefaultButton onClick={logout}>Logout</DefaultButton>
             ) : null}
