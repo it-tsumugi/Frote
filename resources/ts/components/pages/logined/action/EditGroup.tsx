@@ -12,7 +12,7 @@ export const EditGroup: VFC = () => {
     const group_id: number = Number(id);
     const { group, setGroup } = useGroupContext();
     const history = useHistory();
-    useGetGroup(group_id);
+    useGetGroup(group_id, "group");
 
     const updateGroup = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();

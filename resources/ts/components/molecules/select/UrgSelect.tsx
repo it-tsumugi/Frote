@@ -7,9 +7,16 @@ import {
 } from "../../atoms/style/SelectStyle";
 
 import { useUrgContext } from "../../../providers/UrgProvider";
+import { useGetUrg } from "../../../hooks/useGetUrg";
 
-export const UrgSelect: VFC = () => {
+type propsType = {
+    task_list_id: number;
+};
+
+export const UrgSelect: VFC<propsType> = (props) => {
+    const { task_list_id } = props;
     const { urg, setUrg } = useUrgContext();
+    useGetUrg(task_list_id);
 
     return (
         <SFlexContainer>

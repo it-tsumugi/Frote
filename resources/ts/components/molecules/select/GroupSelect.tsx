@@ -1,4 +1,4 @@
-import { useEffect, VFC } from "react";
+import { useEffect, useState, VFC } from "react";
 
 import {
     SColumnContainer,
@@ -10,14 +10,22 @@ import {
 import { useGroupContext } from "../../../providers/GroupProvider";
 import { useGetGroupLists } from "../../../hooks/useGetGroupLists";
 import { useGroupListsContext } from "../../../providers/GroupListProvider";
-import { useHistory } from "react-router";
-import { path } from "../../../assets/data/path";
+import { useGetGroup } from "../../../hooks/useGetGroup";
 
-export const GroupSelect: VFC = (props) => {
+type propsType = {
+    task_list_id: number;
+};
+
+export const GroupSelect: VFC<propsType> = (props) => {
+    const { task_list_id } = props;
     const { group, setGroup } = useGroupContext();
     const { groupLists } = useGroupListsContext();
-    const history = useHistory();
+    const [isLoading, setIsLoading] = useState(true);
     useGetGroupLists();
+    useGetGroup(task_list_id, "task_list");
+    useEffect(() => {
+        setIsLoading(false);
+    });
     return (
         <SColumnContainer>
             <SFlexContainer>
@@ -38,10 +46,12 @@ export const GroupSelect: VFC = (props) => {
                     })}
                 </SSelect>
             </SFlexContainer>
-            {groupLists.length === 0 ? (
-                <span>
-                    グループがないためリストを作成出来ません。先にグループを作成してください
-                </span>
+            {isLoading ? (
+                groupLists.length === 0 ? (
+                    <span>
+                        グループがないためリストを作成出来ません。先にグループを作成してください
+                    </span>
+                ) : null
             ) : null}
         </SColumnContainer>
     );

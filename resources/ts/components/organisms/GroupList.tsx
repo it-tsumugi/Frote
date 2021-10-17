@@ -17,7 +17,7 @@ export const GroupList: VFC = () => {
 
     return (
         <Grid container spacing={2}>
-            {groupLists.map((item, index) => {
+            {groupLists.map((item) => {
                 return (
                     <Grid item xs={6} sm={6} md={6} lg={4} key={item.id}>
                         <SSCard>

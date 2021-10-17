@@ -35,3 +35,9 @@ export type groupListType = {
     id: number;
     group: string;
 };
+
+export type selectParamsType = {
+    imp: number;
+    urg: number;
+    group: string;
+};

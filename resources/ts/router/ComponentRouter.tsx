@@ -25,6 +25,7 @@ import { EditGroup } from "../components/pages/logined/action/EditGroup";
 import { ImpDisplay } from "../components/pages/logined/ImpDisplay";
 import { UrgDisplay } from "../components/pages/logined/UrgDisplay";
 import { AddTasks } from "../components/pages/logined/action/AddTasks";
+import { EditSelectParams } from "../components/pages/logined/action/EditSelectParams";
 
 export const ComponentRouter: VFC = () => {
     return (
@@ -106,6 +107,11 @@ export const ComponentRouter: VFC = () => {
                     <AuthRoute path={"/:id" + path.editTask}>
                         <NavLayout>
                             <EditTask />
+                        </NavLayout>
+                    </AuthRoute>
+                    <AuthRoute path={"/:id" + path.editTaskList}>
+                        <NavLayout>
+                            <EditSelectParams />
                         </NavLayout>
                     </AuthRoute>
                     <AuthRoute path={"/:id" + path.editGroup}>

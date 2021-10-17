@@ -84,7 +84,7 @@ export const AddTasks: VFC = () => {
                                         variant="contained"
                                         onClick={() => remove(index)}
                                     >
-                                        Delete
+                                        削除
                                     </Button>
                                     <Button
                                         type="button"

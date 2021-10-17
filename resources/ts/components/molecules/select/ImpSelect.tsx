@@ -7,10 +7,16 @@ import {
 } from "../../atoms/style/SelectStyle";
 
 import { useImpContext } from "../../../providers/ImpProvider";
+import { useGetImp } from "../../../hooks/useGetImp";
 
-export const ImpSelect: VFC = () => {
+type propsType = {
+    task_list_id: number;
+};
+
+export const ImpSelect: VFC<propsType> = (props) => {
+    const { task_list_id } = props;
     const { imp, setImp } = useImpContext();
-
+    useGetImp(task_list_id);
     return (
         <SFlexContainer>
             <SItemName>重要度</SItemName>

@@ -27,6 +27,9 @@ export const TaskListButtonArea: VFC<propsType> = (props) => {
             <DeleteListButton taskList={taskList}>
                 リストを削除
             </DeleteListButton>
+            <NavButton to={`/${taskList.task_list_id}` + path.editTaskList}>
+                リストを編集
+            </NavButton>
             <NavButton to={`/${taskList.task_list_id}` + path.addTasks}>
                 末尾にタスクを追加
             </NavButton>

@@ -15,28 +15,31 @@ import { GroupProvider } from "./providers/GroupProvider";
 import { ImpProvider } from "./providers/ImpProvider";
 import { GroupListsProvider } from "./providers/GroupListProvider";
 import { TaskProvider } from "./providers/TaskProvider";
+import { SelectParamsProvider } from "./providers/SelectParamsProvider";
 
 export const App: VFC = () => {
     return (
-        <TaskProvider>
-            <GroupListsProvider>
-                <UrgProvider>
-                    <GroupProvider>
-                        <ImpProvider>
-                            <TaskListsProvider>
-                                <AuthProvider>
-                                    <StylesProvider injectFirst>
-                                        <MuiThemeProvider theme={theme}>
-                                            <ComponentRouter />
-                                        </MuiThemeProvider>
-                                    </StylesProvider>
-                                </AuthProvider>
-                            </TaskListsProvider>
-                        </ImpProvider>
-                    </GroupProvider>
-                </UrgProvider>
-            </GroupListsProvider>
-        </TaskProvider>
+        <SelectParamsProvider>
+            <TaskProvider>
+                <GroupListsProvider>
+                    <UrgProvider>
+                        <GroupProvider>
+                            <ImpProvider>
+                                <TaskListsProvider>
+                                    <AuthProvider>
+                                        <StylesProvider injectFirst>
+                                            <MuiThemeProvider theme={theme}>
+                                                <ComponentRouter />
+                                            </MuiThemeProvider>
+                                        </StylesProvider>
+                                    </AuthProvider>
+                                </TaskListsProvider>
+                            </ImpProvider>
+                        </GroupProvider>
+                    </UrgProvider>
+                </GroupListsProvider>
+            </TaskProvider>
+        </SelectParamsProvider>
     );
 };
 

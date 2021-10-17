@@ -124,9 +124,9 @@ export const AddTaskList: VFC = () => {
                     タスクの追加
                 </Button>
             </SColumnContainer>
-            <ImpSelect />
-            <UrgSelect />
-            <GroupSelect />
+            <ImpSelect task_list_id={-1} />
+            <UrgSelect task_list_id={-1} />
+            <GroupSelect task_list_id={-1} />
             <Button type="submit" color="default" variant="contained">
                 送信
             </Button>

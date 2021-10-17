@@ -12,7 +12,6 @@ export const EditTask: VFC = () => {
     const { task, setTask } = useTaskContext();
     const history = useHistory();
     useGetTask(task_id);
-    console.log("task_id=", task_id);
 
     const updateTask = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();

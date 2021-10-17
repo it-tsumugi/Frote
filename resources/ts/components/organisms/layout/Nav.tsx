@@ -11,7 +11,7 @@ export const Nav: VFC = () => {
             <NavButton to={path.groupDisplay}>グループ表示</NavButton>
             <NavButton to={path.quadrantDisplay}>象限表示</NavButton>
             <NavButton to={path.impDisplay}>重要度表示</NavButton>
-            <NavButton to={path.urgDisplay}>緊急度表示表示</NavButton>
+            <NavButton to={path.urgDisplay}>緊急度表示</NavButton>
         </SComponentContainer>
     );
 };
