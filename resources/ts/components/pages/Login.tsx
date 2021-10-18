@@ -69,6 +69,10 @@ export const Login = () => {
     };
     return (
         <SComponentContainer>
+            <h1>ログイン</h1>
+            <h2>
+                お試しで利用したい人はメールアドレスfrote@frote.com、パスワードfroteでログイン可能です
+            </h2>
             <Card>
                 <form
                     // onSubmit={(e) => handleSubmit(login({ e }))}

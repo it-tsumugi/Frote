@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\Auth\LoginController;
 use App\Http\Controllers\Api\Auth\CheckIsLoginController;
 use App\Http\Controllers\Api\Auth\LogoutController;
+use App\Http\Controllers\Api\Auth\RegisterController;
+
 use App\Http\Controllers\Api\GetUserController;
 use App\Http\Controllers\Api\AddGroupController;
 use App\Http\Controllers\Api\AddTaskListController;
@@ -28,8 +30,9 @@ use App\Http\Controllers\Api\GetImpTaskListsController;
 use App\Http\Controllers\Api\GetUrgTaskListsController;
 
 Route::get('/logout', LogoutController::class);
-Route::post('/login', LoginController::class);
 Route::get('/auth', CheckIsLoginController::class);
+Route::post('/login', LoginController::class);
+Route::post('/register', RegisterController::class);
 
 Route::middleware('auth:sanctum')->get('/test', TestController::class);
 

@@ -40,18 +40,18 @@ export const Header: VFC = () => {
     return (
         <SComponentContainer>
             <SFlexContainer>
-                <SLink to={path.top}>Top</SLink>
+                <SLink to={path.top}>トップ</SLink>
                 {!isLogin ? (
                     <div>
-                        <SLink to={path.login}>Login</SLink>
-                        <SLink to={path.register}>Register</SLink>
+                        <SLink to={path.login}>ログイン</SLink>
+                        <SLink to={path.confirmRegister}>登録</SLink>
                     </div>
                 ) : null}
-                {isLogin ? <SLink to={path.home}>Home</SLink> : null}
-                <SLink to={path.help}>Help</SLink>
+                {isLogin ? <SLink to={path.home}>ホーム</SLink> : null}
+                <SLink to={path.help}>使い方</SLink>
             </SFlexContainer>
             {isLogin ? (
-                <DefaultButton onClick={logout}>Logout</DefaultButton>
+                <DefaultButton onClick={logout}>ログアウト</DefaultButton>
             ) : null}
         </SComponentContainer>
     );

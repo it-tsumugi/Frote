@@ -18,7 +18,7 @@ import { AddTaskList } from "../components/pages/logined/action/AddTaskList";
 import { Test } from "../components/pages/logined/Test";
 import { InsertTask } from "../components/pages/logined/action/InsertTask";
 import { QuadrantDisplay } from "../components/pages/logined/QuadrantDisplay";
-import { Group } from "../components/pages/logined/Group";
+import { Group } from "../components/pages/logined/action/Group";
 
 import { path } from "../assets/data/path";
 import { EditGroup } from "../components/pages/logined/action/EditGroup";
@@ -26,6 +26,7 @@ import { ImpDisplay } from "../components/pages/logined/ImpDisplay";
 import { UrgDisplay } from "../components/pages/logined/UrgDisplay";
 import { AddTasks } from "../components/pages/logined/action/AddTasks";
 import { EditSelectParams } from "../components/pages/logined/action/EditSelectParams";
+import { ConfirmRegister } from "../components/pages/confirmRegister";
 
 export const ComponentRouter: VFC = () => {
     return (
@@ -50,6 +51,11 @@ export const ComponentRouter: VFC = () => {
                     <GuestRoute path={path.register}>
                         <NavLessLayout>
                             <Register />
+                        </NavLessLayout>
+                    </GuestRoute>
+                    <GuestRoute path={path.confirmRegister}>
+                        <NavLessLayout>
+                            <ConfirmRegister />
                         </NavLessLayout>
                     </GuestRoute>
 
