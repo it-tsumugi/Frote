@@ -76,11 +76,11 @@ export const Login = () => {
             <Card>
                 <form
                     // onSubmit={(e) => handleSubmit(login({ e }))}
-                    // onSubmit={handleSubmit((data) => alert(data))}
-                    onSubmit={(e) => handleSubmit(login({ e }))}
+                    onSubmit={handleSubmit((data) => alert("反応します"))}
+                    // onSubmit={(e) => handleSubmit(login({ e }))}
                     id="contact-form"
                 >
-                    <STextField
+                    {/* <STextField
                         label="メールアドレス"
                         type="email"
                         variant="filled"
@@ -96,7 +96,11 @@ export const Login = () => {
                             errors.email && "メールアドレスを入力してください"
                         }
                         // onChange={(e) => setEmail(e.target.value)}
-                    />
+                    /> */}
+                    <input {...register("email", { required: true })}></input>
+                    <span>
+                        {errors.email && "メールアドレスを入力してください"}
+                    </span>
                     {/* <Controller
                         name="email"
                         control={control}

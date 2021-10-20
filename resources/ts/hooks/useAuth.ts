@@ -2,7 +2,7 @@ import { useAuthContext } from "../providers/AuthProvider";
 import axios from "axios";
 
 export const useAuth = async () => {
-    const { isLogin, setIsLogin } = useAuthContext();
+    const { setIsLogin } = useAuthContext();
 
     try {
         const res = await axios.get("/api/auth");

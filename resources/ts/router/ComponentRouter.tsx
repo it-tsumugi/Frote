@@ -13,20 +13,19 @@ import { NavLayout } from "../components/templates/NavLayout";
 import { AddGroup } from "../components/pages/logined/action/AddGroup";
 import { GroupDisplay } from "../components/pages/logined/GroupDisplay";
 import { EditTask } from "../components/pages/logined/action/EditTask";
-import { Help } from "../components/pages/Help";
+import { Usage } from "../components/pages/Usage";
 import { AddTaskList } from "../components/pages/logined/action/AddTaskList";
-import { Test } from "../components/pages/logined/Test";
 import { InsertTask } from "../components/pages/logined/action/InsertTask";
-import { QuadrantDisplay } from "../components/pages/logined/QuadrantDisplay";
 import { Group } from "../components/pages/logined/action/Group";
-
-import { path } from "../assets/data/path";
 import { EditGroup } from "../components/pages/logined/action/EditGroup";
 import { ImpDisplay } from "../components/pages/logined/ImpDisplay";
 import { UrgDisplay } from "../components/pages/logined/UrgDisplay";
 import { AddTasks } from "../components/pages/logined/action/AddTasks";
 import { EditSelectParams } from "../components/pages/logined/action/EditSelectParams";
 import { ConfirmRegister } from "../components/pages/confirmRegister";
+import { Help } from "../components/pages/Help";
+
+import { path } from "../assets/data/path";
 
 export const ComponentRouter: VFC = () => {
     return (
@@ -38,9 +37,9 @@ export const ComponentRouter: VFC = () => {
                             <Top />
                         </NavLessLayout>
                     </Route>
-                    <Route path={path.help}>
+                    <Route path={path.usage}>
                         <NavLessLayout>
-                            <Help />
+                            <Usage />
                         </NavLessLayout>
                     </Route>
                     <GuestRoute path={path.login}>
@@ -58,17 +57,22 @@ export const ComponentRouter: VFC = () => {
                             <ConfirmRegister />
                         </NavLessLayout>
                     </GuestRoute>
+                    <GuestRoute path={path.confirmRegister}>
+                        <NavLessLayout>
+                            <ConfirmRegister />
+                        </NavLessLayout>
+                    </GuestRoute>
+                    <GuestRoute path={path.help}>
+                        <NavLessLayout>
+                            <Help />
+                        </NavLessLayout>
+                    </GuestRoute>
 
                     <AuthRoute path={path.home}>
                         <NavLayout>
                             <Home />
                         </NavLayout>
                     </AuthRoute>
-                    {/* <AuthRoute path={path.quadrantDisplay}>
-                        <NavLayout>
-                            <QuadrantDisplay />
-                        </NavLayout>
-                    </AuthRoute> */}
                     <AuthRoute path={path.groupDisplay}>
                         <NavLayout>
                             <GroupDisplay />
@@ -87,11 +91,6 @@ export const ComponentRouter: VFC = () => {
                     <AuthRoute path={path.group}>
                         <NavLayout>
                             <Group />
-                        </NavLayout>
-                    </AuthRoute>
-                    <AuthRoute path={path.test}>
-                        <NavLayout>
-                            <Test />
                         </NavLayout>
                     </AuthRoute>
 

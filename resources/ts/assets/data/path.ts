@@ -1,4 +1,3 @@
-import { ConfirmRegister } from "./../../components/pages/confirmRegister";
 export const path = {
     top: "/",
     help: "/help",
@@ -12,8 +11,8 @@ export const path = {
     impDisplay: "/imp-display",
     urgDisplay: "/urg-display",
     group: "/group",
-    test: "/test",
     confirmRegister: "/confirm-register",
+    usage: "/usage",
 
     addGroup: "/add-group",
     addTasks: "/add-tasks",

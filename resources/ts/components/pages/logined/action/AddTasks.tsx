@@ -5,6 +5,7 @@ import { useHistory, useParams } from "react-router";
 
 import { AddTaskArea } from "../../../organisms/AddTaskArea";
 import { ActionButton } from "../../../atoms/button/ActionButton";
+import { SubmitButton } from "../../../atoms/button/SubmitButton";
 
 type FormData = {
     tasks: {
@@ -64,7 +65,7 @@ export const AddTasks: VFC = () => {
                 insert={insert}
                 register={register}
             />
-            <ActionButton>送信</ActionButton>
+            <SubmitButton>送信</SubmitButton>
         </form>
     );
 };

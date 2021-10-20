@@ -72,8 +72,8 @@ const SId = styled.div``;
 
 const SHiddenDetail = styled.div`
     height: 0;
-    overflow: hidden;
     opacity: 0;
+    overflow: hidden;
     transition: 0.8s;
     width: 100%;
     border-radius: 5px 5px 5px 5px;

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, VFC } from "react";
+import { useEffect, useState, VFC } from "react";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router";
 import styled from "styled-components";
@@ -9,22 +9,15 @@ import { SFlexContainer } from "../../atoms/style/SelectStyle";
 
 import { path } from "../../../assets/data/path";
 import { useAuthContext } from "../../../providers/AuthProvider";
+import { useAuth } from "../../../hooks/useAuth";
 
 export const Header: VFC = () => {
     const { isLogin, setIsLogin } = useAuthContext();
+    const [isLoading, setIsLoading] = useState(true);
+    useAuth();
     useEffect(() => {
-        const Auth = async () => {
-            try {
-                const res = await axios.get("/api/auth");
-                setIsLogin(res.data.isLogin);
-                console.log("Header:ログイン情報を取得しisLoginセットしました");
-            } catch (error) {
-                console.log("Header:ログイン情報が取得出来ませんでした");
-                setIsLogin(false);
-            }
-        };
-        Auth();
-    }, []);
+        setIsLoading(false);
+    });
 
     const history = useHistory();
 
@@ -37,24 +30,28 @@ export const Header: VFC = () => {
             console.log(err);
         }
     };
-    return (
-        <SComponentContainer>
-            <SFlexContainer>
-                <SLink to={path.top}>トップ</SLink>
-                {!isLogin ? (
-                    <div>
-                        <SLink to={path.login}>ログイン</SLink>
-                        <SLink to={path.confirmRegister}>登録</SLink>
-                    </div>
+    if (isLoading) return null;
+    else {
+        return (
+            <SComponentContainer>
+                <SFlexContainer>
+                    <SLink to={path.top}>トップ</SLink>
+                    {!isLogin ? (
+                        <div>
+                            <SLink to={path.login}>ログイン</SLink>
+                            <SLink to={path.confirmRegister}>登録</SLink>
+                        </div>
+                    ) : null}
+                    {isLogin ? <SLink to={path.home}>ホーム</SLink> : null}
+                    <SLink to={path.usage}>使い方</SLink>
+                    <SLink to={path.help}>ヘルプ</SLink>
+                </SFlexContainer>
+                {isLogin ? (
+                    <DefaultButton onClick={logout}>ログアウト</DefaultButton>
                 ) : null}
-                {isLogin ? <SLink to={path.home}>ホーム</SLink> : null}
-                <SLink to={path.help}>使い方</SLink>
-            </SFlexContainer>
-            {isLogin ? (
-                <DefaultButton onClick={logout}>ログアウト</DefaultButton>
-            ) : null}
-        </SComponentContainer>
-    );
+            </SComponentContainer>
+        );
+    }
 };
 
 const SComponentContainer = styled.div`

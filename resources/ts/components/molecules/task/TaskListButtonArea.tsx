@@ -1,12 +1,11 @@
-import { VFC } from "react";
+import { useState, VFC } from "react";
 import styled from "styled-components";
 
 import { NavButton } from "../../atoms/button/NavButton";
+import { DeleteListButton } from "../../atoms/button/DeleteListButton";
 
 import { path } from "../../../assets/data/path";
 import { taskListType } from "../../../assets/type/dataType";
-import { DeleteListButton } from "../../atoms/button/DeleteListButton";
-import { Link } from "react-router-dom";
 
 type propsType = {
     taskList: taskListType;
@@ -14,12 +13,17 @@ type propsType = {
 
 export const TaskListButtonArea: VFC<propsType> = (props) => {
     const { taskList } = props;
-
+    // const isChecked = document.getElementById("test" + taskList.task_list_id);
+    // console.log(isChecked);
+    const [isChecked, setIsChecked] = useState(false);
     return (
         <SComponentContainer>
             {taskList.task.length > 1 ? (
-                <SLabel htmlFor={"test" + taskList.task_list_id}>
-                    すべて表示
+                <SLabel
+                    htmlFor={"test" + taskList.task_list_id}
+                    // on={setIsChecked(!isChecked)}
+                >
+                    {isChecked ? "閉じる" : "すべて表示"}
                 </SLabel>
             ) : (
                 <SEmpty>すべて表示</SEmpty>
