@@ -2,19 +2,17 @@ import { VFC } from "react";
 import axios from "axios";
 import { SubmitHandler, useFieldArray, useForm } from "react-hook-form";
 import { useHistory } from "react-router";
+import { useRecoilValue } from "recoil";
 
 import { ImpSelect } from "../../../molecules/select/ImpSelect";
 import { UrgSelect } from "../../../molecules/select/UrgSelect";
 import { GroupSelect } from "../../../molecules/select/GroupSelect";
 import { NavButton } from "../../../atoms/button/NavButton";
 import { AddTaskArea } from "../../../organisms/AddTaskArea";
-import { ActionButton } from "../../../atoms/button/ActionButton";
-
-import { useImpContext } from "../../../../providers/ImpProvider";
-import { useUrgContext } from "../../../../providers/UrgProvider";
-import { useGroupContext } from "../../../../providers/GroupProvider";
-import { path } from "../../../../assets/data/path";
 import { SubmitButton } from "../../../atoms/button/SubmitButton";
+
+import { path } from "../../../../assets/data/path";
+import { numberState, stringState } from "../../../../state/atom";
 
 type FormData = {
     tasks: {
@@ -30,9 +28,9 @@ type dataType = {
 };
 
 export const AddTaskList: VFC = () => {
-    const { imp } = useImpContext();
-    const { urg } = useUrgContext();
-    const { group } = useGroupContext();
+    const imp = useRecoilValue(numberState("imp"));
+    const urg = useRecoilValue(numberState("urg"));
+    const group = useRecoilValue(stringState("group"));
 
     const history = useHistory();
 

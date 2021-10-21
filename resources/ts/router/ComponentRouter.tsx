@@ -42,6 +42,12 @@ export const ComponentRouter: VFC = () => {
                             <Usage />
                         </NavLessLayout>
                     </Route>
+                    <Route path={path.help}>
+                        <NavLessLayout>
+                            <Help />
+                        </NavLessLayout>
+                    </Route>
+
                     <GuestRoute path={path.login}>
                         <NavLessLayout>
                             <Login />
@@ -60,11 +66,6 @@ export const ComponentRouter: VFC = () => {
                     <GuestRoute path={path.confirmRegister}>
                         <NavLessLayout>
                             <ConfirmRegister />
-                        </NavLessLayout>
-                    </GuestRoute>
-                    <GuestRoute path={path.help}>
-                        <NavLessLayout>
-                            <Help />
                         </NavLessLayout>
                     </GuestRoute>
 

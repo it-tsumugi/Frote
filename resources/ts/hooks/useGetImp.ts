@@ -1,10 +1,11 @@
 import axios from "axios";
 import { useEffect } from "react";
+import { useSetRecoilState } from "recoil";
 
-import { useImpContext } from "./../providers/ImpProvider";
+import { numberState } from "../state/atom";
 
 export const useGetImp = (id: number) => {
-    const { setImp } = useImpContext();
+    const setImp = useSetRecoilState(numberState("imp"));
 
     const getImp = async () => {
         let dbData: {

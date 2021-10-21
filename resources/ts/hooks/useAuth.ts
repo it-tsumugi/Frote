@@ -1,8 +1,10 @@
-import { useAuthContext } from "../providers/AuthProvider";
 import axios from "axios";
+import { useSetRecoilState } from "recoil";
+
+import { booleanState } from "./../state/atom";
 
 export const useAuth = async () => {
-    const { setIsLogin } = useAuthContext();
+    const setIsLogin = useSetRecoilState(booleanState("isLogin"));
 
     try {
         const res = await axios.get("/api/auth");

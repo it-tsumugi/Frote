@@ -59,3 +59,9 @@ export type urgTaskListsType = {
     text: string;
     id: number;
 }[];
+
+export type helpQustionDataType = {
+    id: number;
+    qustion: string;
+    answer: string;
+};

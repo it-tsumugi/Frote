@@ -1,10 +1,11 @@
 import axios from "axios";
 import { useEffect } from "react";
+import { useSetRecoilState } from "recoil";
 
-import { useUrgContext } from "./../providers/UrgProvider";
+import { numberState } from "../state/atom";
 
 export const useGetUrg = (id: number) => {
-    const { setUrg } = useUrgContext();
+    const setUrg = useSetRecoilState(numberState("urg"));
 
     const getUrg = async () => {
         let dbData: {

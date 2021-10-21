@@ -1,4 +1,5 @@
 import { VFC } from "react";
+import { useRecoilState } from "recoil";
 
 import {
     SFlexContainer,
@@ -6,9 +7,9 @@ import {
     SSelect,
 } from "../../atoms/style/SelectStyle";
 
-import { useImpContext } from "../../../providers/ImpProvider";
 import { useGetImp } from "../../../hooks/useGetImp";
 import { impData } from "../../../assets/data/impData";
+import { numberState } from "../../../state/atom";
 
 type propsType = {
     task_list_id: number;
@@ -16,7 +17,7 @@ type propsType = {
 
 export const ImpSelect: VFC<propsType> = (props) => {
     const { task_list_id } = props;
-    const { imp, setImp } = useImpContext();
+    const [imp, setImp] = useRecoilState(numberState("imp"));
     useGetImp(task_list_id);
     return (
         <SFlexContainer>

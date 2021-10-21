@@ -77,7 +77,7 @@ export const AddTaskArea: VFC<propsType> = (props) => {
                                 )}
                                 {index < 19 ? (
                                     <ActionButton
-                                        onClick={() => insert(index + 1, {})}
+                                        onClick={() => insert(index, {})}
                                     >
                                         挿入
                                     </ActionButton>

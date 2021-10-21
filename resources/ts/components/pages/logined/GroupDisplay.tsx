@@ -1,14 +1,15 @@
 import { VFC } from "react";
 import styled from "styled-components";
+import { useRecoilValue } from "recoil";
 
 import { TaskLists } from "../../organisms/TaskLists";
-
 import { TaskListsButtonArea } from "../../molecules/task/TaskListsButtonArea";
-import { useGroupTaskListsContext } from "../../../providers/GroupTaskListsProvider";
+
+import { groupTaskListsState } from "../../../state/atom";
 import { useGetGroupTaskLists } from "../../../hooks/useGetGroupTaskLists";
 
 export const GroupDisplay: VFC = () => {
-    const { groupTaskLists } = useGroupTaskListsContext();
+    const groupTaskLists = useRecoilValue(groupTaskListsState);
     useGetGroupTaskLists();
 
     return (

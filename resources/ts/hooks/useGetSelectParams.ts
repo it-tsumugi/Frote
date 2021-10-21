@@ -1,13 +1,13 @@
-import { useGroupContext } from "../providers/GroupProvider";
 import axios from "axios";
+import { useSetRecoilState } from "recoil";
 import { useEffect } from "react";
 
+import { groupListsState, stringState } from "./../state/atom";
 import { groupListType } from "../assets/type/dataType";
-import { useGroupListsContext } from "../providers/GroupListProvider";
 
 export const useGetSelectParams = () => {
-    const { setGroupList } = useGroupListsContext();
-    const { setGroup } = useGroupContext();
+    const setGroupList = useSetRecoilState(groupListsState);
+    const setGroup = useSetRecoilState(stringState("group"));
 
     const getSelectParams = async () => {
         let dbData: groupListType[] = [];

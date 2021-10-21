@@ -2,10 +2,10 @@ import axios from "axios";
 import { VFC } from "react";
 
 import { DefaultButton } from "../../atoms/button/DefaultButton";
+import { useSetRecoilState } from "recoil";
 
 import { groupListType } from "../../../assets/type/dataType";
-import { useGroupListsContext } from "../../../providers/GroupListProvider";
-import { useGroupContext } from "../../../providers/GroupProvider";
+import { groupListsState, stringState } from "../../../state/atom";
 
 type propsType = {
     id: number;
@@ -14,8 +14,8 @@ type propsType = {
 
 export const DeleteGroupButton: VFC<propsType> = (props) => {
     const { id, children } = props;
-    const { setGroupList } = useGroupListsContext();
-    const { setGroup } = useGroupContext();
+    const setGroup = useSetRecoilState(stringState("group"));
+    const setGroupList = useSetRecoilState(groupListsState);
 
     const getGroupList = async () => {
         let dbData: groupListType[] = [];

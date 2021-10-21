@@ -1,11 +1,12 @@
+import { groupTaskListsState } from "./../state/atom";
 import axios from "axios";
 import { useEffect } from "react";
+import { useSetRecoilState } from "recoil";
 
-import { useGroupTaskListsContext } from "../providers/GroupTaskListsProvider";
 import { groupTaskListsType } from "./../assets/type/dataType";
 
 export const useGetGroupTaskLists = () => {
-    const { setGroupTaskLists } = useGroupTaskListsContext();
+    const setGroupTaskLists = useSetRecoilState(groupTaskListsState);
 
     const getTaskLists = async () => {
         let dbData: groupTaskListsType = [

@@ -1,23 +1,24 @@
-import { Button } from "@material-ui/core";
 import axios from "axios";
 import { VFC } from "react";
 import { useHistory, useParams } from "react-router";
+import { useRecoilValue } from "recoil";
+
+import { Button } from "@material-ui/core";
 
 import { GroupSelect } from "../../../molecules/select/GroupSelect";
 import { ImpSelect } from "../../../molecules/select/ImpSelect";
 import { UrgSelect } from "../../../molecules/select/UrgSelect";
 
 import { path } from "../../../../assets/data/path";
-import { useGroupContext } from "../../../../providers/GroupProvider";
-import { useImpContext } from "../../../../providers/ImpProvider";
-import { useUrgContext } from "../../../../providers/UrgProvider";
+import { numberState, stringState } from "../../../../state/atom";
 
 export const EditSelectParams: VFC = () => {
     const { id } = useParams<{ id: string }>();
     const task_list_id = Number(id);
-    const { group } = useGroupContext();
-    const { imp } = useImpContext();
-    const { urg } = useUrgContext();
+    const imp = useRecoilValue(numberState("imp"));
+    const urg = useRecoilValue(numberState("urg"));
+    const group = useRecoilValue(stringState("group"));
+
     const history = useHistory();
     const updateSelectParams = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();

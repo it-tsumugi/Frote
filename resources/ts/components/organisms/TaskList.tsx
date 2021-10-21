@@ -1,4 +1,4 @@
-import { VFC } from "react";
+import { useState, VFC } from "react";
 import styled from "styled-components";
 
 import { Task } from "../molecules/task/Task";
@@ -11,9 +11,15 @@ type propsType = {
     priority: number;
 };
 
+type SHiddenDetailPropsType = {
+    isChecked: boolean;
+};
+
 export const TaskList: VFC<propsType> = (props) => {
     const { taskList, priority } = props;
     const length = taskList.task.length;
+    const [isChecked, setIsChecked] = useState(false);
+
     let isDelete = true,
         isInsert = true;
     if (length === 1) {
@@ -31,8 +37,7 @@ export const TaskList: VFC<propsType> = (props) => {
                     isInsert={isInsert}
                     index={0}
                 />
-                <SInput type="Checkbox" id={"test" + taskList.task_list_id} />
-                <SHiddenDetail className="HiddenDetail">
+                <SHiddenDetail isChecked={isChecked}>
                     {taskList.task
                         .map((task, index) => {
                             if (index + 1 === length) {
@@ -51,7 +56,11 @@ export const TaskList: VFC<propsType> = (props) => {
                         })
                         .filter((task, index) => index > 0)}
                 </SHiddenDetail>
-                <TaskListButtonArea taskList={taskList} />
+                <TaskListButtonArea
+                    taskList={taskList}
+                    isChecked={isChecked}
+                    setIsChecked={setIsChecked}
+                />
             </STaskListContainer>
         </SComponetContainer>
     );
@@ -70,20 +79,10 @@ const STaskListContainer = styled.div`
 
 const SId = styled.div``;
 
-const SHiddenDetail = styled.div`
-    height: 0;
-    opacity: 0;
+const SHiddenDetail = styled.div<SHiddenDetailPropsType>`
     overflow: hidden;
     transition: 0.8s;
-    width: 100%;
-    border-radius: 5px 5px 5px 5px;
-    box-sizing: border-box;
-`;
 
-const SInput = styled.input`
-    display: none;
-    :checked ~ .HiddenDetail {
-        height: auto;
-        opacity: 1;
-    }
+    height: ${(props) => (props.isChecked ? "auto" : 0)};
+    opacity: ${(props) => (props.isChecked ? 1 : 0)};
 `;

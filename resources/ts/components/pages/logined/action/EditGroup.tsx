@@ -1,16 +1,21 @@
-import { Button } from "@material-ui/core";
-import axios from "axios";
 import { VFC } from "react";
+import axios from "axios";
 import { useHistory, useParams } from "react-router";
+import { useRecoilState } from "recoil";
+
+import { Button } from "@material-ui/core";
+
+import { NavButton } from "../../../atoms/button/NavButton";
+
 import { path } from "../../../../assets/data/path";
 import { useGetGroup } from "../../../../hooks/useGetGroup";
-import { useGroupContext } from "../../../../providers/GroupProvider";
-import { NavButton } from "../../../atoms/button/NavButton";
+import { useGroupContext } from "../../../../providers/iranao/GroupProvider";
+import { stringState } from "../../../../state/atom";
 
 export const EditGroup: VFC = () => {
     const { id } = useParams<{ id: string }>();
     const group_id: number = Number(id);
-    const { group, setGroup } = useGroupContext();
+    const [group, setGroup] = useRecoilState(stringState("group"));
     const history = useHistory();
     useGetGroup(group_id, "group");
 

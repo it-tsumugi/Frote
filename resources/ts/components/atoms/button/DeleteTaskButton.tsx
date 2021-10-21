@@ -1,10 +1,11 @@
 import axios from "axios";
 import { VFC } from "react";
+import { useSetRecoilState } from "recoil";
 
 import { DefaultButton } from "../../atoms/button/DefaultButton";
 
 import { taskListType, taskType } from "../../../assets/type/dataType";
-import { useTaskListsContext } from "../../../providers/TaskListsProvider";
+import { taskListsState } from "../../../state/atom";
 
 type propsType = {
     task: taskType;
@@ -14,7 +15,7 @@ type propsType = {
 
 export const DeleteTaskButton: VFC<propsType> = (props) => {
     const { task, children, task_list_id } = props;
-    const { setTaskLists } = useTaskListsContext();
+    const setTaskLists = useSetRecoilState(taskListsState);
 
     const getTaskLists = async () => {
         let dbData: taskListType[] = [];

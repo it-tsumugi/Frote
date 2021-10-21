@@ -1,8 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState, VFC } from "react";
 import { Route, Redirect } from "react-router-dom";
+import { useRecoilState } from "recoil";
+
 import { NavLessLayout } from "../components/templates/NavLessLayout";
-import { useAuthContext } from "../providers/AuthProvider";
+
+import { booleanState } from "../state/atom";
 
 type propsType = {
     path: string;
@@ -10,7 +13,7 @@ type propsType = {
 };
 
 export const GuestRoute: VFC<propsType> = (props) => {
-    const { isLogin, setIsLogin } = useAuthContext();
+    const [isLogin, setIsLogin] = useRecoilState(booleanState("isLogin"));
     const [isLoading, setIsLoading] = useState(true);
     const { path, children } = props;
 

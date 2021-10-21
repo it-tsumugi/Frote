@@ -1,48 +1,47 @@
-import { useState, VFC } from "react";
+import { VFC } from "react";
 import styled from "styled-components";
 
 import { NavButton } from "../../atoms/button/NavButton";
 import { DeleteListButton } from "../../atoms/button/DeleteListButton";
+import { DefaultButton } from "../../atoms/button/DefaultButton";
 
 import { path } from "../../../assets/data/path";
 import { taskListType } from "../../../assets/type/dataType";
 
 type propsType = {
     taskList: taskListType;
+    isChecked: boolean;
+    setIsChecked: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export const TaskListButtonArea: VFC<propsType> = (props) => {
-    const { taskList } = props;
-    // const isChecked = document.getElementById("test" + taskList.task_list_id);
-    // console.log(isChecked);
-    const [isChecked, setIsChecked] = useState(false);
+    const { taskList, isChecked, setIsChecked } = props;
     return (
-        <SComponentContainer>
-            {taskList.task.length > 1 ? (
-                <SLabel
-                    htmlFor={"test" + taskList.task_list_id}
-                    // on={setIsChecked(!isChecked)}
-                >
-                    {isChecked ? "閉じる" : "すべて表示"}
-                </SLabel>
-            ) : (
-                <SEmpty>すべて表示</SEmpty>
-            )}
+        <>
+            <SComponentContainer>
+                {taskList.task.length > 1 ? (
+                    <DefaultButton onClick={() => setIsChecked(!isChecked)}>
+                        {isChecked ? "閉じる" : "すべて表示"}
+                    </DefaultButton>
+                ) : (
+                    <SEmpty>すべて表示</SEmpty>
+                )}
 
-            <DeleteListButton taskList={taskList}>
-                リストを削除
-            </DeleteListButton>
-            <NavButton to={`/${taskList.task_list_id}` + path.editTaskList}>
-                リストを編集
-            </NavButton>
-            {taskList.task.length < 20 ? (
-                <NavButton to={`/${taskList.task_list_id}` + path.addTasks}>
-                    末尾にタスクを追加
+                <DeleteListButton taskList={taskList}>
+                    リストを削除
+                </DeleteListButton>
+                <NavButton to={`/${taskList.task_list_id}` + path.editTaskList}>
+                    リストを編集
                 </NavButton>
-            ) : (
-                <SEmpty>末尾にタスクを追加</SEmpty>
-            )}
-        </SComponentContainer>
+                {taskList.task.length < 20 ? (
+                    <NavButton to={`/${taskList.task_list_id}` + path.addTasks}>
+                        末尾にタスクを追加
+                    </NavButton>
+                ) : (
+                    <SEmpty>末尾にタスクを追加</SEmpty>
+                )}
+            </SComponentContainer>
+        </>
     );
 };
 
@@ -50,28 +49,6 @@ const SComponentContainer = styled.div`
     display: flex;
 `;
 
-const SLabel = styled.label`
-    margin: 5px;
-    display: inline-block;
-    border-radius: 5%;
-    font-size: 18pt;
-    cursor: pointer;
-    padding: 12px 12px;
-    background: #2d2d31;
-    color: #ffffff;
-    line-height: 1em;
-    opacity: 1;
-    transition: 0.3s;
-    box-shadow: 4px 4px 3px gray;
-    font-size: 14px;
-    &:hover {
-        box-shadow: none;
-        text-decoration: none;
-        color: white;
-        opacity: 0.6;
-    }
-`;
-
-const SEmpty = styled(SLabel)`
+const SEmpty = styled(DefaultButton)`
     visibility: hidden;
 `;

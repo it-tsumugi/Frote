@@ -1,15 +1,15 @@
 import { VFC } from "react";
 import styled from "styled-components";
+import { useRecoilValue } from "recoil";
 
 import { TaskLists } from "../../organisms/TaskLists";
-
 import { TaskListsButtonArea } from "../../molecules/task/TaskListsButtonArea";
 
-import { useImpTaskListsContext } from "../../../providers/ImpTaskListsProvider";
 import { useGetImpTaskLists } from "../../../hooks/useGetImpTaskLists";
+import { impTaskListsState } from "../../../state/atom";
 
 export const ImpDisplay: VFC = () => {
-    const { impTaskLists } = useImpTaskListsContext();
+    const impTaskLists = useRecoilValue(impTaskListsState);
     useGetImpTaskLists();
 
     return (

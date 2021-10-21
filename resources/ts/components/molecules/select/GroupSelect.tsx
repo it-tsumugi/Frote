@@ -1,4 +1,5 @@
 import { useEffect, useState, VFC } from "react";
+import { useRecoilState, useRecoilValue } from "recoil";
 
 import {
     SColumnContainer,
@@ -7,10 +8,9 @@ import {
     SSelect,
 } from "../../atoms/style/SelectStyle";
 
-import { useGroupContext } from "../../../providers/GroupProvider";
 import { useGetGroupLists } from "../../../hooks/useGetGroupLists";
-import { useGroupListsContext } from "../../../providers/GroupListProvider";
 import { useGetGroup } from "../../../hooks/useGetGroup";
+import { groupListsState, stringState } from "../../../state/atom";
 
 type propsType = {
     task_list_id: number;
@@ -18,8 +18,9 @@ type propsType = {
 
 export const GroupSelect: VFC<propsType> = (props) => {
     const { task_list_id } = props;
-    const { group, setGroup } = useGroupContext();
-    const { groupLists } = useGroupListsContext();
+    const [group, setGroup] = useRecoilState(stringState("group"));
+    const groupLists = useRecoilValue(groupListsState);
+
     const [isLoading, setIsLoading] = useState(true);
     useGetGroupLists();
     useGetGroup(task_list_id, "task_list");

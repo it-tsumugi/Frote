@@ -1,12 +1,13 @@
+import { urgTaskListsState } from "./../state/atom";
 import axios from "axios";
 import { useEffect } from "react";
+import { useSetRecoilState } from "recoil";
 
 import { urgTaskListsType } from "./../assets/type/dataType";
-import { useUrgTaskListsContext } from "../providers/UrgTaskListsProvider";
 import { urgData } from "../assets/data/urgData";
 
 export const useGetUrgTaskLists = () => {
-    const { setUrgTaskLists } = useUrgTaskListsContext();
+    const setUrgTaskLists = useSetRecoilState(urgTaskListsState);
 
     const getTaskLists = async () => {
         let dbData: urgTaskListsType = [

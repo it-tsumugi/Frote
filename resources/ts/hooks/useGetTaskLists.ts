@@ -1,11 +1,12 @@
 import axios from "axios";
 import { useEffect } from "react";
+import { useSetRecoilState } from "recoil";
 
 import { taskListType } from "../assets/type/dataType";
-import { useTaskListsContext } from "../providers/TaskListsProvider";
+import { taskListsState } from "../state/atom";
 
 export const useGetTaskLists = () => {
-    const { setTaskLists } = useTaskListsContext();
+    const setTaskLists = useSetRecoilState(taskListsState);
 
     const getTaskLists = async () => {
         let dbData: taskListType[] = [];

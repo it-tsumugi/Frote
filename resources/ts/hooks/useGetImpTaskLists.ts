@@ -1,12 +1,13 @@
+import { impTaskListsState } from "./../state/atom";
 import axios from "axios";
 import { useEffect } from "react";
+import { useSetRecoilState } from "recoil";
 
 import { impData } from "../assets/data/impData";
 import { impTaskListsType } from "./../assets/type/dataType";
-import { useImpTaskListsContext } from "../providers/ImpTaskListsProvider";
 
 export const useGetImpTaskLists = () => {
-    const { setImpTaskLists } = useImpTaskListsContext();
+    const setImpTaskLists = useSetRecoilState(impTaskListsState);
 
     const getTaskLists = async () => {
         let dbData: impTaskListsType = [

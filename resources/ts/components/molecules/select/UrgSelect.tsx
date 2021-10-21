@@ -1,4 +1,5 @@
 import { VFC } from "react";
+import { useRecoilState } from "recoil";
 
 import {
     SFlexContainer,
@@ -6,9 +7,9 @@ import {
     SSelect,
 } from "../../atoms/style/SelectStyle";
 
-import { useUrgContext } from "../../../providers/UrgProvider";
 import { useGetUrg } from "../../../hooks/useGetUrg";
 import { urgData } from "../../../assets/data/urgData";
+import { numberState } from "../../../state/atom";
 
 type propsType = {
     task_list_id: number;
@@ -16,7 +17,7 @@ type propsType = {
 
 export const UrgSelect: VFC<propsType> = (props) => {
     const { task_list_id } = props;
-    const { urg, setUrg } = useUrgContext();
+    const [urg, setUrg] = useRecoilState(numberState("urg"));
     useGetUrg(task_list_id);
 
     return (

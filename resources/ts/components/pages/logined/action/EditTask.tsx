@@ -1,15 +1,18 @@
-import { Button } from "@material-ui/core";
 import axios from "axios";
 import { VFC } from "react";
 import { useHistory, useParams } from "react-router";
+import { useRecoilState } from "recoil";
+
+import { Button } from "@material-ui/core";
+
 import { path } from "../../../../assets/data/path";
 import { useGetTask } from "../../../../hooks/useGetTask";
-import { useTaskContext } from "../../../../providers/TaskProvider";
+import { stringState } from "../../../../state/atom";
 
 export const EditTask: VFC = () => {
     const { id } = useParams<{ id: string }>();
     const task_id = Number(id);
-    const { task, setTask } = useTaskContext();
+    const [task, setTask] = useRecoilState(stringState("task"));
     const history = useHistory();
     useGetTask(task_id);
 

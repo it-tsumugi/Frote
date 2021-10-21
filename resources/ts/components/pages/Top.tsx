@@ -1,14 +1,18 @@
-import { Card, Grid } from "@material-ui/core";
 import { VFC } from "react";
+import { useRecoilState } from "recoil";
 import styled from "styled-components";
-import { path } from "../../assets/data/path";
-import { useAuth } from "../../hooks/useAuth";
-import { useAuthContext } from "../../providers/AuthProvider";
+
+import { Grid } from "@material-ui/core";
+
 import { BigNavButton } from "../atoms/button/BigNavButton";
 import { SCard } from "../atoms/style/SCard";
 
+import { path } from "../../assets/data/path";
+import { useAuth } from "../../hooks/useAuth";
+import { booleanState } from "../../state/atom";
+
 export const Top: VFC = () => {
-    const { isLogin, setIsLogin } = useAuthContext();
+    const isLogin = useRecoilState(booleanState("isLogin"));
     useAuth();
     return (
         <SComponentContainer>

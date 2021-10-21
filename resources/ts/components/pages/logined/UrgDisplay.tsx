@@ -1,14 +1,15 @@
 import { VFC } from "react";
 import styled from "styled-components";
+import { useRecoilValue } from "recoil";
 
 import { TaskLists } from "../../organisms/TaskLists";
 import { TaskListsButtonArea } from "../../molecules/task/TaskListsButtonArea";
 
-import { useUrgTaskListsContext } from "../../../providers/UrgTaskListsProvider";
 import { useGetUrgTaskLists } from "../../../hooks/useGetUrgTaskLists";
+import { urgTaskListsState } from "../../../state/atom";
 
 export const UrgDisplay: VFC = () => {
-    const { urgTaskLists } = useUrgTaskListsContext();
+    const urgTaskLists = useRecoilValue(urgTaskListsState);
     useGetUrgTaskLists();
 
     return (

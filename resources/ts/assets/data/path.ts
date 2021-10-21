@@ -1,6 +1,7 @@
 export const path = {
     top: "/",
     help: "/help",
+    usage: "/usage",
 
     login: "/login",
     register: "/register",
@@ -12,7 +13,6 @@ export const path = {
     urgDisplay: "/urg-display",
     group: "/group",
     confirmRegister: "/confirm-register",
-    usage: "/usage",
 
     addGroup: "/add-group",
     addTasks: "/add-tasks",
