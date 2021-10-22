@@ -14,7 +14,7 @@ export const Home: VFC = () => {
     return (
         <>
             {taskLists.length !== 0 ? (
-                <TaskLists taskLists={taskLists} />
+                <TaskLists taskLists={taskLists} taskType="task" />
             ) : (
                 <h3>タスクは存在しません</h3>
             )}

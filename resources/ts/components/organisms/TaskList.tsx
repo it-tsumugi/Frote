@@ -9,6 +9,7 @@ import { TaskListButtonArea } from "../molecules/task/TaskListButtonArea";
 type propsType = {
     taskList: taskListType;
     priority: number;
+    taskType: string;
 };
 
 type SHiddenDetailPropsType = {
@@ -16,15 +17,13 @@ type SHiddenDetailPropsType = {
 };
 
 export const TaskList: VFC<propsType> = (props) => {
-    const { taskList, priority } = props;
+    const { taskList, priority, taskType } = props;
     const length = taskList.task.length;
     const [isChecked, setIsChecked] = useState(false);
 
-    let isDelete = true,
-        isInsert = true;
+    let isDelete = true;
     if (length === 1) {
         isDelete = false;
-        isInsert = false;
     }
     return (
         <SComponetContainer>
@@ -34,23 +33,20 @@ export const TaskList: VFC<propsType> = (props) => {
                     task={taskList.task[0]}
                     task_list_id={taskList.task_list_id}
                     isDelete={isDelete}
-                    isInsert={isInsert}
                     index={0}
+                    taskType={taskType}
                 />
                 <SHiddenDetail isChecked={isChecked}>
                     {taskList.task
                         .map((task, index) => {
-                            if (index + 1 === length) {
-                                isInsert = false;
-                            }
                             return (
                                 <Task
                                     task={task}
                                     task_list_id={taskList.task_list_id}
                                     isDelete={true}
-                                    isInsert={isInsert}
                                     index={index}
                                     key={task.task_id}
+                                    taskType={taskType}
                                 />
                             );
                         })
@@ -60,6 +56,7 @@ export const TaskList: VFC<propsType> = (props) => {
                     taskList={taskList}
                     isChecked={isChecked}
                     setIsChecked={setIsChecked}
+                    taskType={taskType}
                 />
             </STaskListContainer>
         </SComponetContainer>

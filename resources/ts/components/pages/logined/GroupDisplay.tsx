@@ -19,7 +19,10 @@ export const GroupDisplay: VFC = () => {
                     <SGroupTaskLists key={groupTaskLists.group_id}>
                         <h3>{groupTaskLists.group}</h3>
                         {groupTaskLists.taskLists.length !== 0 ? (
-                            <TaskLists taskLists={groupTaskLists.taskLists} />
+                            <TaskLists
+                                taskLists={groupTaskLists.taskLists}
+                                taskType="group"
+                            />
                         ) : (
                             <SText key={groupTaskLists.group_id}>なし</SText>
                         )}

@@ -33,7 +33,7 @@ class AddTaskListController extends Controller
         $tasks = $request->tasks;
         for($i=0;$i<count($tasks);$i++){
             $task = $tasks[$i]["task"];
-            Task::create(["task"=>$task,"task_list_id"=>$task_list_id,"order"=>$i]);
+            Task::create(["task"=>$task,"task_list_id"=>$task_list_id,"order"=>$i+1]);
         }
 
         $result = true;

@@ -15,6 +15,5 @@ export const TaskListsButtonArea: VFC = () => {
 };
 
 const SComponentContainer = styled.div`
-    margin: 20px;
-    margin-bottom: 300px;
+    margin: 20px 0 100px 0;
 `;

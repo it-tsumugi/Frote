@@ -8,10 +8,11 @@ import { taskListType } from "../../assets/type/dataType";
 
 type propsType = {
     taskLists: taskListType[];
+    taskType: string;
 };
 
 export const TaskLists: VFC<propsType> = (props) => {
-    const { taskLists } = props;
+    const { taskLists, taskType } = props;
 
     return (
         <Grid container spacing={2}>
@@ -26,7 +27,11 @@ export const TaskLists: VFC<propsType> = (props) => {
                         key={taskList.task_list_id}
                     >
                         <SCard>
-                            <TaskList taskList={taskList} priority={index} />
+                            <TaskList
+                                taskList={taskList}
+                                priority={index}
+                                taskType={taskType}
+                            />
                         </SCard>
                     </Grid>
                 );

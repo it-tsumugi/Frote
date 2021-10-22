@@ -19,7 +19,10 @@ export const ImpDisplay: VFC = () => {
                     <SImpTaskLists key={impTaskLists.id}>
                         <h3>{impTaskLists.text}</h3>
                         {impTaskLists.taskLists.length !== 0 ? (
-                            <TaskLists taskLists={impTaskLists.taskLists} />
+                            <TaskLists
+                                taskLists={impTaskLists.taskLists}
+                                taskType="imp"
+                            />
                         ) : (
                             <SText key={impTaskLists.id}>なし</SText>
                         )}

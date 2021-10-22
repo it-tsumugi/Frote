@@ -25,11 +25,11 @@ class InsertTaskController extends Controller
                     ->find($task_id);
         $task_list_id = $data["task_list_id"];
         $order = $data["order"];
-        Task::where("order",">",$order)
+        Task::where("order",">=",$order)
             ->where("task_list_id",$task_list_id)
             ->increment("order");
         Log::info("",[$data]);
-        Task::create(['task' => $request->task,"order"=>$order + 1,"task_list_id"=>$task_list_id]);
+        Task::create(['task' => $request->task,"order"=>$order ,"task_list_id"=>$task_list_id]);
         $result = true;
         return response()->json(["result"=>$result]);
     }

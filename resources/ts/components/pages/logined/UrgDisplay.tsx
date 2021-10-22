@@ -19,7 +19,10 @@ export const UrgDisplay: VFC = () => {
                     <SUrgTaskLists key={urgTaskLists.id}>
                         <h3>{urgTaskLists.text}</h3>
                         {urgTaskLists.taskLists.length !== 0 ? (
-                            <TaskLists taskLists={urgTaskLists.taskLists} />
+                            <TaskLists
+                                taskLists={urgTaskLists.taskLists}
+                                taskType="urg"
+                            />
                         ) : (
                             <SText key={urgTaskLists.id}>なし</SText>
                         )}

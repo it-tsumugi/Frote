@@ -9,7 +9,6 @@ import { NavButton } from "../../../atoms/button/NavButton";
 
 import { path } from "../../../../assets/data/path";
 import { useGetGroup } from "../../../../hooks/useGetGroup";
-import { useGroupContext } from "../../../../providers/iranao/GroupProvider";
 import { stringState } from "../../../../state/atom";
 
 export const EditGroup: VFC = () => {
