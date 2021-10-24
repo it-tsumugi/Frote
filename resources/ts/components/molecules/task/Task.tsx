@@ -100,7 +100,7 @@ const STaskTextarea = styled.div`
 `;
 
 const SSText = styled(SText)`
-    width: 600px;
+    width: 450px;
     ${media.lg`
     width: 400px;
     `}

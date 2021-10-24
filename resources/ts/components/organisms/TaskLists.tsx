@@ -23,7 +23,7 @@ export const TaskLists: VFC<propsType> = (props) => {
                         xs={12}
                         sm={12}
                         md={12}
-                        lg={12}
+                        lg={6}
                         key={taskList.task_list_id}
                     >
                         <SCard>
