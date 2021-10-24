@@ -1,12 +1,13 @@
 import { VFC } from "react";
 import styled from "styled-components";
 import { helpQuestionData } from "../../assets/data/helpQustionData";
+import { STitle } from "../atoms/style/TextStyle";
 import { HelpQuestion } from "../molecules/HelpQuestion";
 
 export const Help: VFC = () => {
     return (
         <SComponentContainer>
-            <STitle>このページではよくある質問をまとめています</STitle>
+            <SSTitle>よくある質問</SSTitle>
             {helpQuestionData.map((data) => {
                 return <HelpQuestion key={data.id} data={data} />;
             })}
@@ -42,8 +43,6 @@ const SComponentContainer = styled.div`
     }
 `;
 
-const STitle = styled.h1`
-    font-size: 32px;
-    font-weight: bold;
+const SSTitle = styled(STitle)`
     margin-bottom: 50px;
 `;

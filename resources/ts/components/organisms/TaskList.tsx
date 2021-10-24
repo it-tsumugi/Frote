@@ -5,6 +5,8 @@ import { Task } from "../molecules/task/Task";
 
 import { taskListType } from "../../assets/type/dataType";
 import { TaskListButtonArea } from "../molecules/task/TaskListButtonArea";
+import { SText } from "../atoms/style/TextStyle";
+import media from "../../assets/styles/media";
 
 type propsType = {
     taskList: taskListType;
@@ -27,8 +29,8 @@ export const TaskList: VFC<propsType> = (props) => {
     }
     return (
         <SComponetContainer>
-            <SId>{"優先度:" + (priority + 1) + "　"}</SId>
             <STaskListContainer>
+                <SSText>{"優先度:" + (priority + 1) + "　"}</SSText>
                 <Task
                     task={taskList.task[0]}
                     task_list_id={taskList.task_list_id}
@@ -65,16 +67,20 @@ export const TaskList: VFC<propsType> = (props) => {
 
 const SComponetContainer = styled.div`
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+`;
+
+const SSText = styled(SText)`
+    /* ${media.md`
+    display:none;
+    `} */
 `;
 
 const STaskListContainer = styled.div`
     display: flex;
     flex-direction: column;
 `;
-
-const SId = styled.div``;
 
 const SHiddenDetail = styled.div<SHiddenDetailPropsType>`
     overflow: hidden;

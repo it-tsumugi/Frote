@@ -1,5 +1,6 @@
 import { VFC } from "react";
 import styled from "styled-components";
+import { SText, STitle } from "../atoms/style/TextStyle";
 
 export const Usage: VFC = () => {
     return (
@@ -77,13 +78,4 @@ const SComponentContainer = styled.div`
 
 const SSection = styled.div`
     margin: 40px 20px;
-`;
-
-const STitle = styled.h1`
-    font-size: 40px;
-    font-weight: bold;
-`;
-
-const SText = styled.h2`
-    font-size: 24px;
 `;

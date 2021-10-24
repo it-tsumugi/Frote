@@ -10,6 +10,8 @@ import { DeleteUrgTaskButton } from "../../atoms/button/DeleteUrgTaskButton";
 
 import { path } from "../../../assets/data/path";
 import { taskType } from "../../../assets/type/dataType";
+import { SText } from "../../atoms/style/TextStyle";
+import media from "../../../assets/styles/media";
 
 type propsType = {
     task: taskType;
@@ -53,53 +55,58 @@ export const Task: VFC<propsType> = (props) => {
     };
 
     return (
-        <>
-            <STaskItemContainer>
-                <STaskTextarea>
-                    {index < 9 ? (
-                        <SOrder>{"0" + task.order + " :"} </SOrder>
-                    ) : (
-                        <SOrder>{task.order + " :"} </SOrder>
-                    )}
-                    <SText>{task.text}</SText>
-                </STaskTextarea>
-                <>
-                    {isDelete ? (
-                        <DeleteButton />
-                    ) : (
-                        <EmptyButton>削除</EmptyButton>
-                    )}
-                    <NavButton to={`/${task.task_id}` + path.insertTask}>
-                        挿入
-                    </NavButton>
-                    <NavButton to={`/${task.task_id}` + path.editTask}>
-                        編集
-                    </NavButton>
-                </>
-            </STaskItemContainer>
-        </>
+        <SComponentContainer>
+            <STaskTextarea>
+                {index < 9 ? (
+                    <SSText>{"0" + task.order + " :" + task.text} </SSText>
+                ) : (
+                    <SSText>{task.order + " :" + task.text} </SSText>
+                )}
+            </STaskTextarea>
+            <STaskButtonAreaContainer>
+                {isDelete ? <DeleteButton /> : <EmptyButton>削除</EmptyButton>}
+                <NavButton to={`/${task.task_id}` + path.insertTask}>
+                    挿入
+                </NavButton>
+                <NavButton to={`/${task.task_id}` + path.editTask}>
+                    編集
+                </NavButton>
+            </STaskButtonAreaContainer>
+        </SComponentContainer>
     );
 };
 
-const STaskTextarea = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-`;
-
-const SOrder = styled.div`
-    margin: 0 5px;
-`;
-
-const SText = styled.div`
-    text-align: left;
-    width: 400px;
-`;
-
-const STaskItemContainer = styled.div`
+const SComponentContainer = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    ${media.md`
+    border: 1px solid white;
+    border-radius: 2px;
+    `}
+`;
+
+const STaskButtonAreaContainer = styled.div`
+    ${media.md`
+    display: flex;
+    flex-direction: column;
+    `}
+`;
+
+const STaskTextarea = styled.div`
+    display: flex;
+    justify-content: center;
+`;
+
+const SSText = styled(SText)`
+    width: 600px;
+    ${media.lg`
+    width: 400px;
+    `}
+    ${media.md`
+    width: 250px;
+    `}
 `;
 
 const EmptyButton = styled(DefaultButton)`

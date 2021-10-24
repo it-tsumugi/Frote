@@ -4,6 +4,7 @@ import { useRecoilValue } from "recoil";
 
 import { TaskLists } from "../../organisms/TaskLists";
 import { TaskListsButtonArea } from "../../molecules/task/TaskListsButtonArea";
+import { SPaddingText, SText } from "../../atoms/style/TextStyle";
 
 import { groupTaskListsState } from "../../../state/atom";
 import { useGetGroupTaskLists } from "../../../hooks/useGetGroupTaskLists";
@@ -17,14 +18,16 @@ export const GroupDisplay: VFC = () => {
             {groupTaskLists.map((groupTaskLists) => {
                 return (
                     <SGroupTaskLists key={groupTaskLists.group_id}>
-                        <h3>{groupTaskLists.group}</h3>
+                        <SText>{groupTaskLists.group}</SText>
                         {groupTaskLists.taskLists.length !== 0 ? (
                             <TaskLists
                                 taskLists={groupTaskLists.taskLists}
                                 taskType="group"
                             />
                         ) : (
-                            <SText key={groupTaskLists.group_id}>なし</SText>
+                            <SPaddingText key={groupTaskLists.group_id}>
+                                なし
+                            </SPaddingText>
                         )}
                     </SGroupTaskLists>
                 );
@@ -36,8 +39,4 @@ export const GroupDisplay: VFC = () => {
 
 const SGroupTaskLists = styled.div`
     margin-top: 20px;
-`;
-
-const SText = styled.h3`
-    padding: 30px;
 `;

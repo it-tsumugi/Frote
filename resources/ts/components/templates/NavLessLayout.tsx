@@ -7,6 +7,7 @@ import { Header } from "../organisms/layout/Header";
 
 type PropsType = {
     children: React.ReactElement;
+    // children: any;
 };
 
 export const NavLessLayout: VFC<PropsType> = (props) => {

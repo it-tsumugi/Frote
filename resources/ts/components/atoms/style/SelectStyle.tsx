@@ -1,5 +1,6 @@
 import { NativeSelect } from "@material-ui/core";
 import styled from "styled-components";
+import media from "../../../assets/styles/media";
 
 export const SFlexContainer = styled.div`
     display: flex;
@@ -11,9 +12,25 @@ export const SColumnContainer = styled.div`
 `;
 
 export const SItemName = styled.div`
-    width: 80px;
+    width: 100px;
+
+    font-size: 22px;
+    ${media.lg`
+    font-size: 18px;
+    `}
+    ${media.md`
+    font-size: 14px;
+    `}
 `;
 
 export const SSelect = styled(NativeSelect)`
     background-color: white;
+
+    font-size: 22px;
+    ${media.lg`
+    font-size: 18px;
+    `}
+    ${media.md`
+    font-size: 12px;
+    `}
 `;

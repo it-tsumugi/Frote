@@ -1,58 +1,71 @@
 import { useEffect, useState, VFC } from "react";
 import styled from "styled-components";
-import { useForm, SubmitHandler } from "react-hook-form";
 import { useHistory } from "react-router";
 import axios from "axios";
 
-import { Card, TextField } from "@material-ui/core";
+import { DefaultTextField } from "../atoms/form/DefaultTextField";
+import { ActionButton } from "../atoms/button/ActionButton";
+import { FormCard } from "../atoms/form/FormCard";
 
-import { SubmitButton } from "../atoms/button/SubmitButton";
-
-import { eventType } from "../../assets/type/otherType";
 import { path } from "../../assets/data/path";
-
-type formType = {
-    userName: string;
-    email: string;
-    password: string;
-    confirmPassword: string;
-};
+import { errorMessages } from "../../assets/data/errorMessages";
 
 export const Register: VFC = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+
+    const [nameError, setNameError] = useState("");
+    const [emailError, setEmailError] = useState("");
+    const [passwordError, setPasswordError] = useState("");
+    const [confirmPasswordError, setConfirmPasswordError] = useState("");
+
     const history = useHistory();
-    const {
-        watch,
-        control,
-        register,
-        handleSubmit,
-        formState: { errors },
-        setValue,
-    } = useForm<formType>();
+
+    const validateLogin = () => {
+        if (email.length === 0) setEmailError(errorMessages.email.blank);
+        else if (email.length > 30)
+            setEmailError(errorMessages.email.maxLength);
+        else setEmailError("");
+
+        if (password.length === 0)
+            setPasswordError(errorMessages.password.blank);
+        else if (password.length > 30)
+            setPasswordError(errorMessages.password.maxLength);
+        else if (password.length < 8)
+            setPasswordError(errorMessages.password.minLength);
+        else setPasswordError("");
+
+        if (confirmPassword.length === 0)
+            setConfirmPasswordError(errorMessages.confirmPassword.blank);
+        else if (confirmPassword !== password)
+            setConfirmPasswordError(errorMessages.confirmPassword.notMatch);
+        else setConfirmPasswordError("");
+
+        if (name.length === 0) setNameError(errorMessages.name.blank);
+        else if (name.length > 30) setNameError(errorMessages.name.maxLength);
+        else setNameError("");
+    };
+
+    const checkIsSuccess = () => {
+        if (
+            emailError === "" &&
+            passwordError === "" &&
+            confirmPasswordError === "" &&
+            nameError === ""
+        )
+            return true;
+        else return false;
+    };
 
     useEffect(() => {
-        setEmail(watch("email"));
-    }, [watch("email")]);
+        validateLogin();
+    }, [email, password, name, confirmPassword]);
 
-    useEffect(() => {
-        setPassword(watch("password"));
-    }, [watch("password")]);
-
-    useEffect(() => {
-        setName(watch("userName"));
-    }, [watch("userName")]);
-
-    useEffect(() => {
-        setConfirmPassword(watch("confirmPassword"));
-    }, [watch("confirmPassword")]);
-
-    const registerUserInfo: SubmitHandler<eventType> = async (props) => {
-        const { e } = props;
+    const registerUserInfo = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        if (password === confirmPassword) {
+        if (checkIsSuccess()) {
             try {
                 // ログイン時にCSRFトークンを初期化
                 await axios.get("/sanctum/csrf-cookie");
@@ -81,81 +94,49 @@ export const Register: VFC = () => {
                 console.log(error);
             }
         } else {
-            window.alert("パスワードと確認用パスワードが一致しません");
+            console.log("login:入力形式に問題があります");
         }
     };
 
     return (
         <>
             <h1>登録</h1>
-            <Card>
-                <form onSubmit={(e) => handleSubmit(registerUserInfo({ e }))}>
-                    <STextField
-                        label="メールアドレス"
-                        type="email"
-                        variant="filled"
-                        fullWidth
-                        margin="normal"
-                        {...register("email", { required: true })}
-                        error={Boolean(errors.email)}
-                        helperText={
-                            errors.email && "メールアドレスを入力してください"
-                        }
-                    />
-                    <STextField
+            <FormCard>
+                <form onSubmit={(e) => registerUserInfo(e)}>
+                    <DefaultTextField
                         label="ユーザー名"
                         type="text"
-                        variant="filled"
-                        fullWidth
-                        margin="normal"
-                        {...register("userName", { required: true })}
-                        error={Boolean(errors.userName)}
-                        helperText={
-                            errors.userName && "ユーザー名を入力してください"
-                        }
+                        error={Boolean(nameError)}
+                        helperText={nameError}
+                        onChange={(e) => setName(e.target.value)}
                     />
-                    <STextField
-                        variant="filled"
+                    <DefaultTextField
+                        label="メールアドレス"
+                        type="email"
+                        error={Boolean(emailError)}
+                        helperText={emailError}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                    <DefaultTextField
                         label="パスワード"
                         type="password"
-                        fullWidth
-                        margin="normal"
-                        {...register("password", { required: true })}
-                        error={Boolean(errors.password)}
-                        helperText={
-                            errors.password && "パスワードを入力してください"
-                        }
+                        error={Boolean(passwordError)}
+                        helperText={passwordError}
+                        onChange={(e) => setPassword(e.target.value)}
                     />
-                    <span style={{ margin: "20px" }}>
+                    <span style={{ margin: "20px 0" }}>
                         確認用にもう一度パスワードを入力してください
                     </span>
-                    <STextField
-                        variant="filled"
+                    <DefaultTextField
                         label="確認用パスワード"
                         type="password"
-                        fullWidth
-                        margin="normal"
-                        {...register("confirmPassword", { required: true })}
-                        error={Boolean(errors.confirmPassword)}
-                        helperText={
-                            errors.password &&
-                            "確認用パスワードを入力してください"
-                        }
+                        error={Boolean(confirmPasswordError)}
+                        helperText={confirmPasswordError}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
                     />
-                    <SubmitButton>登録</SubmitButton>
+                    <ActionButton type="submit">登録</ActionButton>
                 </form>
-            </Card>
+            </FormCard>
         </>
     );
 };
-
-const STextField = styled(TextField)`
-    background-color: white;
-    color: black;
-    .MuiInputLabel-root {
-        background-color: skyblue;
-        ::placeholder {
-            color: red;
-        }
-    }
-`;

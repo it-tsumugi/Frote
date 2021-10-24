@@ -1,7 +1,9 @@
 import { useState, VFC } from "react";
 import styled from "styled-components";
+import media from "../../assets/styles/media";
 import { helpQustionDataType } from "../../assets/type/dataType";
 import { DefaultButton } from "../atoms/button/DefaultButton";
+import { SText } from "../atoms/style/TextStyle";
 
 type HiddenAnswerPropsType = {
     isClick: boolean;
@@ -17,13 +19,13 @@ export const HelpQuestion: VFC<propsType> = (props) => {
     return (
         <SComponentContainer>
             <SQuestion>
-                <h2>{"質問:" + data.qustion}</h2>
+                <SSText>{"質問:" + data.qustion}</SSText>
                 <DefaultButton onClick={() => setIsClick(!isClick)}>
                     詳細
                 </DefaultButton>
             </SQuestion>
             <SHiddenAnswer isClick={isClick}>
-                <div>{data.answer}</div>
+                <SText>{data.answer}</SText>
             </SHiddenAnswer>
         </SComponentContainer>
     );
@@ -37,18 +39,31 @@ const SQuestion = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+
     font-size: 24px;
     font-weight: bold;
 `;
 
+const SSText = styled(SText)`
+    width: 600px;
+    ${media.lg`
+    width: 500px;
+    `}
+    ${media.md`
+    width: 250px;
+    `}
+`;
+
 const SHiddenAnswer = styled.div<HiddenAnswerPropsType>`
-    overflow: hidden;
-    transition: 0.8s;
     width: 100%;
+    font-size: 24px;
+
     border-radius: 5px 5px 5px 5px;
     box-sizing: border-box;
     border: 3px solid;
-    font-size: 24px;
+
+    overflow: hidden;
+    transition: 0.8s;
 
     height: ${(props) => (props.isClick ? "auto" : 0)};
     opacity: ${(props) => (props.isClick ? 1 : 0)};

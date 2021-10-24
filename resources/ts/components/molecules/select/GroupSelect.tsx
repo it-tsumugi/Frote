@@ -7,6 +7,7 @@ import {
     SItemName,
     SSelect,
 } from "../../atoms/style/SelectStyle";
+import { SText } from "../../atoms/style/TextStyle";
 
 import { useGetGroupLists } from "../../../hooks/useGetGroupLists";
 import { useGetGroup } from "../../../hooks/useGetGroup";
@@ -48,9 +49,9 @@ export const GroupSelect: VFC<propsType> = (props) => {
                 </SSelect>
             </SFlexContainer>
             {isLoading ? null : groupLists.length === 0 ? (
-                <span>
+                <SText>
                     グループがないためリストを作成出来ません。先にグループを作成してください
-                </span>
+                </SText>
             ) : null}
         </SColumnContainer>
     );

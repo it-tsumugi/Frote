@@ -1,67 +1,78 @@
 import { useEffect, useState, VFC } from "react";
 import axios from "axios";
 import { useHistory } from "react-router";
-import { SubmitHandler, useForm } from "react-hook-form";
-
-import { Button } from "@material-ui/core";
 
 import { NavButton } from "../../../atoms/button/NavButton";
+import { DefaultTextField } from "../../../atoms/form/DefaultTextField";
+import { FormCard } from "../../../atoms/form/FormCard";
+import { ActionButton } from "../../../atoms/button/ActionButton";
 
 import { path } from "../../../../assets/data/path";
-
-type eventType = {
-    e: React.FormEvent<HTMLFormElement>;
-};
+import { errorMessages } from "../../../../assets/data/errorMessages";
+import { SActionText } from "../../../atoms/style/TextStyle";
 
 export const AddGroup: VFC = () => {
     const history = useHistory();
     const [group, setGroup] = useState("");
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-        watch,
-    } = useForm();
+    const [groupError, setGroupError] = useState("");
+
+    const validateLogin = () => {
+        if (group.length === 0) setGroupError(errorMessages.group.blank);
+        else if (group.length > 20)
+            setGroupError(errorMessages.group.maxLength);
+        else setGroupError("");
+    };
+
+    const checkIsSuccess = () => {
+        if (groupError === "") return true;
+        else return false;
+    };
 
     useEffect(() => {
-        setGroup(watch("group"));
-    }, [watch("group")]);
+        validateLogin();
+    }, [group]);
 
-    const sendGroup: SubmitHandler<eventType> = async ({ e }) => {
+    const sendGroup = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        //groupが主キーになってるからDB構造変えた方がいいかも
-        try {
-            const res = await axios.post("/api/add/group", {
-                group,
-            });
-            if (res.data.result) {
-                console.log("AddGroup:グループの追加に成功");
-                window.alert("グループを追加しました");
-                history.push(path.group);
-            } else {
-                console.log("AddGroup:グループの追加に失敗");
-                window.alert("既に同名のグループが存在します");
+        if (checkIsSuccess()) {
+            try {
+                const res = await axios.post("/api/add/group", {
+                    group,
+                });
+                if (res.data.result) {
+                    console.log("AddGroup:グループの追加に成功");
+                    window.alert("グループを追加しました");
+                    history.push(path.group);
+                } else {
+                    console.log("AddGroup:グループの追加に失敗");
+                    window.alert("既に同名のグループが存在します");
+                }
+            } catch (err) {
+                console.log("AddGroup:エラー");
+                console.log(err);
             }
-        } catch (err) {
-            console.log("AddGroup:エラー");
-            console.log(err);
+        } else {
+            window.alert("入力に問題があります");
         }
     };
+
     return (
         <>
-            <form onSubmit={(e) => handleSubmit(sendGroup({ e }))}>
-                <h3>追加するグループを入力してください</h3>
-                <input
-                    type="text"
-                    {...register("group", { required: true })}
-                    placeholder="グループ名"
-                />
-                {errors.group && "グループを入力してください"}
-                <Button type="submit" color="default" variant="contained">
-                    送信
-                </Button>
-            </form>
-            <NavButton to={path.group}>グループの一覧</NavButton>
+            <SActionText>追加するグループを入力してください</SActionText>
+            <FormCard>
+                <form onSubmit={sendGroup}>
+                    <DefaultTextField
+                        name="group"
+                        label="グループ名"
+                        type="text"
+                        error={Boolean(groupError)}
+                        helperText={groupError}
+                        onChange={(e) => setGroup(e.target.value)}
+                    />
+                    <ActionButton type="submit">追加</ActionButton>
+                </form>
+            </FormCard>
+            <NavButton to={path.group}>グループの一覧へ</NavButton>
         </>
     );
 };

@@ -1,3 +1,4 @@
+import { TextField } from "@material-ui/core";
 import { VFC } from "react";
 import {
     FieldArrayWithId,
@@ -5,6 +6,7 @@ import {
     UseFormRegister,
 } from "react-hook-form";
 import styled from "styled-components";
+import media from "../../assets/styles/media";
 
 import { ActionButton } from "../atoms/button/ActionButton";
 import { DummyButton } from "../atoms/button/DummyButton";
@@ -45,63 +47,87 @@ type propsType = {
 
 export const AddTaskArea: VFC<propsType> = (props) => {
     const { fields, append, remove, insert, register } = props;
-
     return (
-        <SColumnContainer>
-            <h3>タスクの内容</h3>
+        <SComponentContainer>
             {fields.map((field, index) => (
                 <div key={field.id}>
                     <SFlexContainer>
                         <SColumnContainer>
                             <span>{"タスク" + (index + 1)}</span>
                             <SFlexContainer>
-                                <textarea
-                                    rows={2}
-                                    cols={30}
+                                <STextField
+                                    label="タスク"
+                                    type="text"
                                     {...register(
                                         `tasks.${index}.task` as const
                                     )}
-                                    placeholder="タスク内容を入力してください"
-                                ></textarea>
-
-                                {index > 0 ? (
-                                    <>
+                                    inputProps={{
+                                        style: { backgroundColor: "white" },
+                                    }}
+                                    InputLabelProps={{
+                                        style: { backgroundColor: "white" },
+                                    }}
+                                    variant="filled"
+                                    fullWidth
+                                    margin="normal"
+                                />
+                                <SAddTasksButtonAreaContainer>
+                                    {index > 0 ? (
                                         <ActionButton
                                             onClick={() => remove(index)}
                                         >
                                             削除
                                         </ActionButton>
-                                    </>
-                                ) : (
-                                    <DummyButton>削除</DummyButton>
-                                )}
-                                {index < 19 ? (
-                                    <ActionButton
-                                        onClick={() => insert(index, {})}
-                                    >
-                                        挿入
-                                    </ActionButton>
-                                ) : (
-                                    <DummyButton>挿入</DummyButton>
-                                )}
+                                    ) : (
+                                        <DummyButton>削除</DummyButton>
+                                    )}
+                                    {index < 19 ? (
+                                        <ActionButton
+                                            onClick={() => insert(index, {})}
+                                        >
+                                            挿入
+                                        </ActionButton>
+                                    ) : (
+                                        <DummyButton>挿入</DummyButton>
+                                    )}
+                                </SAddTasksButtonAreaContainer>
                             </SFlexContainer>
                         </SColumnContainer>
                     </SFlexContainer>
                 </div>
             ))}
-            <SActionButton
-                style={{ width: "100px" }}
+            <ActionButton
                 onClick={() => {
                     if (fields.length < 20) append({});
                     else window.alert("リストが持てるタスクは２０個までです");
                 }}
             >
                 タスクの追加
-            </SActionButton>
-        </SColumnContainer>
+            </ActionButton>
+        </SComponentContainer>
     );
 };
 
-const SActionButton = styled(ActionButton)`
-    max-width: 100px;
+const SComponentContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
+
+const SAddTasksButtonAreaContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    ${media.md`
+    flex-direction: column;
+    `}
+`;
+
+const STextField = styled(TextField)`
+    width: 700px;
+    ${media.lg`
+    width: 500px;
+    `}
+    ${media.md`
+    width: 200px;
+    `}
 `;

@@ -26,17 +26,22 @@ class AddTaskListController extends Controller
 
         $id = Auth::id();
         $group_id = Group::where("group",$request->group)->value("id");
-        Log::info("",[$request->group]);
         TaskList::create(["importance" => $request->imp,"urgency"=> $request->urg,"group_id"=> $group_id,"user_id" => $id]);
         
         $task_list_id = DB::getPdo()->lastInsertId();
         $tasks = $request->tasks;
         for($i=0;$i<count($tasks);$i++){
-            $task = $tasks[$i]["task"];
-            Task::create(["task"=>$task,"task_list_id"=>$task_list_id,"order"=>$i+1]);
+            if($tasks[$i]["task"] !== null && mb_strlen($tasks[$i]["task"]) <= 30 ){
+                $task = $tasks[$i]["task"];
+                Task::create(["task"=>$task,"task_list_id"=>$task_list_id,"order"=>$i+1]);
+                $result = true;
+            }
+            else{
+                $result = false;
+                TaskList::find($task_list_id)->delete();
+                break;
+            }
         }
-
-        $result = true;
         return response(["result"=>$result]);
     }
 }

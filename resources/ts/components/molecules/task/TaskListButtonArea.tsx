@@ -10,6 +10,7 @@ import { taskListType } from "../../../assets/type/dataType";
 import { DeleteGroupListButton } from "../../atoms/button/DeleteGroupListButton";
 import { DeleteUrgListButton } from "../../atoms/button/DeleteUrgListButton";
 import { DeleteImpListButton } from "../../atoms/button/DeleteImpListButton";
+import { Grid } from "@material-ui/core";
 
 type propsType = {
     taskList: taskListType;
@@ -60,6 +61,7 @@ export const TaskListButtonArea: VFC<propsType> = (props) => {
                 ) : (
                     <SEmpty>すべて表示</SEmpty>
                 )}
+
                 <DeleteButton />
                 <NavButton to={`/${taskList.task_list_id}` + path.editTaskList}>
                     リストを編集

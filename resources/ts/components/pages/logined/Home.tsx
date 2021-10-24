@@ -4,6 +4,7 @@ import { useRecoilValue } from "recoil";
 
 import { TaskLists } from "../../organisms/TaskLists";
 import { TaskListsButtonArea } from "../../molecules/task/TaskListsButtonArea";
+import { SText } from "../../atoms/style/TextStyle";
 
 import { useGetTaskLists } from "../../../hooks/useGetTaskLists";
 import { taskListsState } from "../../../state/atom";
@@ -16,15 +17,9 @@ export const Home: VFC = () => {
             {taskLists.length !== 0 ? (
                 <TaskLists taskLists={taskLists} taskType="task" />
             ) : (
-                <h3>タスクは存在しません</h3>
+                <SText>タスクは存在しません</SText>
             )}
             <TaskListsButtonArea />
         </>
     );
 };
-
-// const SComponentContainer = styled.div`
-//     margin-left: auto;
-//     margin-right: auto;
-//     width: 100%;
-// `;

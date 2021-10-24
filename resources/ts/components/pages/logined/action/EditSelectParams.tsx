@@ -3,14 +3,16 @@ import { VFC } from "react";
 import { useHistory, useParams } from "react-router";
 import { useRecoilValue } from "recoil";
 
-import { Button } from "@material-ui/core";
-
 import { GroupSelect } from "../../../molecules/select/GroupSelect";
 import { ImpSelect } from "../../../molecules/select/ImpSelect";
 import { UrgSelect } from "../../../molecules/select/UrgSelect";
+import { SActionText } from "../../../atoms/style/TextStyle";
+import { FormCard } from "../../../atoms/form/FormCard";
+import { ActionButton } from "../../../atoms/button/ActionButton";
 
 import { path } from "../../../../assets/data/path";
 import { numberState, stringState } from "../../../../state/atom";
+import styled from "styled-components";
 
 export const EditSelectParams: VFC = () => {
     const { id } = useParams<{ id: string }>();
@@ -48,15 +50,22 @@ export const EditSelectParams: VFC = () => {
 
     return (
         <>
-            <form onSubmit={(e) => updateSelectParams(e)}>
-                <h3>リストを編集してください</h3>
-                <ImpSelect task_list_id={task_list_id} />
-                <UrgSelect task_list_id={task_list_id} />
-                <GroupSelect task_list_id={task_list_id} />
-                <Button type="submit" color="default" variant="contained">
-                    更新
-                </Button>
-            </form>
+            <SActionText>リストを編集してください</SActionText>
+            <FormCard>
+                <SForm onSubmit={(e) => updateSelectParams(e)}>
+                    <ImpSelect task_list_id={task_list_id} />
+                    <UrgSelect task_list_id={task_list_id} />
+                    <GroupSelect task_list_id={task_list_id} />
+                    <ActionButton type="submit">更新</ActionButton>
+                </SForm>
+            </FormCard>
         </>
     );
 };
+
+const SForm = styled.form`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+`;

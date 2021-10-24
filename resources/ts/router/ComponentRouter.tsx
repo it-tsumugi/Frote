@@ -16,7 +16,7 @@ import { EditTask } from "../components/pages/logined/action/EditTask";
 import { Usage } from "../components/pages/Usage";
 import { AddTaskList } from "../components/pages/logined/action/AddTaskList";
 import { InsertTask } from "../components/pages/logined/action/InsertTask";
-import { Group } from "../components/pages/logined/action/Group";
+import { Group } from "../components/pages/logined/Group";
 import { EditGroup } from "../components/pages/logined/action/EditGroup";
 import { ImpDisplay } from "../components/pages/logined/ImpDisplay";
 import { UrgDisplay } from "../components/pages/logined/UrgDisplay";

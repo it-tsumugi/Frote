@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import media from "../../../assets/styles/media";
 
 export const DefaultButton = styled.button`
     margin: 5px;
@@ -14,11 +15,20 @@ export const DefaultButton = styled.button`
     transition: 0.3s;
     border: none;
     box-shadow: 4px 4px 3px gray;
-    font-size: 14px;
     &:hover {
         box-shadow: none;
         text-decoration: none;
         color: white;
         opacity: 0.6;
     }
+
+    font-size: 14px;
+    ${media.lg`
+    max-width: 100px;
+    font-size: 12px;
+    `}
+    ${media.md`
+    max-width: 60px;
+    font-size: 10px;
+    `}
 `;

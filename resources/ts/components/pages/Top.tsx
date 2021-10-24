@@ -1,5 +1,5 @@
 import { VFC } from "react";
-import { useRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 
 import { Grid } from "@material-ui/core";
@@ -10,9 +10,10 @@ import { SCard } from "../atoms/style/SCard";
 import { path } from "../../assets/data/path";
 import { useAuth } from "../../hooks/useAuth";
 import { booleanState } from "../../state/atom";
+import media from "../../assets/styles/media";
 
 export const Top: VFC = () => {
-    const isLogin = useRecoilState(booleanState("isLogin"));
+    const isLogin = useRecoilValue(booleanState("isLogin"));
     useAuth();
     return (
         <SComponentContainer>
@@ -22,21 +23,21 @@ export const Top: VFC = () => {
             </SSubText>
             <SGrid container spacing={2}>
                 {isLogin ? (
-                    <Grid item xs={12} sm={6} md={6} lg={6} key={1}>
+                    <Grid item xs={12} sm={6} md={6} lg={6}>
                         <SCard>
                             <BigNavButton to={path.home}>ホーム</BigNavButton>
                         </SCard>
                     </Grid>
                 ) : (
                     <>
-                        <Grid item xs={12} sm={6} md={4} lg={4} key={1}>
+                        <Grid item xs={12} sm={6} md={4} lg={4}>
                             <SCard>
                                 <BigNavButton to={path.login}>
                                     ログイン
                                 </BigNavButton>
                             </SCard>
                         </Grid>
-                        <Grid item xs={12} sm={6} md={4} lg={4} key={2}>
+                        <Grid item xs={12} sm={6} md={4} lg={4}>
                             <SCard>
                                 <BigNavButton to={path.confirmRegister}>
                                     登録
@@ -46,13 +47,13 @@ export const Top: VFC = () => {
                     </>
                 )}
                 {isLogin ? (
-                    <Grid item xs={12} sm={6} md={6} lg={6} key={3}>
+                    <Grid item xs={12} sm={6} md={6} lg={6}>
                         <SCard>
                             <BigNavButton to={path.help}>使い方</BigNavButton>
                         </SCard>
                     </Grid>
                 ) : (
-                    <Grid item xs={12} sm={6} md={4} lg={4} key={3}>
+                    <Grid item xs={12} sm={6} md={4} lg={4}>
                         <SCard>
                             <BigNavButton to={path.help}>使い方</BigNavButton>
                         </SCard>
@@ -94,11 +95,25 @@ const SComponentContainer = styled.div`
 `;
 
 const STitle = styled.h1`
+    font-weight: bold;
+
     font-size: 48px;
+    ${media.lg`
+    font-size: 42px;
+    `}
+    ${media.md`
+    font-size: 34px;
+    `}
 `;
 
 const SSubText = styled.h2`
     font-size: 32px;
+    ${media.lg`
+    font-size: 28px;
+    `}
+    ${media.md`
+    font-size: 24px;
+    `}
 `;
 
 const SGrid = styled(Grid)`

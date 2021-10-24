@@ -19,16 +19,22 @@ class AddTasksController extends Controller
      */
     public function __invoke(Request $request)
     {
-        // Log::debug($request);
         $task_list_id = $request->task_list_id;
         $tasks = $request->tasks;
         $num = Task::where("task_list_id",$task_list_id)
                     ->count();
         for($i=0;$i<count($tasks);$i++,$num++){
-            $task = $tasks[$i]["task"];
-            Task::create(["task"=>$task,"task_list_id"=>$task_list_id,"order"=>$num]);
+
+            if($tasks[$i]["task"] !== null && mb_strlen($tasks[$i]["task"]) <= 30 ){
+                $task = $tasks[$i]["task"];
+                Task::create(["task"=>$task,"task_list_id"=>$task_list_id,"order"=>$num]);
+                $result = true;
+            }
+            else{
+                $result = false;
+                break;
+            }
         }
-        $result = true;
         return response(["result"=>$result]);
     }
 }

@@ -20,7 +20,7 @@ export const GroupList: VFC = () => {
         <Grid container spacing={2}>
             {groupLists.map((item) => {
                 return (
-                    <Grid item xs={6} sm={6} md={6} lg={4} key={item.id}>
+                    <Grid item xs={12} sm={12} md={6} lg={4} key={item.id}>
                         <SSCard>
                             <SGroup>{item.group}</SGroup>
                             <NavButton to={`/${item.id}` + path.editGroup}>

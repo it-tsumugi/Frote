@@ -1,7 +1,10 @@
 import { VFC } from "react";
 import styled from "styled-components";
-import { path } from "../../assets/data/path";
+
 import { NavButton } from "../atoms/button/NavButton";
+import { SText, STitle } from "../atoms/style/TextStyle";
+
+import { path } from "../../assets/data/path";
 
 export const ConfirmRegister: VFC = () => {
     return (
@@ -15,23 +18,28 @@ export const ConfirmRegister: VFC = () => {
             <SSection>
                 <STitle>Froteの現状</STitle>
                 <SText>
-                    Froteは現在開発者のつむぎがポートフォリオとして開発中のものであり、まだ完成していません。
+                    Froteは現在開発者のつむぎがポートフォリオとして開発中のものであり、今後も改善していく予定です。
                     バグを発見した場合や意見のある場合はフッターにあるTwitterアイコンからTwitterのDMにて報告お願いします。
+                </SText>
+            </SSection>
+            <SSection>
+                <STitle>お試しで利用したい方へ</STitle>
+                <SText>
+                    お試しで利用したい方はログインページ記載のメールアドレスとパスワードでログインして利用してください。
                 </SText>
             </SSection>
             <SSection>
                 <STitle>注意！メールアドレスとパスワードについて</STitle>
                 <SText>
-                    本サービスの利用にはメールアドレスとパスワードを用いた登録が必要ですが、メールアドレス認証機能がないためどちらも忘れたら確認することはできません。
-                    またセキュリティ上の不安があるので、流出しても問題ないものか、架空のメールアドレスとパスワードにしてください。
-                    お試しで利用したい方はログインページで試用のためのメールアドレスとパスワードを記載しているので利用してください。
+                    本サービスにはメールアドレス認証機能がないため、ログイン情報は忘れたら確認することはできません。
+                    またセキュリティ上の不安があるので、流出しても問題ないものか、架空のメールアドレスとパスワードを使用してください。
                 </SText>
             </SSection>
             <SSection>
                 <STitle>注意！タスクのデータについて</STitle>
                 <SText>
                     Froteは現在開発中であり、DBの破壊的な変更がある可能性があります。
-                    その場合タスクデータを初期化する可能性があるため、ご了承ください。
+                    そのため事前にお知らせはしますが、タスクデータを初期化する可能性があるため、ご了承ください。
                 </SText>
             </SSection>
             <SSection>
@@ -76,15 +84,6 @@ const SComponentContainer = styled.div`
 
 const SSection = styled.div`
     margin: 40px 20px;
-`;
-
-const STitle = styled.h1`
-    font-size: 40px;
-    font-weight: bold;
-`;
-
-const SText = styled.h2`
-    font-size: 24px;
 `;
 
 const SNavButton = styled(NavButton)`

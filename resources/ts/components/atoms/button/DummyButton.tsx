@@ -1,6 +1,6 @@
 import { VFC } from "react";
 
-import { Button } from "@material-ui/core";
+import { ActionButton } from "./ActionButton";
 
 type propsType = {
     children?: string;
@@ -8,5 +8,7 @@ type propsType = {
 
 export const DummyButton: VFC<propsType> = (props) => {
     const { children } = props;
-    return <Button style={{ visibility: "hidden" }}>{children}</Button>;
+    return (
+        <ActionButton style={{ visibility: "hidden" }}>{children}</ActionButton>
+    );
 };

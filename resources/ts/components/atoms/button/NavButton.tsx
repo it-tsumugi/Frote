@@ -1,24 +1,34 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import media from "../../../assets/styles/media";
 
 export const NavButton = styled(Link)`
-    margin: 5px;
-    display: inline-block;
-    border-radius: 5%;
-    font-size: 18pt;
-    cursor: pointer;
-    padding: 12px 12px;
-    background: #2d2d31;
     color: #ffffff;
+    background: #2d2d31;
+    margin: 5px;
+    padding: 12px 12px;
+    cursor: pointer;
+
+    border-radius: 5%;
+    box-shadow: 4px 4px 3px gray;
+    display: inline-block;
     line-height: 1em;
     opacity: 1;
     transition: 0.3s;
-    box-shadow: 4px 4px 3px gray;
-    font-size: 14px;
     &:hover {
         box-shadow: none;
         text-decoration: none;
         color: white;
         opacity: 0.6;
     }
+    font-size: 14px;
+
+    ${media.lg`
+    max-width: 100px;
+    font-size: 12px;
+    `}
+    ${media.md`
+    max-width: 70px;
+    font-size: 10px;
+    `}
 `;
