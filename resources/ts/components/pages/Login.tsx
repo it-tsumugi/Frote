@@ -60,6 +60,7 @@ export const Login = () => {
                         history.push({ pathname: "/home" });
                     } else {
                         console.log("login:ログイン失敗");
+                        window.alert(res.data.message);
                         console.log(res.data.message);
                     }
                 } catch (err) {
