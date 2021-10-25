@@ -4,7 +4,7 @@ import styled from "styled-components";
 import media from "../../../assets/styles/media";
 import axios from "axios";
 import { useRecoilState } from "recoil";
-import { path } from "../../../assets/data/path";
+import { useHistory } from "react-router";
 
 import { Menu, MenuItem, Button } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -12,8 +12,8 @@ import CloseIcon from "@material-ui/icons/Close";
 
 import { headerItem } from "../../../assets/data/headerItem";
 import { booleanState } from "../../../state/atom";
-import { useAuth } from "../../../hooks/useAuth";
-import { useHistory } from "react-router";
+import { path } from "../../../assets/data/path";
+import { booleanStateKey } from "../../../assets/data/stateKey";
 
 export const HeaderMenu: VFC = () => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -23,9 +23,9 @@ export const HeaderMenu: VFC = () => {
     const handleClose = () => {
         setAnchorEl(null);
     };
-
-    const [isLogin, setIsLogin] = useRecoilState(booleanState("isLogin"));
-    useAuth();
+    const [isLogin, setIsLogin] = useRecoilState(
+        booleanState(booleanStateKey.isLogin)
+    );
     const history = useHistory();
 
     const logout = async () => {

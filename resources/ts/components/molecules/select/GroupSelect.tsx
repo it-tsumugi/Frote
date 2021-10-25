@@ -1,4 +1,4 @@
-import { useEffect, useState, VFC } from "react";
+import { VFC } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 
 import {
@@ -11,7 +11,12 @@ import { SText } from "../../atoms/style/TextStyle";
 
 import { useGetGroupLists } from "../../../hooks/useGetGroupLists";
 import { useGetGroup } from "../../../hooks/useGetGroup";
-import { groupListsState, stringState } from "../../../state/atom";
+import {
+    booleanState,
+    groupListsState,
+    stringState,
+} from "../../../state/atom";
+import { booleanStateKey } from "../../../assets/data/stateKey";
 
 type propsType = {
     task_list_id: number;
@@ -19,40 +24,46 @@ type propsType = {
 
 export const GroupSelect: VFC<propsType> = (props) => {
     const { task_list_id } = props;
+    const isComplete = useRecoilValue(
+        booleanState(booleanStateKey.isGetGroupLists)
+    );
     const [group, setGroup] = useRecoilState(stringState("group"));
     const groupLists = useRecoilValue(groupListsState);
 
-    const [isLoading, setIsLoading] = useState(true);
-    useGetGroupLists();
     useGetGroup(task_list_id, "task_list");
-    useEffect(() => {
-        setIsLoading(false);
-    });
-    return (
-        <SColumnContainer>
-            <SFlexContainer>
-                <SItemName>グループ</SItemName>
-                <SSelect
-                    inputProps={{
-                        name: "group",
-                    }}
-                    value={group}
-                    onChange={(e) => setGroup(String(e.target.value))}
-                >
-                    {groupLists.map((item, index) => {
-                        return (
-                            <option value={item.group} key={item.id}>
-                                {item.group}
-                            </option>
-                        );
-                    })}
-                </SSelect>
-            </SFlexContainer>
-            {isLoading ? null : groupLists.length === 0 ? (
+    useGetGroupLists();
+    if (isComplete) {
+        if (groupLists.length === 0) {
+            return (
                 <SText>
                     グループがないためリストを作成出来ません。先にグループを作成してください
                 </SText>
-            ) : null}
-        </SColumnContainer>
-    );
+            );
+        } else {
+            return (
+                <SColumnContainer>
+                    <SFlexContainer>
+                        <SItemName>グループ</SItemName>
+                        <SSelect
+                            inputProps={{
+                                name: "group",
+                            }}
+                            value={group}
+                            onChange={(e) => setGroup(String(e.target.value))}
+                        >
+                            {groupLists.map((item) => {
+                                return (
+                                    <option value={item.group} key={item.id}>
+                                        {item.group}
+                                    </option>
+                                );
+                            })}
+                        </SSelect>
+                    </SFlexContainer>
+                </SColumnContainer>
+            );
+        }
+    } else {
+        return <h1>ローディング中</h1>;
+    }
 };

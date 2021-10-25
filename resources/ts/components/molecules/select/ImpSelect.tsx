@@ -19,6 +19,7 @@ export const ImpSelect: VFC<propsType> = (props) => {
     const { task_list_id } = props;
     const [imp, setImp] = useRecoilState(numberState("imp"));
     useGetImp(task_list_id);
+
     return (
         <SFlexContainer>
             <SItemName>重要度</SItemName>

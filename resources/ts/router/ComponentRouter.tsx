@@ -1,6 +1,5 @@
 import { VFC } from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
-import styled from "styled-components";
 
 import { Login } from "../components/pages/Login";
 import { Home } from "../components/pages/logined/Home";
@@ -29,7 +28,7 @@ import { path } from "../assets/data/path";
 
 export const ComponentRouter: VFC = () => {
     return (
-        <SComponentContainer>
+        <>
             <BrowserRouter>
                 <Switch>
                     <Route exact path={path.top}>
@@ -136,12 +135,6 @@ export const ComponentRouter: VFC = () => {
                     </Route>
                 </Switch>
             </BrowserRouter>
-        </SComponentContainer>
+        </>
     );
 };
-
-const SComponentContainer = styled.div`
-    //色の指定
-    color: white;
-    background-color: #423c3c;
-`;

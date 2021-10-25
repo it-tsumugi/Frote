@@ -1,6 +1,7 @@
 import { VFC } from "react";
 import { useRecoilValue } from "recoil";
 import styled from "styled-components";
+import media from "../../assets/styles/media";
 
 import { Grid } from "@material-ui/core";
 
@@ -8,13 +9,10 @@ import { BigNavButton } from "../atoms/button/BigNavButton";
 import { SCard } from "../atoms/style/SCard";
 
 import { path } from "../../assets/data/path";
-import { useAuth } from "../../hooks/useAuth";
 import { booleanState } from "../../state/atom";
-import media from "../../assets/styles/media";
 
 export const Top: VFC = () => {
     const isLogin = useRecoilValue(booleanState("isLogin"));
-    useAuth();
     return (
         <SComponentContainer>
             <STitle>Froteへようこそ！</STitle>

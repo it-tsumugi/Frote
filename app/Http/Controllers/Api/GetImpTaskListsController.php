@@ -25,7 +25,6 @@ class GetImpTaskListsController extends Controller
     public function __invoke(Request $request)
     {
         $impData = $request->impData;
-        Log::info("",[$request->impData[0]["num"]]);
         for($i=0;$i<count($impData);$i++){
             $data[$i]["taskLists"]  = FunctionController::convert(false,"importance",$impData[$i]["num"]);
             $data[$i]["text"] = $impData[$i]["text"];

@@ -25,7 +25,6 @@ class GetUrgTaskListsController extends Controller
     public function __invoke(Request $request)
     {
         $urgData = $request->urgData;
-        Log::info("",[$request->urgData[0]["num"]]);
         for($i=0;$i<count($urgData);$i++){
             $data[$i]["taskLists"]  = FunctionController::convert(false,"urgency",$urgData[$i]["num"]);
             $data[$i]["text"] = $urgData[$i]["text"];

@@ -3,10 +3,14 @@ import { useEffect } from "react";
 import { useSetRecoilState } from "recoil";
 
 import { taskListType } from "../assets/type/dataType";
-import { taskListsState } from "../state/atom";
+import { booleanState, taskListsState } from "../state/atom";
+import { booleanStateKey } from "../assets/data/stateKey";
 
 export const useGetTaskLists = () => {
     const setTaskLists = useSetRecoilState(taskListsState);
+    const setIsGetGroupLists = useSetRecoilState(
+        booleanState(booleanStateKey.isGetGroupLists)
+    );
 
     const getTaskLists = async () => {
         let dbData: taskListType[] = [];
@@ -19,6 +23,7 @@ export const useGetTaskLists = () => {
             console.log(err);
         }
         setTaskLists(dbData);
+        setIsGetGroupLists(true);
     };
 
     useEffect(() => {

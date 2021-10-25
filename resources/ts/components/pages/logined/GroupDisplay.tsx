@@ -26,7 +26,7 @@ export const GroupDisplay: VFC = () => {
                             />
                         ) : (
                             <SPaddingText key={groupTaskLists.group_id}>
-                                なし
+                                タスクは存在しません
                             </SPaddingText>
                         )}
                     </SGroupTaskLists>

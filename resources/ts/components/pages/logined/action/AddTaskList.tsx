@@ -80,7 +80,7 @@ export const AddTaskList: VFC = () => {
     };
 
     return (
-        <SComponentContainer>
+        <>
             <SActionText>リストの内容を入力してください</SActionText>
             <FormCard>
                 <SForm
@@ -106,7 +106,7 @@ export const AddTaskList: VFC = () => {
                 </SForm>
             </FormCard>
             <NavButton to={path.addGroup}>グループの追加へ</NavButton>
-        </SComponentContainer>
+        </>
     );
 };
 
@@ -116,5 +116,3 @@ const SForm = styled.form`
     justify-content: center;
     align-items: center;
 `;
-
-const SComponentContainer = styled.div``;
