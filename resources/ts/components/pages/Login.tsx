@@ -79,7 +79,7 @@ export const Login = () => {
         <SComponentContainer>
             <STitle>ログイン</STitle>
             <SText>
-                お試しで利用したい人はメールアドレスfrote@frote.com、パスワードfroteでログイン可能です
+                お試しで利用したい人はメールアドレスfrote@frote、パスワードfrotefroteでログイン可能です
             </SText>
             <FormCard>
                 <form onSubmit={login}>

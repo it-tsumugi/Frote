@@ -20,7 +20,7 @@ export const useGetGroupTaskLists = () => {
             const res = await axios.get("/api/read/group-tasklists");
             if (res.data.result) {
                 console.log("useGetGroupTaskLists:データ取得に成功しました");
-                dbData = res.data;
+                dbData = res.data.data;
             } else {
                 console.log("useGetGroupTaskLists:グループは存在しません");
             }

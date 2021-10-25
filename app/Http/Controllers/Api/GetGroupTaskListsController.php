@@ -24,7 +24,7 @@ class GetGroupTaskListsController extends Controller
                 ->where("user_id",$id)
                 ->exists();
         $result = false;
-        $data[0] = ["taskLists"=>[],"group"=>"","group_id"=>0];
+        $data = [];
         if($isGroup){
             $group_ids = DB::table("groups")
                     ->select("groups.id")
@@ -38,6 +38,6 @@ class GetGroupTaskListsController extends Controller
             }
             $result = true;
     }
-        return  response()->json(["data"=>$data,"result=>$result"]);
+        return  response()->json(["data"=>$data,"result"=>$result]);
     }
 }
