@@ -47,13 +47,13 @@ export const Top: VFC = () => {
                 {isLogin ? (
                     <Grid item xs={12} sm={6} md={6} lg={6}>
                         <SCard>
-                            <BigNavButton to={path.help}>使い方</BigNavButton>
+                            <BigNavButton to={path.usage}>使い方</BigNavButton>
                         </SCard>
                     </Grid>
                 ) : (
                     <Grid item xs={12} sm={6} md={4} lg={4}>
                         <SCard>
-                            <BigNavButton to={path.help}>使い方</BigNavButton>
+                            <BigNavButton to={path.usage}>使い方</BigNavButton>
                         </SCard>
                     </Grid>
                 )}
