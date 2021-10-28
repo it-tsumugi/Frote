@@ -2,10 +2,11 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useSetRecoilState } from "recoil";
 
+import { stringStateKey } from "../assets/data/stateKey";
 import { stringState } from "../state/atom";
 
 export const useGetGroup = (id: number, key: "group" | "task_list") => {
-    const setGroup = useSetRecoilState(stringState("group"));
+    const setGroup = useSetRecoilState(stringState(stringStateKey.group));
 
     const getGroup = async () => {
         let dbData: {

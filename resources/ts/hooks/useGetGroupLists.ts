@@ -4,11 +4,11 @@ import { useSetRecoilState } from "recoil";
 
 import { groupListType } from "../assets/type/dataType";
 import { booleanState, groupListsState, stringState } from "./../state/atom";
-import { booleanStateKey } from "../assets/data/stateKey";
+import { booleanStateKey, stringStateKey } from "../assets/data/stateKey";
 
 export const useGetGroupLists = () => {
     const setGroupList = useSetRecoilState(groupListsState);
-    const setGroup = useSetRecoilState(stringState("group"));
+    const setGroup = useSetRecoilState(stringState(stringStateKey.group));
     const setIsGetGroupLists = useSetRecoilState(
         booleanState(booleanStateKey.isGetGroupLists)
     );

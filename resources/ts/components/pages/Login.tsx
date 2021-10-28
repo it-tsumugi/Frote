@@ -11,6 +11,7 @@ import { SText, STitle } from "../atoms/style/TextStyle";
 
 import { booleanState } from "../../state/atom";
 import { errorMessages } from "../../assets/data/errorMessages";
+import { booleanStateKey } from "../../assets/data/stateKey";
 
 export const Login = () => {
     const [email, setEmail] = useState("");
@@ -18,7 +19,7 @@ export const Login = () => {
     const [emailError, setEmailError] = useState("");
     const [passwordError, setPasswordError] = useState("");
 
-    const setIsLogin = useSetRecoilState(booleanState("isLogin"));
+    const setIsLogin = useSetRecoilState(booleanState(booleanStateKey.isLogin));
     const history = useHistory();
 
     const validateLogin = () => {

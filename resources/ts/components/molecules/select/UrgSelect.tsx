@@ -10,6 +10,7 @@ import {
 import { useGetUrg } from "../../../hooks/useGetUrg";
 import { urgData } from "../../../assets/data/urgData";
 import { numberState } from "../../../state/atom";
+import { numberStateKey } from "../../../assets/data/stateKey";
 
 type propsType = {
     task_list_id: number;
@@ -17,7 +18,7 @@ type propsType = {
 
 export const UrgSelect: VFC<propsType> = (props) => {
     const { task_list_id } = props;
-    const [urg, setUrg] = useRecoilState(numberState("urg"));
+    const [urg, setUrg] = useRecoilState(numberState(numberStateKey.urg));
     useGetUrg(task_list_id);
 
     return (

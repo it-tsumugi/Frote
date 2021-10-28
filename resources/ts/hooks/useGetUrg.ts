@@ -3,9 +3,10 @@ import { useEffect } from "react";
 import { useSetRecoilState } from "recoil";
 
 import { numberState } from "../state/atom";
+import { numberStateKey } from "../assets/data/stateKey";
 
 export const useGetUrg = (id: number) => {
-    const setUrg = useSetRecoilState(numberState("urg"));
+    const setUrg = useSetRecoilState(numberState(numberStateKey.urg));
 
     const getUrg = async () => {
         let dbData: {

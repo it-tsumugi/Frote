@@ -3,6 +3,7 @@ import axios from "axios";
 import { SubmitHandler, useFieldArray, useForm } from "react-hook-form";
 import { useHistory } from "react-router";
 import { useRecoilValue } from "recoil";
+import styled from "styled-components";
 
 import { ImpSelect } from "../../../molecules/select/ImpSelect";
 import { UrgSelect } from "../../../molecules/select/UrgSelect";
@@ -10,12 +11,15 @@ import { GroupSelect } from "../../../molecules/select/GroupSelect";
 import { NavButton } from "../../../atoms/button/NavButton";
 import { AddTaskArea } from "../../../organisms/AddTaskArea";
 import { ActionButton } from "../../../atoms/button/ActionButton";
+import { FormCard } from "../../../atoms/form/FormCard";
+import { SActionText } from "../../../atoms/style/TextStyle";
 
 import { path } from "../../../../assets/data/path";
 import { numberState, stringState } from "../../../../state/atom";
-import { FormCard } from "../../../atoms/form/FormCard";
-import styled from "styled-components";
-import { SActionText } from "../../../atoms/style/TextStyle";
+import {
+    numberStateKey,
+    stringStateKey,
+} from "../../../../assets/data/stateKey";
 
 type FormData = {
     tasks: {
@@ -29,9 +33,9 @@ type dataType = {
 };
 
 export const AddTaskList: VFC = () => {
-    const imp = useRecoilValue(numberState("imp"));
-    const urg = useRecoilValue(numberState("urg"));
-    const group = useRecoilValue(stringState("group"));
+    const imp = useRecoilValue(numberState(numberStateKey.imp));
+    const urg = useRecoilValue(numberState(numberStateKey.urg));
+    const group = useRecoilValue(stringState(stringStateKey.group));
 
     const history = useHistory();
 

@@ -16,7 +16,7 @@ import {
     groupListsState,
     stringState,
 } from "../../../state/atom";
-import { booleanStateKey } from "../../../assets/data/stateKey";
+import { booleanStateKey, stringStateKey } from "../../../assets/data/stateKey";
 
 type propsType = {
     task_list_id: number;
@@ -27,7 +27,7 @@ export const GroupSelect: VFC<propsType> = (props) => {
     const isComplete = useRecoilValue(
         booleanState(booleanStateKey.isGetGroupLists)
     );
-    const [group, setGroup] = useRecoilState(stringState("group"));
+    const [group, setGroup] = useRecoilState(stringState(stringStateKey.group));
     const groupLists = useRecoilValue(groupListsState);
 
     useGetGroup(task_list_id, "task_list");

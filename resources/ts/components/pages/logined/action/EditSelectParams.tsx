@@ -1,4 +1,5 @@
 import axios from "axios";
+import styled from "styled-components";
 import { VFC } from "react";
 import { useHistory, useParams } from "react-router";
 import { useRecoilValue } from "recoil";
@@ -12,14 +13,17 @@ import { ActionButton } from "../../../atoms/button/ActionButton";
 
 import { path } from "../../../../assets/data/path";
 import { numberState, stringState } from "../../../../state/atom";
-import styled from "styled-components";
+import {
+    numberStateKey,
+    stringStateKey,
+} from "../../../../assets/data/stateKey";
 
 export const EditSelectParams: VFC = () => {
     const { id } = useParams<{ id: string }>();
     const task_list_id = Number(id);
-    const imp = useRecoilValue(numberState("imp"));
-    const urg = useRecoilValue(numberState("urg"));
-    const group = useRecoilValue(stringState("group"));
+    const imp = useRecoilValue(numberState(numberStateKey.imp));
+    const urg = useRecoilValue(numberState(numberStateKey.urg));
+    const group = useRecoilValue(stringState(stringStateKey.group));
 
     const history = useHistory();
     const updateSelectParams = async (e: React.FormEvent<HTMLFormElement>) => {

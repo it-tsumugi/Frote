@@ -1,6 +1,7 @@
 import React, { VFC } from "react";
 import { Route, Redirect } from "react-router-dom";
 import { useRecoilValue } from "recoil";
+import { booleanStateKey } from "../assets/data/stateKey";
 
 import { booleanState } from "../state/atom";
 
@@ -10,7 +11,7 @@ type propsType = {
 };
 
 export const AuthRoute: VFC<propsType> = (props) => {
-    const isLogin = useRecoilValue(booleanState("isLogin"));
+    const isLogin = useRecoilValue(booleanState(booleanStateKey.isLogin));
     const { path, children } = props;
 
     return (

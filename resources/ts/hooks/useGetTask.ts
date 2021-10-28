@@ -1,11 +1,12 @@
 import axios from "axios";
 import { useEffect } from "react";
 import { useSetRecoilState } from "recoil";
+import { stringStateKey } from "../assets/data/stateKey";
 
 import { stringState } from "../state/atom";
 
 export const useGetTask = (task_id: number) => {
-    const setTask = useSetRecoilState(stringState("task"));
+    const setTask = useSetRecoilState(stringState(stringStateKey.task));
     const getTasks = async () => {
         let dbData: {
             task: string;

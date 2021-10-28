@@ -4,10 +4,11 @@ import { useEffect } from "react";
 
 import { groupListsState, stringState } from "./../state/atom";
 import { groupListType } from "../assets/type/dataType";
+import { stringStateKey } from "../assets/data/stateKey";
 
 export const useGetSelectParams = () => {
     const setGroupList = useSetRecoilState(groupListsState);
-    const setGroup = useSetRecoilState(stringState("group"));
+    const setGroup = useSetRecoilState(stringState(stringStateKey.group));
 
     const getSelectParams = async () => {
         let dbData: groupListType[] = [];

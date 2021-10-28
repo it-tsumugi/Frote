@@ -6,7 +6,9 @@ import { booleanState } from "./../state/atom";
 
 export const useAuth = async () => {
     const setIsLogin = useSetRecoilState(booleanState(booleanStateKey.isLogin));
-    const setIsComplete = useSetRecoilState(booleanState("isComplete"));
+    const setIsComplete = useSetRecoilState(
+        booleanState(booleanStateKey.isComplete)
+    );
 
     try {
         const res = await axios.get("/api/auth");

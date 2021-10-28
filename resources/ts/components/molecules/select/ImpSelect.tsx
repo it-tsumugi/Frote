@@ -10,6 +10,7 @@ import {
 import { useGetImp } from "../../../hooks/useGetImp";
 import { impData } from "../../../assets/data/impData";
 import { numberState } from "../../../state/atom";
+import { numberStateKey } from "../../../assets/data/stateKey";
 
 type propsType = {
     task_list_id: number;
@@ -17,7 +18,7 @@ type propsType = {
 
 export const ImpSelect: VFC<propsType> = (props) => {
     const { task_list_id } = props;
-    const [imp, setImp] = useRecoilState(numberState("imp"));
+    const [imp, setImp] = useRecoilState(numberState(numberStateKey.imp));
     useGetImp(task_list_id);
 
     return (

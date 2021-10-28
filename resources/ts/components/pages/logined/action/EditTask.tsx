@@ -12,11 +12,12 @@ import { path } from "../../../../assets/data/path";
 import { useGetTask } from "../../../../hooks/useGetTask";
 import { stringState } from "../../../../state/atom";
 import { errorMessages } from "../../../../assets/data/errorMessages";
+import { stringStateKey } from "../../../../assets/data/stateKey";
 
 export const EditTask: VFC = () => {
     const { id } = useParams<{ id: string }>();
     const task_id = Number(id);
-    const [task, setTask] = useRecoilState(stringState("task"));
+    const [task, setTask] = useRecoilState(stringState(stringStateKey.task));
     const history = useHistory();
     useGetTask(task_id);
 

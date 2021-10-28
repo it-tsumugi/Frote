@@ -2,11 +2,11 @@ import { useState, VFC } from "react";
 import axios from "axios";
 import { SubmitHandler, useFieldArray, useForm } from "react-hook-form";
 import { useHistory, useParams } from "react-router";
+import styled from "styled-components";
 
 import { AddTaskArea } from "../../../organisms/AddTaskArea";
 import { ActionButton } from "../../../atoms/button/ActionButton";
 import { FormCard } from "../../../atoms/form/FormCard";
-import styled from "styled-components";
 import { SActionText } from "../../../atoms/style/TextStyle";
 
 type FormData = {

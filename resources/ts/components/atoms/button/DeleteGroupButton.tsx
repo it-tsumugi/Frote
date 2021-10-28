@@ -10,7 +10,7 @@ import {
     groupListsState,
     stringState,
 } from "../../../state/atom";
-import { booleanStateKey } from "../../../assets/data/stateKey";
+import { booleanStateKey, stringStateKey } from "../../../assets/data/stateKey";
 
 type propsType = {
     id: number;
@@ -19,7 +19,7 @@ type propsType = {
 
 export const DeleteGroupButton: VFC<propsType> = (props) => {
     const { id, children } = props;
-    const setGroup = useSetRecoilState(stringState("group"));
+    const setGroup = useSetRecoilState(stringState(stringStateKey.group));
     const setGroupList = useSetRecoilState(groupListsState);
     const setIsGetGroupLists = useSetRecoilState(
         booleanState(booleanStateKey.isGetGroupLists)

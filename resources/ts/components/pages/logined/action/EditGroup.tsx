@@ -13,11 +13,12 @@ import { useGetGroup } from "../../../../hooks/useGetGroup";
 import { stringState } from "../../../../state/atom";
 import { errorMessages } from "../../../../assets/data/errorMessages";
 import { SActionText } from "../../../atoms/style/TextStyle";
+import { stringStateKey } from "../../../../assets/data/stateKey";
 
 export const EditGroup: VFC = () => {
     const { id } = useParams<{ id: string }>();
     const group_id: number = Number(id);
-    const [group, setGroup] = useRecoilState(stringState("group"));
+    const [group, setGroup] = useRecoilState(stringState(stringStateKey.group));
     const history = useHistory();
     useGetGroup(group_id, "group");
 

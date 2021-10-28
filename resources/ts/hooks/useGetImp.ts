@@ -3,9 +3,10 @@ import { useEffect } from "react";
 import { useSetRecoilState } from "recoil";
 
 import { numberState } from "../state/atom";
+import { numberStateKey } from "../assets/data/stateKey";
 
 export const useGetImp = (id: number) => {
-    const setImp = useSetRecoilState(numberState("imp"));
+    const setImp = useSetRecoilState(numberState(numberStateKey.imp));
 
     const getImp = async () => {
         let dbData: {
