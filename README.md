@@ -1,6 +1,7 @@
 # Frote
 
 依存関係のあるタスクの明確化と優先度を自動決定するためのタスク管理サービス。
+https://frote.herokuapp.com/
 
 # 詳細
 
