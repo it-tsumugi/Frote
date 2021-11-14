@@ -19,7 +19,7 @@ export const headerItem: headerItemType[] = [
     },
     {
         id: 3,
-        route: path.register,
+        route: path.confirmRegister,
         label: "登録",
     },
     {

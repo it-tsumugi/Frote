@@ -10,7 +10,6 @@ use App\Http\Controllers\Api\Auth\RegisterController;
 use App\Http\Controllers\Api\GetUserController;
 use App\Http\Controllers\Api\AddGroupController;
 use App\Http\Controllers\Api\AddTaskListController;
-use App\Http\Controllers\Api\TestController;
 use App\Http\Controllers\Api\DeleteTaskController;
 use App\Http\Controllers\Api\DeleteTaskListController;
 use App\Http\Controllers\Api\GetTaskListsController;
@@ -33,8 +32,6 @@ Route::get('/logout', LogoutController::class);
 Route::get('/auth', CheckIsLoginController::class);
 Route::post('/login', LoginController::class);
 Route::post('/register', RegisterController::class);
-
-Route::middleware('auth:sanctum')->get('/test', TestController::class);
 
 Route::middleware('auth:sanctum')->get('/user',GetUserController::class);
 Route::middleware('auth:sanctum')->get('/read/tasklists',GetTaskListsController::class);
