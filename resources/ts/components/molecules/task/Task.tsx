@@ -88,7 +88,13 @@ const SComponentContainer = styled.div`
 `;
 
 const STaskButtonAreaContainer = styled.div`
+    padding-left: 20px;
+
+    ${media.lg`
+    padding-left: 10px;
+    `}
     ${media.md`
+    padding-left: 5px;
     display: flex;
     flex-direction: column;
     `}
@@ -100,7 +106,7 @@ const STaskTextarea = styled.div`
 `;
 
 const SSText = styled(SText)`
-    width: 450px;
+    max-width: 1000px;
     ${media.lg`
     width: 400px;
     `}

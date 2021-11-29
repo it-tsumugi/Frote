@@ -6,11 +6,7 @@ export const helpQuestionData: helpQustionDataType[] = [
         qustion: "１つのリストに最大いくつのタスクが入りますか",
         answer: "１つのリストには最大２０個のタスクが入ります。",
     },
-    {
-        id: 2,
-        qustion: "メールアドレス、パスワードが思い出せません",
-        answer: "Froteではメールアドレスなどの再変更機能はないのでログインできません。新しく登録してください。",
-    },
+
     {
         id: 3,
         qustion: "バグを見つけました",

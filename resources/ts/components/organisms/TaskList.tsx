@@ -30,7 +30,7 @@ export const TaskList: VFC<propsType> = (props) => {
     return (
         <SComponetContainer>
             <STaskListContainer>
-                <SSText>{"優先度:" + (priority + 1) + "　"}</SSText>
+                <SText>{"優先度:" + (priority + 1) + "　"}</SText>
                 <Task
                     task={taskList.task[0]}
                     task_list_id={taskList.task_list_id}
@@ -69,12 +69,6 @@ const SComponetContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-`;
-
-const SSText = styled(SText)`
-    /* ${media.md`
-    display:none;
-    `} */
 `;
 
 const STaskListContainer = styled.div`

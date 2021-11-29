@@ -1,3 +1,4 @@
+import { CircularProgress } from "@material-ui/core";
 import { VFC } from "react";
 
 import { LoadingHeader } from "../atoms/LoadingHeader";
@@ -10,7 +11,7 @@ export const Loading: VFC = () => {
         <SFooterFixed>
             <LoadingHeader />
             <SCenter>
-                <h1>ローディング中</h1>
+                <CircularProgress />
             </SCenter>
             <Footer />
         </SFooterFixed>

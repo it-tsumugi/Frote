@@ -1,6 +1,5 @@
 import { VFC } from "react";
-import styled from "styled-components";
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, useRecoilValueLoadable } from "recoil";
 
 import { TaskLists } from "../../organisms/TaskLists";
 import { TaskListsButtonArea } from "../../molecules/task/TaskListsButtonArea";
@@ -12,6 +11,7 @@ import { taskListsState } from "../../../state/atom";
 export const Home: VFC = () => {
     const taskLists = useRecoilValue(taskListsState);
     useGetTaskLists();
+
     return (
         <>
             {taskLists.length !== 0 ? (

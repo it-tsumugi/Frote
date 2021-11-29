@@ -10,6 +10,6 @@ export const SCenter = styled.div`
     width: 90vw;
     `}
     ${media.md`
-    width: 97vw;
+    width: 95vw;
     `}
 `;

@@ -29,20 +29,6 @@ export const ConfirmRegister: VFC = () => {
                 </SText>
             </SSection>
             <SSection>
-                <STitle>注意！メールアドレスとパスワードについて</STitle>
-                <SText>
-                    本サービスにはメールアドレス認証機能がないため、ログイン情報は忘れたら確認することはできません。
-                    またセキュリティ上の不安があるので、流出しても問題ないものか、架空のメールアドレスとパスワードを使用してください。
-                </SText>
-            </SSection>
-            <SSection>
-                <STitle>注意！タスクのデータについて</STitle>
-                <SText>
-                    Froteは現在開発中であり、DBの破壊的な変更がある可能性があります。
-                    そのため事前にお知らせはしますが、タスクデータを初期化する可能性があるため、ご了承ください。
-                </SText>
-            </SSection>
-            <SSection>
                 <SText>
                     以上のことを踏まえてご利用出来る方のみ登録をお願いします
                 </SText>
