@@ -106,7 +106,11 @@ const STaskTextarea = styled.div`
 `;
 
 const SSText = styled(SText)`
-    max-width: 1000px;
+    width: 1000px;
+    @media (max-width: 1700px) and (min-width: 1170px) {
+        width: 600px;
+    }
+
     ${media.lg`
     width: 400px;
     `}
