@@ -11,8 +11,7 @@ export const Loading: VFC = () => {
         <SFooterFixed>
             <LoadingHeader />
             <SCenter style={{ textAlign: "center" }}>
-                <h1>ローディング中</h1>
-                <CircularProgress style={{ color: "#201a22" }} />
+                <CircularProgress style={{ color: "#fff" }} />
             </SCenter>
             <Footer />
         </SFooterFixed>

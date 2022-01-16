@@ -2,7 +2,7 @@ import { useState, VFC } from "react";
 import axios from "axios";
 import { SubmitHandler, useFieldArray, useForm } from "react-hook-form";
 import { useHistory } from "react-router";
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import styled from "styled-components";
 
 import { ImpSelect } from "../../../molecules/select/ImpSelect";
@@ -15,7 +15,11 @@ import { FormCard } from "../../../atoms/form/FormCard";
 import { SActionText } from "../../../atoms/style/TextStyle";
 
 import { path } from "../../../../assets/data/path";
-import { numberState, stringState } from "../../../../state/atom";
+import {
+    numberState,
+    stringState,
+    taskListsState,
+} from "../../../../state/atom";
 import {
     numberStateKey,
     stringStateKey,
@@ -36,9 +40,7 @@ export const AddTaskList: VFC = () => {
     const imp = useRecoilValue(numberState(numberStateKey.imp));
     const urg = useRecoilValue(numberState(numberStateKey.urg));
     const group = useRecoilValue(stringState(stringStateKey.group));
-
     const history = useHistory();
-
     const { control, register, handleSubmit } = useForm<FormData>({
         defaultValues: {
             tasks: [{ task: "" }],
@@ -48,12 +50,8 @@ export const AddTaskList: VFC = () => {
         control,
         name: "tasks",
     });
-
     const [isComplete, setIsComplete] = useState(false);
-
-    const onClick = () => {
-        setIsComplete(true);
-    };
+    const onClick = () => setIsComplete(true);
 
     const addTaskList: SubmitHandler<dataType> = async ({ e, data }) => {
         const tasks = data.tasks;

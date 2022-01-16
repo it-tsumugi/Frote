@@ -1,8 +1,9 @@
-import { atom, atomFamily } from "recoil";
+import { atom, atomFamily, selector, selectorFamily } from "recoil";
+import { taskListType } from "../assets/type/dataType";
+import { fetchTaskLists } from "../api/fetchTaskLists";
 import {
     groupTaskListsType,
     groupListType,
-    taskListType,
     impTaskListsType,
     urgTaskListsType,
 } from "../assets/type/dataType";
@@ -23,11 +24,23 @@ export const numberState = atomFamily<number, string>({
     default: 0,
 });
 
-//atom
 export const taskListsState = atom<taskListType[]>({
     key: "taskListsState",
-    default: [],
+    default: fetchTaskLists(),
+    // default: [],
 });
+
+// export const taskListsState = selector<taskListType[]>({
+//     key: "taskListsState",
+//     get: (f:Promise<taskListType[]>) => {f()},
+//     set: ({ set }, newValue) => set(taskListsAtom, newValue),
+// });
+
+// export const taskListsState = selectorFamily<taskListType[],() => Promise<taskListType[]>>({
+//     key: "taskListsState",
+//     get: () => ,
+//     set: ({ set }, newValue) => set(taskListsAtom, newValue),
+// });
 
 export const groupListsState = atom<groupListType[]>({
     key: "groupListsState",

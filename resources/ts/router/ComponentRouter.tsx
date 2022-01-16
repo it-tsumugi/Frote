@@ -2,7 +2,6 @@ import { VFC } from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
 import { Login } from "../components/pages/Login";
-import { Home } from "../components/pages/logined/Home";
 import { Top } from "../components/pages/Top";
 import { Register } from "../components/pages/Register";
 import { AuthRoute } from "./AuthRoute";
@@ -25,6 +24,7 @@ import { ConfirmRegister } from "../components/pages/confirmRegister";
 import { Help } from "../components/pages/Help";
 
 import { path } from "../assets/data/path";
+import { Home } from "../components/pages/logined/Home/Container";
 
 export const ComponentRouter: VFC = () => {
     return (
