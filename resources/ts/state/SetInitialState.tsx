@@ -6,7 +6,6 @@ import { Loading } from "../components/pages/Loading";
 import { useAuth } from "../hooks/useAuth";
 import { booleanState } from "./atom";
 import { booleanStateKey } from "../assets/data/stateKey";
-import { NavLessLayout } from "../components/templates/NavLessLayout";
 
 type propsType = {
     children: React.ReactNode;

@@ -1,47 +1,47 @@
 export type taskListType = {
-    task_list_id: number;
-    priority: number;
-    group: string;
-    task: taskType[];
-};
+  task_list_id: number
+  priority: number
+  group: string
+  task: taskType[]
+}
 
 export type taskType = {
-    task_id: number;
-    text: string;
-    order: number;
-};
+  task_id: number
+  text: string
+  order: number
+}
 
 export type groupListType = {
-    id: number;
-    group: string;
-};
+  id: number
+  group: string
+}
 
 export type selectParamsType = {
-    imp: number;
-    urg: number;
-    group: string;
-};
+  imp: number
+  urg: number
+  group: string
+}
 
 export type groupTaskListsType = {
-    taskLists: taskListType[];
-    group: string;
-    group_id: number;
-}[];
+  taskLists: taskListType[]
+  group: string
+  group_id: number
+}[]
 
 export type impTaskListsType = {
-    taskLists: taskListType[];
-    text: string;
-    id: number;
-}[];
+  taskLists: taskListType[]
+  text: string
+  id: number
+}[]
 
 export type urgTaskListsType = {
-    taskLists: taskListType[];
-    text: string;
-    id: number;
-}[];
+  taskLists: taskListType[]
+  text: string
+  id: number
+}[]
 
 export type helpQustionDataType = {
-    id: number;
-    qustion: string;
-    answer: string;
-};
+  id: number
+  qustion: string
+  answer: string
+}
