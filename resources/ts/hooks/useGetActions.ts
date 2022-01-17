@@ -6,6 +6,8 @@ import { useGetAllTaskLists } from './useGetAllTaskLists'
 import { useSetAllInitialData } from './useSetAllInitialData'
 import { useLogin } from './useLogin'
 import { useAuth } from './useAuth'
+import { useRegisterUserInfo } from './useRegisterUserInfo'
+import { useValidateLogin } from './useValidateLogin'
 
 export const useGetActions = () => {
   const { getTaskLists } = useGetTaskLists()
@@ -16,6 +18,8 @@ export const useGetActions = () => {
   const { setAllInitialData } = useSetAllInitialData()
   const { login } = useLogin()
   const { auth } = useAuth()
+  const { registerUserInfo } = useRegisterUserInfo()
+  const { validateLogin } = useValidateLogin()
 
   return {
     getTaskLists,
@@ -25,6 +29,8 @@ export const useGetActions = () => {
     getAllTaskLists,
     setAllInitialData,
     login,
-    auth
+    auth,
+    registerUserInfo,
+    validateLogin
   }
 }
