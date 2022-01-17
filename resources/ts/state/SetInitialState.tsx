@@ -18,7 +18,8 @@ export const SetInitialState: VFC<propsType> = ({ children }) => {
     const promise = auth()
     promise.then((isLogin) => {
       if (isLogin) {
-        setAllInitialData().then(() => {
+        const promiseArray = setAllInitialData()
+        Promise.all(promiseArray).then(() => {
           setIsComplete(true)
         })
       } else {

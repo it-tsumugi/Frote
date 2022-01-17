@@ -9,11 +9,14 @@ export const useGetAllTaskLists = () => {
   const { getGroupTaskLists } = useGetGroupTaskLists()
   const { getTaskLists } = useGetTaskLists()
 
-  const getAllTaskLists = async () => {
-    await getTaskLists()
-    await getUrgTaskLists()
-    await getImpTaskLists()
-    await getGroupTaskLists()
+  const getAllTaskLists = () => {
+    const promise1 = getTaskLists()
+    const promise2 = getUrgTaskLists()
+    const promise3 = getImpTaskLists()
+    const promise4 = getGroupTaskLists()
+    const promiseArray = [promise1, promise2, promise3, promise4]
+
+    return promiseArray
   }
 
   return { getAllTaskLists: () => getAllTaskLists() }
