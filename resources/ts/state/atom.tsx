@@ -1,10 +1,6 @@
 import { groupTaskListsType, groupListType, impTaskListsType, urgTaskListsType } from '../assets/type/dataType'
 import { atom, atomFamily } from 'recoil'
 import { taskListType } from '../assets/type/dataType'
-import { fetchTaskLists } from '../api/fetchTaskLists'
-import { fetchImpTaskLists } from '../api/fetchImpTaskLists'
-import { fetchUrgTaskLists } from '../api/fetchUrgTaskLists'
-import { fetchGroupTaskLists } from '../api/fetchGroupTaskLIsts'
 
 //atomFamiliy
 export const booleanState = atomFamily<boolean, string>({
@@ -25,7 +21,7 @@ export const numberState = atomFamily<number, string>({
 //atom
 export const taskListsState = atom<taskListType[]>({
   key: 'taskListsState',
-  default: fetchTaskLists()
+  default: []
 })
 
 export const groupListsState = atom<groupListType[]>({
@@ -35,15 +31,15 @@ export const groupListsState = atom<groupListType[]>({
 
 export const groupTaskListsState = atom<groupTaskListsType>({
   key: 'groupTaskListsState',
-  default: fetchGroupTaskLists()
+  default: []
 })
 
 export const impTaskListsState = atom<impTaskListsType>({
   key: 'impTaskListsState',
-  default: fetchImpTaskLists()
+  default: []
 })
 
 export const urgTaskListsState = atom<urgTaskListsType>({
   key: 'urgTaskListsState',
-  default: fetchUrgTaskLists()
+  default: []
 })

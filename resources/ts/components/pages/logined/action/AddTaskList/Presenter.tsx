@@ -10,7 +10,7 @@ import { FormCard } from '../../../../atoms/form/FormCard'
 import { SActionText } from '../../../../atoms/style/TextStyle'
 import { path } from '../../../../../assets/data/path'
 import { FieldArrayMethodProps, FieldArrayWithId, UseFormHandleSubmit, UseFormRegister } from 'react-hook-form'
-import { addTaskListOnSubmitType, FormData } from '../../../../../assets/type/dataType'
+import { addTaskListOnSubmitType, TaskListFormData } from '../../../../../assets/type/action/addTaskListType'
 
 type appendType = (
   value:
@@ -36,13 +36,13 @@ type insertType = (
 ) => void
 
 type propsType = {
-  handleSubmit: UseFormHandleSubmit<FormData>
+  handleSubmit: UseFormHandleSubmit<TaskListFormData>
   onSubmit: (props: addTaskListOnSubmitType) => void
-  fields: FieldArrayWithId<FormData, 'tasks', 'id'>[]
+  fields: FieldArrayWithId<TaskListFormData, 'tasks', 'id'>[]
   append: appendType
   remove: (index?: number | number[] | undefined) => void
   insert: insertType
-  register: UseFormRegister<FormData>
+  register: UseFormRegister<TaskListFormData>
   onClick: () => void
 }
 

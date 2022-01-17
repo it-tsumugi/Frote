@@ -4,7 +4,7 @@ import { useSetRecoilState } from 'recoil'
 import { DefaultButton } from '../../atoms/button/DefaultButton'
 import { taskListType } from '../../../assets/type/dataType'
 import { taskListsState } from '../../../state/atom'
-import { useGetTaskLists } from '../../../hooks/action/useGetTaskLists'
+import { useGetTaskLists } from '../../../hooks/useGetTaskLists'
 
 type propsType = {
   taskList: taskListType

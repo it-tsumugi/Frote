@@ -7,7 +7,7 @@ import { taskType } from '../../../assets/type/dataType'
 import { SText } from '../../atoms/style/TextStyle'
 import media from '../../../assets/styles/media'
 import { deleteTask } from '../../../api/deleteTask'
-import { useGetActions } from '../../../hooks/action/useGetActions'
+import { useGetActions } from '../../../hooks/useGetActions'
 
 type propsType = {
   task: taskType

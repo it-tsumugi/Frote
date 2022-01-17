@@ -1,22 +1,15 @@
-import axios from "axios";
-import { useSetRecoilState } from "recoil";
-import { booleanStateKey } from "../assets/data/stateKey";
+import { useSetRecoilState } from 'recoil'
+import { booleanStateKey } from '../assets/data/stateKey'
+import { booleanState } from './../state/atom'
+import { authApi } from '../api/authApi'
 
-import { booleanState } from "./../state/atom";
+export const useAuth = () => {
+  const setIsLogin = useSetRecoilState(booleanState(booleanStateKey.isLogin))
 
-export const useAuth = async () => {
-    const setIsLogin = useSetRecoilState(booleanState(booleanStateKey.isLogin));
-    const setIsComplete = useSetRecoilState(
-        booleanState(booleanStateKey.isComplete)
-    );
+  const auth = async () => {
+    const isLogin = await authApi({ setIsLogin })
+    return isLogin
+  }
 
-    try {
-        const res = await axios.get("/api/auth");
-        setIsLogin(res.data.isLogin);
-        setIsComplete(true);
-        console.log("useAuth:ログイン情報を取得しisLoginセットしました");
-    } catch (error) {
-        console.log("useAuth:エラー");
-        setIsLogin(false);
-    }
-};
+  return { auth: auth }
+}

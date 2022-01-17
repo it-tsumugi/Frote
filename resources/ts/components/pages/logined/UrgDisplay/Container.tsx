@@ -1,18 +1,10 @@
 import { VFC } from 'react'
-import { useRecoilValueLoadable } from 'recoil'
+import { useRecoilValue } from 'recoil'
 import { urgTaskListsState } from '../../../../state/atom'
 import { PUrgDisplay } from './Presenter'
-import { LoadingIcon } from '../../../atoms/icon/LoadingIcon'
 
 export const UrgDisplay: VFC = () => {
-  const urgTaskLists = useRecoilValueLoadable(urgTaskListsState)
+  const urgTaskLists = useRecoilValue(urgTaskListsState)
 
-  switch (urgTaskLists.state) {
-    case 'hasValue':
-      return <PUrgDisplay urgTaskLists={urgTaskLists.contents} />
-    case 'loading':
-      return <LoadingIcon />
-    case 'hasError':
-      throw urgTaskLists.contents
-  }
+  return <PUrgDisplay urgTaskLists={urgTaskLists} />
 }

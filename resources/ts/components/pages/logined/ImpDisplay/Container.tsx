@@ -1,18 +1,10 @@
-import { VFC } from "react";
-import { useRecoilValueLoadable } from "recoil";
-import { impTaskListsState } from "../../../../state/atom";
-import { LoadingIcon } from "../../../atoms/icon/LoadingIcon";
-import { PImpDisplay } from "./Presenter";
+import { VFC } from 'react'
+import { useRecoilValue } from 'recoil'
+import { impTaskListsState } from '../../../../state/atom'
+import { PImpDisplay } from './Presenter'
 
 export const ImpDisplay: VFC = () => {
-    const impTaskLists = useRecoilValueLoadable(impTaskListsState);
+  const impTaskLists = useRecoilValue(impTaskListsState)
 
-    switch (impTaskLists.state) {
-        case "hasValue":
-            return <PImpDisplay impTaskLists={impTaskLists.contents} />;
-        case "loading":
-            return <LoadingIcon />;
-        case "hasError":
-            throw impTaskLists.contents;
-    }
-};
+  return <PImpDisplay impTaskLists={impTaskLists} />
+}

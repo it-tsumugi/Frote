@@ -12,7 +12,7 @@ import { DeleteUrgListButton } from '../../atoms/button/DeleteUrgListButton'
 import { DeleteImpListButton } from '../../atoms/button/DeleteImpListButton'
 import { Grid } from '@material-ui/core'
 import { deleteTaskList } from '../../../api/deleteTaskList'
-import { useGetActions } from '../../../hooks/action/useGetActions'
+import { useGetActions } from '../../../hooks/useGetActions'
 
 type propsType = {
   taskList: taskListType

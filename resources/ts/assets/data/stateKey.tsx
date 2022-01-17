@@ -1,16 +1,16 @@
 export const booleanStateKey = {
-    isGetGroupLists: "isGetGroupLists",
-    isGetGroupList: "isGetGroupList",
-    isLogin: "isLogin",
-    isComplete: "isComplete",
-};
+  isGetGroupLists: 'isGetGroupLists',
+  isGetGroupList: 'isGetGroupList',
+  isLogin: 'isLogin',
+  isComplete: 'isComplete'
+}
 
 export const stringStateKey = {
-    group: "group",
-    task: "task",
-};
+  group: 'group',
+  task: 'task'
+}
 
 export const numberStateKey = {
-    imp: "imp",
-    urg: "urg",
-};
+  imp: 'imp',
+  urg: 'urg'
+}
