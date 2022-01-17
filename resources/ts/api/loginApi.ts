@@ -7,7 +7,7 @@ type propsType = {
   password: string
   setIsLogin: SetterOrUpdater<boolean>
   history: H.History
-  setAllInitialData: () => void
+  setAllInitialData: () => Promise<void>
 }
 
 export const loginApi = async (props: propsType) => {
@@ -23,9 +23,10 @@ export const loginApi = async (props: propsType) => {
       })
       if (res.data.result) {
         console.log('login:ログイン成功')
-        setIsLogin(true)
-        setAllInitialData()
-        history.push({ pathname: '/home' })
+        setAllInitialData().then(() => {
+          setIsLogin(true)
+          history.push({ pathname: '/home' })
+        })
       } else {
         console.log('login:ログイン失敗')
         window.alert(res.data.message)
