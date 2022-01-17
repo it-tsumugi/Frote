@@ -12,6 +12,7 @@ import { useAddTasks } from './useAddTasks'
 import { useAddGroup } from './useAddGroup'
 import { useInsertTask } from './useInsertTask'
 import { useUpdateGroup } from './useUpdateGroup'
+import { useUpdateTask } from './useUpdateTask'
 
 export const useGetActions = () => {
   const { getTaskLists } = useGetTaskLists()
@@ -28,6 +29,7 @@ export const useGetActions = () => {
   const { addGroup } = useAddGroup()
   const { insertTask } = useInsertTask()
   const { updateGroup } = useUpdateGroup()
+  const { updateTask } = useUpdateTask()
 
   return {
     getTaskLists,
@@ -43,6 +45,7 @@ export const useGetActions = () => {
     addTasks,
     addGroup,
     insertTask,
-    updateGroup
+    updateGroup,
+    updateTask
   }
 }
