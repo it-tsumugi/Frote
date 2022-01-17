@@ -20,24 +20,19 @@ export const EditTask: VFC = () => {
   const [task, setTask] = useRecoilState(stringState(stringStateKey.task))
   const history = useHistory()
   useGetTask(task_id)
-
   const [taskError, setTaskError] = useState('')
-
   const validateLogin = () => {
     if (task.length === 0) setTaskError(errorMessages.task.blank)
     else if (task.length > 20) setTaskError(errorMessages.task.maxLength)
     else setTaskError('')
   }
-
   const checkIsSuccess = () => {
     if (taskError === '') return true
     else return false
   }
-
   useEffect(() => {
     validateLogin()
   }, [task])
-
   const updateTask = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (checkIsSuccess()) {
