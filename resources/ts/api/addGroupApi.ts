@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { addGroupApiPropsType } from '../type/action/addGroup'
+import { addGroupApiPropsType } from '../type/action/addGroupType'
 import { path } from '../constant/path'
 
 export const addGroupApi = async (props: addGroupApiPropsType) => {

@@ -1,5 +1,5 @@
 import { registerUserInfoApi } from '../api/registerUserInfoApi'
-import { registerUserInfoPropsType } from '../type/action/registerUserInfo'
+import { registerUserInfoPropsType } from '../type/action/registerUserInfoType'
 import { useHistory } from 'react-router'
 
 export const useRegisterUserInfo = () => {

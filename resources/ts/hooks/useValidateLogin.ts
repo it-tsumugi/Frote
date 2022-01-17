@@ -1,4 +1,4 @@
-import { validateLoginPropsType } from '../type/action/registerUserInfo'
+import { validateLoginPropsType } from '../type/action/registerUserInfoType'
 import { errorMessages } from '../constant/errorMessages'
 
 export const useValidateLogin = () => {

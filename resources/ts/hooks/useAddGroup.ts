@@ -1,4 +1,4 @@
-import { addGroupPropsType } from '../type/action/addGroup'
+import { addGroupPropsType } from '../type/action/addGroupType'
 import { useHistory } from 'react-router'
 import { addGroupApi } from '../api/addGroupApi'
 
