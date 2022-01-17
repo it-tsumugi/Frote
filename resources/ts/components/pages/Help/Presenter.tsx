@@ -1,6 +1,6 @@
 import { VFC } from 'react'
 import styled from 'styled-components'
-import { helpQustionDataType } from '../../../assets/type/dataType'
+import { helpQustionDataType } from '../../../type/dataType'
 import { STitle } from '../../atoms/style/TextStyle'
 import { HelpQuestion } from '../../molecules/HelpQuestion'
 

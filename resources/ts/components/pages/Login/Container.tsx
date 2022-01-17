@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { errorMessages } from '../../../assets/data/errorMessages'
+import { errorMessages } from '../../../constant/errorMessages'
 import { useGetActions } from '../../../hooks/useGetActions'
 import { PLogin } from './Presenter'
 

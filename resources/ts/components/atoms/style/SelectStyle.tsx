@@ -1,36 +1,36 @@
-import { NativeSelect } from "@material-ui/core";
-import styled from "styled-components";
-import media from "../../../assets/styles/media";
+import { NativeSelect } from '@material-ui/core'
+import styled from 'styled-components'
+import media from '../../../styles/media'
 
 export const SFlexContainer = styled.div`
-    display: flex;
-`;
+  display: flex;
+`
 
 export const SColumnContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-`;
+  display: flex;
+  flex-direction: column;
+`
 
 export const SItemName = styled.div`
-    width: 100px;
+  width: 100px;
 
-    font-size: 22px;
-    ${media.lg`
+  font-size: 22px;
+  ${media.lg`
     font-size: 18px;
     `}
-    ${media.md`
+  ${media.md`
     font-size: 14px;
     `}
-`;
+`
 
 export const SSelect = styled(NativeSelect)`
-    background-color: white;
+  background-color: white;
 
-    font-size: 22px;
-    ${media.lg`
+  font-size: 22px;
+  ${media.lg`
     font-size: 18px;
     `}
-    ${media.md`
+  ${media.md`
     font-size: 12px;
     `}
-`;
+`

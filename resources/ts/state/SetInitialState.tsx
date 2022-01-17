@@ -1,7 +1,7 @@
 import { VFC } from 'react'
 import { Loading } from '../components/pages/Loading/Container'
 import { booleanState } from './atom'
-import { booleanStateKey } from '../assets/data/stateKey'
+import { booleanStateKey } from '../constant/stateKey'
 import { useGetActions } from '../hooks/useGetActions'
 import { useEffect } from 'react'
 import { useRecoilState } from 'recoil'

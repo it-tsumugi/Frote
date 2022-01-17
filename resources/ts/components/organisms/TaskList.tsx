@@ -3,10 +3,10 @@ import styled from 'styled-components'
 
 import { Task } from '../molecules/task/Task'
 
-import { taskListType } from '../../assets/type/dataType'
+import { taskListType } from '../../type/dataType'
 import { TaskListButtonArea } from '../molecules/task/TaskListButtonArea'
 import { SText } from '../atoms/style/TextStyle'
-import media from '../../assets/styles/media'
+import media from '../../styles/media'
 
 type propsType = {
   taskList: taskListType

@@ -2,7 +2,7 @@ import { VFC } from 'react'
 import styled from 'styled-components'
 import { NavButton } from '../../atoms/button/NavButton'
 import { SText, STitle } from '../../atoms/style/TextStyle'
-import { path } from '../../../assets/data/path'
+import { path } from '../../../constant/path'
 
 export const PConfirmRegister: VFC = () => {
   return (

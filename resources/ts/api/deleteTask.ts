@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { taskType } from '../assets/type/dataType'
+import { taskType } from '../type/dataType'
 
 export type propsType = {
   task: taskType

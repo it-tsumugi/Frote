@@ -1,5 +1,5 @@
 import { useSetRecoilState } from 'recoil'
-import { booleanStateKey } from '../assets/data/stateKey'
+import { booleanStateKey } from '../constant/stateKey'
 import { booleanState } from './../state/atom'
 import { authApi } from '../api/authApi'
 

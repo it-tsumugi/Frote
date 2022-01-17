@@ -1,6 +1,6 @@
 import { ReactNode, VFC } from 'react'
 import styled from 'styled-components'
-import media from '../../../assets/styles/media'
+import media from '../../../styles/media'
 
 type propsType = {
   onClick: () => any

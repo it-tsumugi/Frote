@@ -1,9 +1,9 @@
 import { VFC } from 'react'
 import styled from 'styled-components'
-import { TaskLists } from '../../../organisms/TaskLists'
-import { TaskListsButtonArea } from '../../../molecules/task/TaskListsButtonArea'
-import { SText } from '../../../atoms/style/TextStyle'
-import { impTaskListsType } from '../../../../assets/type/dataType'
+import { TaskLists } from '../../organisms/TaskLists'
+import { TaskListsButtonArea } from '../../molecules/task/TaskListsButtonArea'
+import { SText } from '../../atoms/style/TextStyle'
+import { impTaskListsType } from '../../../type/dataType'
 
 type propsType = {
   impTaskLists: impTaskListsType

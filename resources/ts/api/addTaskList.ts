@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { SubmitHandler } from 'react-hook-form'
-import { addTaskListDataType } from '../assets/type/action/addTaskListType'
+import { addTaskListDataType } from '../type/action/addTaskListType'
 
 export const addTaskList: SubmitHandler<addTaskListDataType> = async ({
   e,

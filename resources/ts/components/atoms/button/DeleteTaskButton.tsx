@@ -2,7 +2,7 @@ import axios from 'axios'
 import { VFC } from 'react'
 import { useSetRecoilState } from 'recoil'
 import { DefaultButton } from '../../atoms/button/DefaultButton'
-import { taskListType, taskType } from '../../../assets/type/dataType'
+import { taskListType, taskType } from '../../../type/dataType'
 import { taskListsState } from '../../../state/atom'
 
 type propsType = {

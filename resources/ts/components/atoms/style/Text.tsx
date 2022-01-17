@@ -1,6 +1,6 @@
 import { Children, FC } from 'react'
 import styled from 'styled-components'
-import media from '../../../assets/styles/media'
+import media from '../../../styles/media'
 
 export const Text: FC = ({ children }) => {
   return <SText>{children}</SText>

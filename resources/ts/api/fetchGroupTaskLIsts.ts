@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { groupTaskListsType } from '../assets/type/dataType'
+import { groupTaskListsType } from '../type/dataType'
 
 export const fetchGroupTaskLists = async () => {
   let dbData: groupTaskListsType = [

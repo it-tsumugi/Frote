@@ -2,7 +2,7 @@ import { VFC } from 'react'
 import Grid from '@material-ui/core/Grid'
 import { TaskList } from './TaskList'
 import { SCard } from '../atoms/style/SCard'
-import { taskListType } from '../../assets/type/dataType'
+import { taskListType } from '../../type/dataType'
 import { Text } from '../atoms/style/Text'
 import styled from 'styled-components'
 

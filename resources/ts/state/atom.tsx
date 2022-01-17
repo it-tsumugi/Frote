@@ -1,6 +1,6 @@
-import { groupTaskListsType, groupListType, impTaskListsType, urgTaskListsType } from '../assets/type/dataType'
+import { groupTaskListsType, groupListType, impTaskListsType, urgTaskListsType } from '../type/dataType'
 import { atom, atomFamily } from 'recoil'
-import { taskListType } from '../assets/type/dataType'
+import { taskListType } from '../type/dataType'
 
 //atomFamiliy
 export const booleanState = atomFamily<boolean, string>({

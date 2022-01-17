@@ -1,6 +1,6 @@
 import axios from 'axios'
-import { path } from '../assets/data/path'
-import { registerUserInfoApiPropsType } from '../assets/type/action/registerUserInfo'
+import { path } from '../constant/path'
+import { registerUserInfoApiPropsType } from '../type/action/registerUserInfo'
 
 export const registerUserInfoApi = async (props: registerUserInfoApiPropsType) => {
   const { name, email, password, history } = props

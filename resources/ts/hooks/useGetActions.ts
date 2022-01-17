@@ -8,6 +8,7 @@ import { useLogin } from './useLogin'
 import { useAuth } from './useAuth'
 import { useRegisterUserInfo } from './useRegisterUserInfo'
 import { useValidateLogin } from './useValidateLogin'
+import { useAddTasks } from './useAddTasks'
 
 export const useGetActions = () => {
   const { getTaskLists } = useGetTaskLists()
@@ -20,6 +21,7 @@ export const useGetActions = () => {
   const { auth } = useAuth()
   const { registerUserInfo } = useRegisterUserInfo()
   const { validateLogin } = useValidateLogin()
+  const { addTasks } = useAddTasks()
 
   return {
     getTaskLists,
@@ -31,6 +33,7 @@ export const useGetActions = () => {
     login,
     auth,
     registerUserInfo,
-    validateLogin
+    validateLogin,
+    addTasks
   }
 }

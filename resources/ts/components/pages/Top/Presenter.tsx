@@ -1,10 +1,10 @@
 import { VFC } from 'react'
 import styled from 'styled-components'
-import media from '../../../assets/styles/media'
+import media from '../../../styles/media'
 import { Grid } from '@material-ui/core'
 import { BigNavButton } from '../../atoms/button/BigNavButton'
 import { SCard } from '../../atoms/style/SCard'
-import { path } from '../../../assets/data/path'
+import { path } from '../../../constant/path'
 
 type propsType = {
   isLogin: boolean

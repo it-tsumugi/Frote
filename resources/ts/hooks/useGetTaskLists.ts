@@ -1,6 +1,6 @@
 import { useSetRecoilState } from 'recoil'
 import { booleanState, taskListsState } from '../state/atom'
-import { booleanStateKey } from '../assets/data/stateKey'
+import { booleanStateKey } from '../constant/stateKey'
 import { fetchTaskLists } from '../api/fetchTaskLists'
 
 export const useGetTaskLists = () => {

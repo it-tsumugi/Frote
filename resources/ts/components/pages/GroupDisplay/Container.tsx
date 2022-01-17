@@ -1,5 +1,5 @@
 import { VFC } from 'react'
-import { groupTaskListsState } from '../../../../state/atom'
+import { groupTaskListsState } from '../../../state/atom'
 import { PGroupDisplay } from './Presenter'
 import { useRecoilValue } from 'recoil'
 

@@ -1,5 +1,5 @@
-import { validateLoginPropsType } from '../assets/type/action/registerUserInfo'
-import { errorMessages } from '../assets/data/errorMessages'
+import { validateLoginPropsType } from '../type/action/registerUserInfo'
+import { errorMessages } from '../constant/errorMessages'
 
 export const useValidateLogin = () => {
   const validateLogin = (props: validateLoginPropsType) => {

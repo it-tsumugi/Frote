@@ -4,7 +4,7 @@ import { DefaultTextField } from '../../atoms/form/DefaultTextField'
 import { FormCard } from '../../atoms/form/FormCard'
 import { ActionButton } from '../../atoms/button/ActionButton'
 import { SText, STitle } from '../../atoms/style/TextStyle'
-import { loginPropsType } from '../../../assets/type/action/loginType'
+import { loginPropsType } from '../../../type/action/loginType'
 
 type propsType = {
   login: (props: loginPropsType) => void

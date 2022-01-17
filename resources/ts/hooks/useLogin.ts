@@ -1,9 +1,9 @@
 import { booleanState } from '../state/atom'
-import { booleanStateKey } from '../assets/data/stateKey'
+import { booleanStateKey } from '../constant/stateKey'
 import { useSetRecoilState } from 'recoil'
 import { loginApi } from '../api/loginApi'
 import { useHistory } from 'react-router'
-import { loginPropsType } from '../assets/type/action/loginType'
+import { loginPropsType } from '../type/action/loginType'
 import { useSetAllInitialData } from './useSetAllInitialData'
 
 export const useLogin = () => {

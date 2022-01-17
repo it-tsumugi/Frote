@@ -1,5 +1,5 @@
 import { VFC } from 'react'
-import { taskListsState } from '../../../../state/atom'
+import { taskListsState } from '../../../state/atom'
 import { useRecoilValue } from 'recoil'
 import { PHome } from './Presenter'
 
