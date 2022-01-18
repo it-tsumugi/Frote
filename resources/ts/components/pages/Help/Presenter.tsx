@@ -2,7 +2,7 @@ import { VFC } from 'react'
 import styled from 'styled-components'
 import { helpQustionDataType } from '../../../type/dataType'
 import { STitle } from '../../atoms/style/TextStyle'
-import { HelpQuestion } from '../../molecules/HelpQuestion'
+import { HelpQuestion } from '../../molecules/help/HelpQuestion'
 
 type propsType = {
   helpQuestionData: helpQustionDataType[]

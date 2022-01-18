@@ -7,14 +7,15 @@ import { numberState, stringState } from '../../../state/atom'
 import { useGetActions } from '../../../hooks/useGetActions'
 import { PAddTaskList } from './Presenter'
 import { addTaskList } from '../../../api/addTaskList'
-import { addTaskListOnSubmitType, TaskListFormData } from '../../../type/action/addTaskListType'
+import { addTaskListOnSubmitType } from '../../../type/action/addTaskListType'
+import { addTasksFormDataType } from '../../../type/action/addTasksType'
 
 export const AddTaskList: VFC = () => {
   const imp = useRecoilValue(numberState(numberStateKey.imp))
   const urg = useRecoilValue(numberState(numberStateKey.urg))
   const group = useRecoilValue(stringState(stringStateKey.group))
   const history = useHistory()
-  const { control, register, handleSubmit } = useForm<TaskListFormData>({
+  const { control, register, handleSubmit } = useForm<addTasksFormDataType>({
     defaultValues: {
       tasks: [{ task: '' }]
     }

@@ -1,5 +1,5 @@
 import { VFC } from 'react'
-import { TaskLists } from '../../organisms/TaskLists'
+import { TaskLists } from '../../organisms/task/TaskLists/Container'
 import { TaskListsButtonArea } from '../../molecules/task/TaskListsButtonArea'
 import { taskListType } from '../../../type/dataType'
 

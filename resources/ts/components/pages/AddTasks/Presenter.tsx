@@ -7,7 +7,7 @@ import {
   addTasksRegisterType,
   addTasksRemoveType
 } from '../../../type/action/addTasksType'
-import { AddTaskArea } from '../../organisms/AddTaskArea'
+import { AddTaskArea } from '../../organisms/task/AddTaskArea/Container'
 import { ActionButton } from '../../atoms/button/ActionButton'
 import { FormCard } from '../../atoms/form/FormCard'
 import { SActionText } from '../../atoms/style/TextStyle'

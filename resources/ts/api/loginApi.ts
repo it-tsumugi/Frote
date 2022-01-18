@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { SetterOrUpdater } from 'recoil'
 import * as H from 'history'
+import { path } from '../constant/path'
 
 type propsType = {
   email: string
@@ -23,22 +24,20 @@ export const loginApi = async (props: propsType) => {
       })
       if (res.data.result) {
         console.log('login:ログイン成功')
+        history.push({ pathname: path.loading })
         const promiseArray = setAllInitialData()
         Promise.all(promiseArray).then(() => {
           setIsLogin(true)
-          history.push({ pathname: '/home' })
+          history.push({ pathname: path.home })
         })
       } else {
-        console.log('login:ログイン失敗')
         window.alert(res.data.message)
         console.log(res.data.message)
       }
     } catch (err) {
-      console.log('login:接続に失敗しました')
       console.log(err)
     }
   } catch (error) {
-    console.log('login:CSRFトークンの初期化に失敗しました')
     console.log(error)
   }
 }

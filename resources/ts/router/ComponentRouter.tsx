@@ -23,6 +23,7 @@ import { ConfirmRegister } from '../components/pages/ConfirmRegister/Container'
 import { Help } from '../components/pages/Help/Container'
 import { path } from '../constant/path'
 import { Home } from '../components/pages/Home/Container'
+import { Loading } from '../components/pages/Loading/Container'
 
 export const ComponentRouter: VFC = () => {
   return (
@@ -125,6 +126,10 @@ export const ComponentRouter: VFC = () => {
           <NavLayout>
             <InsertTask />
           </NavLayout>
+        </AuthRoute>
+
+        <AuthRoute path={path.loading}>
+          <Loading />
         </AuthRoute>
 
         <Route path="*">

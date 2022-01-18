@@ -1,14 +1,9 @@
 import * as H from 'history'
-
-export type TaskListFormData = {
-  tasks: {
-    task: string
-  }[]
-}
+import { addTasksFormDataType } from './addTasksType'
 
 export type addTaskListDataType = {
   e: React.BaseSyntheticEvent<object, any, any> | undefined
-  data: TaskListFormData
+  data: addTasksFormDataType
   isComplete: boolean
   imp: number
   urg: number
@@ -19,5 +14,5 @@ export type addTaskListDataType = {
 
 export type addTaskListOnSubmitType = {
   e: React.BaseSyntheticEvent<object, any, any> | undefined
-  data: TaskListFormData
+  data: addTasksFormDataType
 }

@@ -4,45 +4,30 @@ import { ImpSelect } from '../../molecules/select/ImpSelect'
 import { UrgSelect } from '../../molecules/select/UrgSelect'
 import { GroupSelect } from '../../molecules/select/GroupSelect'
 import { NavButton } from '../../atoms/button/NavButton'
-import { AddTaskArea } from '../../organisms/AddTaskArea'
+import { AddTaskArea } from '../../organisms/task/AddTaskArea/Container'
 import { ActionButton } from '../../atoms/button/ActionButton'
 import { FormCard } from '../../atoms/form/FormCard'
 import { SActionText } from '../../atoms/style/TextStyle'
 import { path } from '../../../constant/path'
-import { FieldArrayMethodProps, FieldArrayWithId, UseFormHandleSubmit, UseFormRegister } from 'react-hook-form'
-import { addTaskListOnSubmitType, TaskListFormData } from '../../../type/action/addTaskListType'
-
-type appendType = (
-  value:
-    | Partial<{
-        task: string
-      }>
-    | Partial<{
-        task: string
-      }>[],
-  options?: FieldArrayMethodProps | undefined
-) => void
-
-type insertType = (
-  index: number,
-  value:
-    | Partial<{
-        task: string
-      }>
-    | Partial<{
-        task: string
-      }>[],
-  options?: FieldArrayMethodProps | undefined
-) => void
+import { UseFormHandleSubmit } from 'react-hook-form'
+import { addTaskListOnSubmitType } from '../../../type/action/addTaskListType'
+import {
+  addTasksAppendType,
+  addTasksFieldsType,
+  addTasksFormDataType,
+  addTasksInsertType,
+  addTasksRegisterType,
+  addTasksRemoveType
+} from '../../../type/action/addTasksType'
 
 type propsType = {
-  handleSubmit: UseFormHandleSubmit<TaskListFormData>
+  handleSubmit: UseFormHandleSubmit<addTasksFormDataType>
   onSubmit: (props: addTaskListOnSubmitType) => void
-  fields: FieldArrayWithId<TaskListFormData, 'tasks', 'id'>[]
-  append: appendType
-  remove: (index?: number | number[] | undefined) => void
-  insert: insertType
-  register: UseFormRegister<TaskListFormData>
+  fields: addTasksFieldsType
+  append: addTasksAppendType
+  remove: addTasksRemoveType
+  insert: addTasksInsertType
+  register: addTasksRegisterType
   onClick: () => void
 }
 
