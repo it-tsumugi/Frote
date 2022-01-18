@@ -1,9 +1,6 @@
 import { VFC } from 'react'
-
 import Twitter from '@material-ui/icons/Twitter'
-
 import { SBaseIcon } from './SBaseIcon'
-
 import { iconType } from '../../../type/iconType'
 
 export const TwitterIcon: VFC<iconType> = (props) => {

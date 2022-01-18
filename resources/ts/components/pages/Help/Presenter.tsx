@@ -2,13 +2,10 @@ import { VFC } from 'react'
 import styled from 'styled-components'
 import { helpQustionDataType } from '../../../type/dataType'
 import { STitle } from '../../atoms/style/TextStyle'
-import { HelpQuestion } from '../../molecules/help/HelpQuestion'
+import { HelpQuestion } from '../../molecules/help/HelpQustion/Container'
+import { helpQuestionData } from '../../../constant/helpQustionData'
 
-type propsType = {
-  helpQuestionData: helpQustionDataType[]
-}
-
-export const PHelp: VFC<propsType> = ({ helpQuestionData }) => {
+export const PHelp: VFC = () => {
   return (
     <SComponentContainer>
       <SSTitle>よくある質問</SSTitle>
