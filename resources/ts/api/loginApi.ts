@@ -23,7 +23,6 @@ export const loginApi = async (props: propsType) => {
         password
       })
       if (res.data.result) {
-        console.log('login:ログイン成功')
         history.push({ pathname: path.loading })
         const promiseArray = setAllInitialData()
         Promise.all(promiseArray).then(() => {
@@ -32,7 +31,6 @@ export const loginApi = async (props: propsType) => {
         })
       } else {
         window.alert(res.data.message)
-        console.log(res.data.message)
       }
     } catch (err) {
       console.log(err)
