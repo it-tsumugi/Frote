@@ -1,5 +1,5 @@
-import styled from 'styled-components'
 import { VFC } from 'react'
+import styled from 'styled-components'
 import media from '../../../styles/media'
 import { GitHubIcon } from '../../atoms/icon/GitHubIcon'
 import { TwitterIcon } from '../../atoms/icon/TwitterIcon'

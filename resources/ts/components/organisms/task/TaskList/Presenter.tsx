@@ -1,8 +1,8 @@
 import { VFC } from 'react'
 import styled from 'styled-components'
-import { Task } from '../../../molecules/task/Task'
+import { Task } from '../../../molecules/task/Task/Container'
 import { taskListType } from '../../../../type/dataType'
-import { TaskListButtonArea } from '../../../molecules/task/TaskListButtonArea'
+import { TaskListButtonArea } from '../../../molecules/task/TaskListButtonArea/Container'
 import { SText } from '../../../atoms/style/TextStyle'
 
 type propsType = {

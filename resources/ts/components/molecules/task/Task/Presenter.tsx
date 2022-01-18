@@ -1,31 +1,20 @@
 import { VFC } from 'react'
 import styled from 'styled-components'
-import { DefaultButton, DefaultButton2 } from '../../atoms/button/DefaultButton'
-import { NavButton } from '../../atoms/button/NavButton'
-import { path } from '../../../constant/path'
-import { taskType } from '../../../type/dataType'
-import { SText } from '../../atoms/style/TextStyle'
-import media from '../../../styles/media'
-import { deleteTask } from '../../../api/deleteTask'
-import { useGetActions } from '../../../hooks/useGetActions'
+import { DefaultButton, DefaultButton2 } from '../../../atoms/button/DefaultButton'
+import { NavButton } from '../../../atoms/button/NavButton'
+import { path } from '../../../../constant/path'
+import { taskType } from '../../../../type/dataType'
+import { SText } from '../../../atoms/style/TextStyle'
+import media from '../../../../styles/media'
 
 type propsType = {
   task: taskType
-  task_list_id: number
+  onClick: () => Promise<void>
   isDelete: boolean
   index: number
 }
 
-export const Task: VFC<propsType> = (props) => {
-  const { task, task_list_id, isDelete, index } = props
-  const { getAllTaskLists } = useGetActions()
-  const deleteTaskProps = { task, task_list_id, getAllTaskLists }
-
-  const DeleteButton: VFC = () => {
-    const onClick = () => deleteTask(deleteTaskProps)
-    return <DefaultButton2 onClick={onClick}>削除</DefaultButton2>
-  }
-
+export const PTask: VFC<propsType> = ({ task, isDelete, index, onClick }) => {
   return (
     <SComponentContainer>
       <STaskTextarea>
@@ -36,7 +25,7 @@ export const Task: VFC<propsType> = (props) => {
         )}
       </STaskTextarea>
       <STaskButtonAreaContainer>
-        {isDelete ? <DeleteButton /> : <EmptyButton>削除</EmptyButton>}
+        {isDelete ? <DefaultButton2 onClick={onClick}>削除</DefaultButton2> : <EmptyButton>削除</EmptyButton>}
         <NavButton to={`/${task.task_id}` + path.insertTask}>挿入</NavButton>
         <NavButton to={`/${task.task_id}` + path.editTask}>編集</NavButton>
       </STaskButtonAreaContainer>

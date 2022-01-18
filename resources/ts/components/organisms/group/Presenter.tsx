@@ -1,23 +1,19 @@
 import styled from 'styled-components'
 import { VFC } from 'react'
-
 import Grid from '@material-ui/core/Grid'
-import { useRecoilValue } from 'recoil'
-
 import { SCard } from '../../atoms/style/SCard'
 import { DeleteGroupButton } from '../../atoms/button/DeleteGroupButton'
 import { NavButton } from '../../atoms/button/NavButton'
-
-import { useGetGroupLists } from '../../../hooks/useGetGroupLists'
 import { path } from '../../../constant/path'
-import { booleanState, groupListsState } from '../../../state/atom'
 import { SText } from '../../atoms/style/TextStyle'
-import { booleanStateKey } from '../../../constant/stateKey'
+import { groupListType } from '../../../type/dataType'
 
-export const GroupList: VFC = () => {
-  useGetGroupLists()
-  const groupLists = useRecoilValue(groupListsState)
-  const isGroupTaskLists = useRecoilValue(booleanState(booleanStateKey.isGetGroupLists))
+type propsType = {
+  isGroupTaskLists: boolean
+  groupLists: groupListType[]
+}
+
+export const PGroupList: VFC<propsType> = ({ isGroupTaskLists, groupLists }) => {
   if (isGroupTaskLists) {
     if (groupLists.length !== 0) {
       return (
@@ -26,7 +22,7 @@ export const GroupList: VFC = () => {
             return (
               <Grid item xs={12} sm={12} md={6} lg={4} key={item.id}>
                 <SSCard>
-                  <SGroup>{item.group}</SGroup>
+                  <div>{item.group}</div>
                   <NavButton to={`/${item.id}` + path.editGroup}>編集</NavButton>
                   <DeleteGroupButton id={item.id}>削除</DeleteGroupButton>
                 </SSCard>
@@ -42,8 +38,6 @@ export const GroupList: VFC = () => {
     return <SText>ローディング中です</SText>
   }
 }
-
-const SGroup = styled.div``
 
 const SSCard = styled(SCard)`
   display: flex;

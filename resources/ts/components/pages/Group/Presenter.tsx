@@ -1,7 +1,7 @@
 import { VFC } from 'react'
 import { path } from '../../../constant/path'
 import { NavButton } from '../../atoms/button/NavButton'
-import { GroupList } from '../../organisms/group/GroupList'
+import { GroupList } from '../../organisms/group/Container'
 
 export const PGroup: VFC = () => {
   return (
