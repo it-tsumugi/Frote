@@ -65,6 +65,9 @@ export const ComponentRouter: VFC = () => {
             <ConfirmRegister />
           </NavLessLayout>
         </GuestRoute>
+        <GuestRoute path={path.loading}>
+          <Loading />
+        </GuestRoute>
 
         <AuthRoute path={path.home}>
           <NavLayout>
@@ -126,10 +129,6 @@ export const ComponentRouter: VFC = () => {
           <NavLayout>
             <InsertTask />
           </NavLayout>
-        </AuthRoute>
-
-        <AuthRoute path={path.loading}>
-          <Loading />
         </AuthRoute>
 
         <Route path="*">
