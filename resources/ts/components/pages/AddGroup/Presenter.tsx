@@ -1,10 +1,10 @@
 import { VFC } from 'react'
 import { NavButton } from '../../atoms/button/NavButton'
 import { DefaultTextField } from '../../atoms/form/DefaultTextField'
-import { FormCard } from '../../atoms/form/FormCard'
+import { FormCard } from '../../../styles/style/FormCard'
 import { ActionButton } from '../../atoms/button/ActionButton'
 import { path } from '../../../constant/path'
-import { SActionText } from '../../atoms/style/TextStyle'
+import { SActionText } from '../../../styles/style/TextStyle'
 
 type propsType = {
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void
@@ -12,7 +12,7 @@ type propsType = {
   setGroup: React.Dispatch<React.SetStateAction<string>>
 }
 
-export const AddGroup: VFC<propsType> = ({ onSubmit, groupError, setGroup }) => {
+export const PAddGroup: VFC<propsType> = ({ onSubmit, groupError, setGroup }) => {
   return (
     <>
       <SActionText>追加するグループを入力してください</SActionText>

@@ -3,8 +3,8 @@ import { VFC } from 'react'
 import { GroupSelect } from '../../molecules/select/GroupSelect/Container'
 import { ImpSelect } from '../../molecules/select/ImpSelect/Container'
 import { UrgSelect } from '../../molecules/select/UrgSelect/Container'
-import { SActionText } from '../../atoms/style/TextStyle'
-import { FormCard } from '../../atoms/form/FormCard'
+import { SActionText } from '../../../styles/style/TextStyle'
+import { FormCard } from '../../../styles/style/FormCard'
 import { ActionButton } from '../../atoms/button/ActionButton'
 
 type propsType = {

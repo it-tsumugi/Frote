@@ -11,7 +11,7 @@ import {
 } from '../../../../type/action/addTasksType'
 import { ActionButton } from '../../../atoms/button/ActionButton'
 import { DummyButton } from '../../../atoms/button/DummyButton'
-import { SColumnContainer, SFlexContainer } from '../../../atoms/style/SelectStyle'
+import { SColumnContainer, SFlexContainer } from '../../../../styles/style/SelectStyle'
 
 type propsType = {
   fields: addTasksFieldsType

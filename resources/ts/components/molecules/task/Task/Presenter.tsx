@@ -4,7 +4,7 @@ import { DefaultButton, DefaultButton2 } from '../../../atoms/button/DefaultButt
 import { NavButton } from '../../../atoms/button/NavButton'
 import { path } from '../../../../constant/path'
 import { taskType } from '../../../../type/dataType'
-import { SText } from '../../../atoms/style/TextStyle'
+import { SText } from '../../../../styles/style/TextStyle'
 import media from '../../../../styles/media'
 
 type propsType = {

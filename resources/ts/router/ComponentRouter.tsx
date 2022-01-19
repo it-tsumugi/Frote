@@ -23,7 +23,7 @@ import { ConfirmRegister } from '../components/pages/ConfirmRegister/Container'
 import { Help } from '../components/pages/Help/Container'
 import { path } from '../constant/path'
 import { Home } from '../components/pages/Home/Container'
-import { Loading } from '../components/pages/Loading/Container'
+import { Loading } from '../components/utility/Loading'
 
 export const ComponentRouter: VFC = () => {
   return (

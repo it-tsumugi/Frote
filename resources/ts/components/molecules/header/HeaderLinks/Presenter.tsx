@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import media from '../../../../styles/media'
 import { DefaultButton } from '../../../atoms/button/DefaultButton'
-import { SFlexContainer } from '../../../atoms/style/SelectStyle'
+import { SFlexContainer } from '../../../../styles/style/SelectStyle'
 import { path } from '../../../../constant/path'
 import { DummyButton } from '../../../atoms/button/DummyButton'
 

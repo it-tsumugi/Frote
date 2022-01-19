@@ -1,15 +1,12 @@
 import { useEffect, useState, VFC } from 'react'
 import { useParams } from 'react-router'
 import { useRecoilState } from 'recoil'
-import { FormCard } from '../../atoms/form/FormCard'
-import { DefaultTextField } from '../../atoms/form/DefaultTextField'
-import { ActionButton } from '../../atoms/button/ActionButton'
-import { SActionText } from '../../atoms/style/TextStyle'
 import { useGetTask } from '../../../hooks/useGetTask'
 import { stringState } from '../../../state/atom'
 import { errorMessages } from '../../../constant/errorMessages'
 import { stringStateKey } from '../../../constant/stateKey'
 import { useGetActions } from '../../../hooks/useGetActions'
+import { PEditTask } from './Presenter'
 
 export const EditTask: VFC = () => {
   const { id } = useParams<{ id: string }>()
@@ -37,23 +34,5 @@ export const EditTask: VFC = () => {
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => updateTask({ e, task, task_id, checkIsSuccess })
 
-  return (
-    <>
-      <SActionText>タスクを編集してください</SActionText>
-      <FormCard>
-        <form onSubmit={onSubmit}>
-          <DefaultTextField
-            value={task}
-            name="task"
-            label="タスク"
-            type="text"
-            error={Boolean(taskError)}
-            helperText={taskError}
-            onChange={(e) => setTask(e.target.value)}
-          />
-          <ActionButton type="submit">更新</ActionButton>
-        </form>
-      </FormCard>
-    </>
-  )
+  return <PEditTask onSubmit={onSubmit} setTask={setTask} task={task} taskError={taskError} />
 }

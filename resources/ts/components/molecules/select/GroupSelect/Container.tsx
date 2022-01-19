@@ -19,13 +19,5 @@ export const GroupSelect: VFC<propsType> = ({ task_list_id }) => {
   useGetGroup(task_list_id, 'task_list')
   useGetGroupLists()
 
-  return (
-    <PGroupSelect
-      isComplete={isComplete}
-      group={group}
-      groupLists={groupLists}
-      onChange={onChange}
-      task_list_id={task_list_id}
-    />
-  )
+  return <PGroupSelect isComplete={isComplete} group={group} groupLists={groupLists} onChange={onChange} />
 }

@@ -1,6 +1,6 @@
 import { VFC } from 'react'
 import styled from 'styled-components'
-import { SText, STitle } from '../../atoms/style/TextStyle'
+import { SText, STitle } from '../../../styles/style/TextStyle'
 
 export const PUsage: VFC = () => {
   return (

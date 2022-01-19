@@ -1,9 +1,9 @@
 import { VFC } from 'react'
 import { SetterOrUpdater } from 'recoil'
-import { FormCard } from '../../atoms/form/FormCard'
+import { FormCard } from '../../../styles/style/FormCard'
 import { DefaultTextField } from '../../atoms/form/DefaultTextField'
 import { ActionButton } from '../../atoms/button/ActionButton'
-import { SActionText } from '../../atoms/style/TextStyle'
+import { SActionText } from '../../../styles/style/TextStyle'
 
 type propsType = {
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => Promise<void>
@@ -12,7 +12,7 @@ type propsType = {
   setTask: SetterOrUpdater<string>
 }
 
-export const EditTask: VFC<propsType> = ({ onSubmit, task, taskError, setTask }) => {
+export const PEditTask: VFC<propsType> = ({ onSubmit, task, taskError, setTask }) => {
   return (
     <>
       <SActionText>タスクを編集してください</SActionText>

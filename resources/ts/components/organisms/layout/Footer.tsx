@@ -1,17 +1,16 @@
 import { VFC } from 'react'
 import styled from 'styled-components'
 import media from '../../../styles/media'
-import { GitHubIcon } from '../../atoms/icon/GitHubIcon'
-import { TwitterIcon } from '../../atoms/icon/TwitterIcon'
-import { QiitaIcon } from '../../atoms/icon/QiitaIcon'
+import { Icon } from '../../atoms/icon/Icon'
+import { iconData } from '../../../constant/iconData'
 
 export const Footer: VFC = () => {
   return (
     <SComponentContainer>
       &copy; 2021 Tsumugi
-      <GitHubIcon url="https://github.com/it-tsumugi" />
-      <TwitterIcon url="https://twitter.com/it_tsumugi" />
-      <QiitaIcon url="https://qiita.com/it_tsumugi" />
+      <Icon url={iconData.github.url} type={iconData.github.type} />
+      <Icon url={iconData.twitter.url} type={iconData.twitter.type} />
+      <Icon url={iconData.qiita.url} type={iconData.qiita.type} />
     </SComponentContainer>
   )
 }

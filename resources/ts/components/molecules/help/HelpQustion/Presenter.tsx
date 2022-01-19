@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import media from '../../../../styles/media'
 import { helpQustionDataType } from '../../../../type/dataType'
 import { DefaultButton } from '../../../atoms/button/DefaultButton'
-import { SText } from '../../../atoms/style/TextStyle'
+import { SText } from '../../../../styles/style/TextStyle'
 
 type HiddenAnswerPropsType = {
   isClick: boolean

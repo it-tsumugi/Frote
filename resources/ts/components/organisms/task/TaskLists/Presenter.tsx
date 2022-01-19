@@ -1,10 +1,10 @@
 import { VFC } from 'react'
 import Grid from '@material-ui/core/Grid'
 import { TaskList } from '../TaskList/Container'
-import { SCard } from '../../../atoms/style/SCard'
+import { SCard } from '../../../../styles/style/SCard'
 import { taskListType } from '../../../../type/dataType'
-import { Text } from '../../../atoms/style/Text'
 import styled from 'styled-components'
+import { SText } from '../../../../styles/style/TextStyle'
 
 type propsType = {
   taskLists: taskListType[]
@@ -27,14 +27,14 @@ export const PTaskLists: VFC<propsType> = ({ taskLists }) => {
     )
   } else {
     return (
-      <SText>
-        <Text>タスクは存在しません</Text>
-      </SText>
+      <STextWrapper>
+        <SText>タスクは存在しません</SText>
+      </STextWrapper>
     )
   }
 }
 
-const SText = styled.div`
+const STextWrapper = styled.div`
   margin-top: 20px;
   margin-left: 20px;
 `
