@@ -1,6 +1,6 @@
 import { VFC } from 'react'
 import { DefaultTextField } from '../../atoms/form/DefaultTextField'
-import { ActionButton } from '../../atoms/button/ActionButton'
+import { ActionButton } from '../../../styles/commonStyles/ActionButton'
 import { FormCard } from '../../../styles/commonStyles/FormCard'
 
 type propsType = {

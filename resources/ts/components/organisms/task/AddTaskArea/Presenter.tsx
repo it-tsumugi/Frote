@@ -9,7 +9,7 @@ import {
   addTasksRegisterType,
   addTasksRemoveType
 } from '../../../../type/action/addTasksType'
-import { ActionButton } from '../../../atoms/button/ActionButton'
+import { ActionButton } from '../../../../styles/commonStyles/ActionButton'
 import { DummyButton } from '../../../atoms/button/DummyButton'
 import { SColumnContainer, SFlexContainer } from '../../../../styles/commonStyles/SelectStyle'
 

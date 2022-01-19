@@ -8,7 +8,7 @@ import {
   addTasksRemoveType
 } from '../../../type/action/addTasksType'
 import { AddTaskArea } from '../../organisms/task/AddTaskArea/Container'
-import { ActionButton } from '../../atoms/button/ActionButton'
+import { ActionButton } from '../../../styles/commonStyles/ActionButton'
 import { FormCard } from '../../../styles/commonStyles/FormCard'
 import { SActionText } from '../../../styles/commonStyles/TextStyle'
 

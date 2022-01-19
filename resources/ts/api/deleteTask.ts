@@ -18,12 +18,11 @@ export const deleteTask = async (props: propsType) => {
         order: order
       }
     })
-    if (res.data.result) {
-      console.log('deleteTask:タスクの削除に成功しました')
+    if (!res.data.result) {
+      window.alert('タスクの削除に失敗しました')
     } else {
-      console.log('deleteTask:タスクの削除に失敗しました')
+      getAllTaskLists()
     }
-    await getAllTaskLists()
   } catch (err) {
     console.log(err)
   }

@@ -2,7 +2,7 @@ import { VFC } from 'react'
 import { SetterOrUpdater } from 'recoil'
 import { FormCard } from '../../../styles/commonStyles/FormCard'
 import { DefaultTextField } from '../../atoms/form/DefaultTextField'
-import { ActionButton } from '../../atoms/button/ActionButton'
+import { ActionButton } from '../../../styles/commonStyles/ActionButton'
 import { SActionText } from '../../../styles/commonStyles/TextStyle'
 
 type propsType = {

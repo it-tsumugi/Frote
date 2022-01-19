@@ -2,7 +2,7 @@ import { VFC } from 'react'
 import { NavButton } from '../../../styles/commonStyles/NavButton'
 import { DefaultTextField } from '../../atoms/form/DefaultTextField'
 import { FormCard } from '../../../styles/commonStyles/FormCard'
-import { ActionButton } from '../../atoms/button/ActionButton'
+import { ActionButton } from '../../../styles/commonStyles/ActionButton'
 import { path } from '../../../constant/path'
 import { SActionText } from '../../../styles/commonStyles/TextStyle'
 

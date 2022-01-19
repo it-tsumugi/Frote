@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import media from '../../../styles/media'
+import media from '../media'
 
 export const ActionButton = styled.button`
   margin: 5px;

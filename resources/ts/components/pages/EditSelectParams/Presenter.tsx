@@ -5,7 +5,7 @@ import { ImpSelect } from '../../molecules/select/ImpSelect/Container'
 import { UrgSelect } from '../../molecules/select/UrgSelect/Container'
 import { SActionText } from '../../../styles/commonStyles/TextStyle'
 import { FormCard } from '../../../styles/commonStyles/FormCard'
-import { ActionButton } from '../../atoms/button/ActionButton'
+import { ActionButton } from '../../../styles/commonStyles/ActionButton'
 
 type propsType = {
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => Promise<void>

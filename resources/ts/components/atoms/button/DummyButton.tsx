@@ -1,14 +1,12 @@
-import { VFC } from "react";
+import { VFC } from 'react'
 
-import { ActionButton } from "./ActionButton";
+import { ActionButton } from '../../../styles/commonStyles/ActionButton'
 
 type propsType = {
-    children?: string;
-};
+  children?: string
+}
 
 export const DummyButton: VFC<propsType> = (props) => {
-    const { children } = props;
-    return (
-        <ActionButton style={{ visibility: "hidden" }}>{children}</ActionButton>
-    );
-};
+  const { children } = props
+  return <ActionButton style={{ visibility: 'hidden' }}>{children}</ActionButton>
+}

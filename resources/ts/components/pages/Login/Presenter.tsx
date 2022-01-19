@@ -2,7 +2,7 @@ import { VFC } from 'react'
 import styled from 'styled-components'
 import { DefaultTextField } from '../../atoms/form/DefaultTextField'
 import { FormCard } from '../../../styles/commonStyles/FormCard'
-import { ActionButton } from '../../atoms/button/ActionButton'
+import { ActionButton } from '../../../styles/commonStyles/ActionButton'
 import { SText, STitle } from '../../../styles/commonStyles/TextStyle'
 import { loginPropsType } from '../../../type/action/loginType'
 
