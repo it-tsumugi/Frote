@@ -1,6 +1,6 @@
 import { VFC } from 'react'
 import { SetterOrUpdater } from 'recoil'
-import { NavButton } from '../../atoms/button/NavButton'
+import { NavButton } from '../../../styles/commonStyles/NavButton'
 import { FormCard } from '../../../styles/commonStyles/FormCard'
 import { ActionButton } from '../../atoms/button/ActionButton'
 import { DefaultTextField } from '../../atoms/form/DefaultTextField'

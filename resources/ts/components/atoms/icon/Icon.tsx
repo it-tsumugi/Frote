@@ -12,7 +12,7 @@ type propsType = {
 
 export const Icon: VFC<propsType> = ({ url, type }) => {
   const onClick = () => window.open(url)
-  const SelectIcon = () => {
+  const selectIcon = () => {
     switch (type) {
       case iconData.github.type:
         return <GitHub onClick={onClick} />
@@ -23,7 +23,7 @@ export const Icon: VFC<propsType> = ({ url, type }) => {
     }
   }
 
-  return <SBaseIcon>{SelectIcon()}</SBaseIcon>
+  return <SBaseIcon>{selectIcon()}</SBaseIcon>
 }
 
 const SBaseIcon = styled.div`

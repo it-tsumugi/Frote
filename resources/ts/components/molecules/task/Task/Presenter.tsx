@@ -1,7 +1,7 @@
 import { VFC } from 'react'
 import styled from 'styled-components'
 import { DefaultButton, DefaultButton2 } from '../../../atoms/button/DefaultButton'
-import { NavButton } from '../../../atoms/button/NavButton'
+import { NavButton } from '../../../../styles/commonStyles/NavButton'
 import { path } from '../../../../constant/path'
 import { taskType } from '../../../../type/dataType'
 import { SText } from '../../../../styles/commonStyles/TextStyle'

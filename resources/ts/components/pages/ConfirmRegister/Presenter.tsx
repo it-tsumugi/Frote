@@ -1,6 +1,6 @@
 import { VFC } from 'react'
 import styled from 'styled-components'
-import { NavButton } from '../../atoms/button/NavButton'
+import { NavButton } from '../../../styles/commonStyles/NavButton'
 import { SText, STitle } from '../../../styles/commonStyles/TextStyle'
 import { path } from '../../../constant/path'
 

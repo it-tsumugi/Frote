@@ -1,5 +1,5 @@
 import { VFC } from 'react'
-import { NavButton } from '../../atoms/button/NavButton'
+import { NavButton } from '../../../styles/commonStyles/NavButton'
 import { DefaultTextField } from '../../atoms/form/DefaultTextField'
 import { FormCard } from '../../../styles/commonStyles/FormCard'
 import { ActionButton } from '../../atoms/button/ActionButton'

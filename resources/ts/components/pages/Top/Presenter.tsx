@@ -2,7 +2,7 @@ import { VFC } from 'react'
 import styled from 'styled-components'
 import media from '../../../styles/media'
 import { Grid } from '@material-ui/core'
-import { BigNavButton } from '../../atoms/button/BigNavButton'
+import { BigNavButton } from '../../../styles/commonStyles/BigNavButton'
 import { SCard } from '../../../styles/commonStyles/SCard'
 import { path } from '../../../constant/path'
 

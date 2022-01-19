@@ -1,6 +1,6 @@
 import { VFC } from 'react'
 import styled from 'styled-components'
-import { NavButton } from '../../../atoms/button/NavButton'
+import { NavButton } from '../../../../styles/commonStyles/NavButton'
 import { DefaultButton, DefaultButton2 } from '../../../atoms/button/DefaultButton'
 import { path } from '../../../../constant/path'
 import { taskListType } from '../../../../type/dataType'

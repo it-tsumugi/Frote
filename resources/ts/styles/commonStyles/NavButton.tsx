@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import media from '../../../styles/media'
+import media from '../media'
 
 export const NavButton = styled(Link)`
   color: #ffffff;
