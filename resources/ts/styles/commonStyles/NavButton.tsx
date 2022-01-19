@@ -2,7 +2,11 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import media from '../media'
 
-export const NavButton = styled(Link)`
+type NavButtonPropsType = {
+  ishidden?: boolean
+}
+
+export const NavButton = styled(Link)<NavButtonPropsType>`
   color: #ffffff;
   background: #2d2d31;
   margin: 5px;
@@ -22,6 +26,8 @@ export const NavButton = styled(Link)`
     opacity: 0.6;
   }
   font-size: 14px;
+
+  visibility: ${(props) => (props?.ishidden ? 'hidden' : 'visible')};
 
   ${media.lg`
     max-width: 100px;

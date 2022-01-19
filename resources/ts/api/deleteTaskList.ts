@@ -16,7 +16,7 @@ export const deleteTaskList = async (props: propsType) => {
     } else {
       console.log('deleteTaskList:タスクの削除に失敗しました')
     }
-    getAllTaskLists()
+    await getAllTaskLists()
   } catch (err) {
     console.log(err)
   }

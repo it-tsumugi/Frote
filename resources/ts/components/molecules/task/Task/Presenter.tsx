@@ -1,6 +1,6 @@
 import { VFC } from 'react'
 import styled from 'styled-components'
-import { DefaultButton, DefaultButton2 } from '../../../atoms/button/DefaultButton'
+import { DefaultButton } from '../../../atoms/button/DefaultButton'
 import { NavButton } from '../../../../styles/commonStyles/NavButton'
 import { path } from '../../../../constant/path'
 import { taskType } from '../../../../type/dataType'
@@ -25,7 +25,7 @@ export const PTask: VFC<propsType> = ({ task, isDelete, index, onClick }) => {
         )}
       </STaskTextarea>
       <STaskButtonAreaContainer>
-        {isDelete ? <DefaultButton2 onClick={onClick}>削除</DefaultButton2> : <EmptyButton>削除</EmptyButton>}
+        {isDelete ? <DefaultButton onClick={onClick}>削除</DefaultButton> : <EmptyButton>削除</EmptyButton>}
         <NavButton to={`/${task.task_id}` + path.insertTask}>挿入</NavButton>
         <NavButton to={`/${task.task_id}` + path.editTask}>編集</NavButton>
       </STaskButtonAreaContainer>

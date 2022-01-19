@@ -15,6 +15,8 @@ import { useUpdateGroup } from './useUpdateGroup'
 import { useUpdateTask } from './useUpdateTask'
 import { useUpdateSelectParams } from './useUpdateSelectParams'
 import { useLogout } from './useLogout'
+import { useGetGroupList } from './useGetGroupList'
+import { useDeleteGroup } from './useDeleteGroup'
 
 export const useGetActions = () => {
   const { getTaskLists } = useGetTaskLists()
@@ -34,6 +36,8 @@ export const useGetActions = () => {
   const { updateTask } = useUpdateTask()
   const { updateSelectParams } = useUpdateSelectParams()
   const { logout } = useLogout()
+  const { getGroupList } = useGetGroupList()
+  const { deleteGroup } = useDeleteGroup()
 
   return {
     getTaskLists,
@@ -52,6 +56,8 @@ export const useGetActions = () => {
     updateGroup,
     updateTask,
     updateSelectParams,
-    logout
+    logout,
+    getGroupList,
+    deleteGroup
   }
 }
