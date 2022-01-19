@@ -1,7 +1,7 @@
 import { VFC } from 'react'
 
-import { SCenter } from '../../styles/style/SCenter'
-import { SFooterFixed } from '../../styles/style/SFooterFixed'
+import { SCenter } from '../../styles/commonStyles/SCenter'
+import { SFooterFixed } from '../../styles/commonStyles/SFooterFixed'
 import { Footer } from '../organisms/layout/Footer'
 import { Header } from '../organisms/layout/Header'
 

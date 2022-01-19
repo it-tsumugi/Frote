@@ -1,11 +1,11 @@
 import { VFC } from 'react'
 import { SetterOrUpdater } from 'recoil'
 import { NavButton } from '../../atoms/button/NavButton'
-import { FormCard } from '../../../styles/style/FormCard'
+import { FormCard } from '../../../styles/commonStyles/FormCard'
 import { ActionButton } from '../../atoms/button/ActionButton'
 import { DefaultTextField } from '../../atoms/form/DefaultTextField'
 import { path } from '../../../constant/path'
-import { SActionText } from '../../../styles/style/TextStyle'
+import { SActionText } from '../../../styles/commonStyles/TextStyle'
 
 type propsType = {
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => Promise<void>

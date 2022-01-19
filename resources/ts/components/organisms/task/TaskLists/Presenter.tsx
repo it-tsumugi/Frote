@@ -1,10 +1,10 @@
 import { VFC } from 'react'
 import Grid from '@material-ui/core/Grid'
 import { TaskList } from '../TaskList/Container'
-import { SCard } from '../../../../styles/style/SCard'
+import { SCard } from '../../../../styles/commonStyles/SCard'
 import { taskListType } from '../../../../type/dataType'
 import styled from 'styled-components'
-import { SText } from '../../../../styles/style/TextStyle'
+import { SText } from '../../../../styles/commonStyles/TextStyle'
 
 type propsType = {
   taskLists: taskListType[]

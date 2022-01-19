@@ -1,10 +1,10 @@
 import { VFC } from 'react'
 import { NavButton } from '../../atoms/button/NavButton'
 import { DefaultTextField } from '../../atoms/form/DefaultTextField'
-import { FormCard } from '../../../styles/style/FormCard'
+import { FormCard } from '../../../styles/commonStyles/FormCard'
 import { ActionButton } from '../../atoms/button/ActionButton'
 import { path } from '../../../constant/path'
-import { SActionText } from '../../../styles/style/TextStyle'
+import { SActionText } from '../../../styles/commonStyles/TextStyle'
 
 type propsType = {
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void

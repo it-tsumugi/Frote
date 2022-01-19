@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Task } from '../../../molecules/task/Task/Container'
 import { taskListType } from '../../../../type/dataType'
 import { TaskListButtonArea } from '../../../molecules/task/TaskListButtonArea/Container'
-import { SText } from '../../../../styles/style/TextStyle'
+import { SText } from '../../../../styles/commonStyles/TextStyle'
 
 type propsType = {
   taskList: taskListType

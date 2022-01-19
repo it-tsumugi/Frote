@@ -1,11 +1,11 @@
 import styled from 'styled-components'
 import { VFC } from 'react'
 import Grid from '@material-ui/core/Grid'
-import { SCard } from '../../../../styles/style/SCard'
+import { SCard } from '../../../../styles/commonStyles/SCard'
 import { DeleteGroupButton } from '../../../atoms/button/DeleteGroupButton'
 import { NavButton } from '../../../atoms/button/NavButton'
 import { path } from '../../../../constant/path'
-import { SText } from '../../../../styles/style/TextStyle'
+import { SText } from '../../../../styles/commonStyles/TextStyle'
 import { groupListType } from '../../../../type/dataType'
 
 type propsType = {

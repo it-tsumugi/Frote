@@ -9,8 +9,8 @@ import {
 } from '../../../type/action/addTasksType'
 import { AddTaskArea } from '../../organisms/task/AddTaskArea/Container'
 import { ActionButton } from '../../atoms/button/ActionButton'
-import { FormCard } from '../../../styles/style/FormCard'
-import { SActionText } from '../../../styles/style/TextStyle'
+import { FormCard } from '../../../styles/commonStyles/FormCard'
+import { SActionText } from '../../../styles/commonStyles/TextStyle'
 
 type propsType = {
   onSubmit: (e?: React.BaseSyntheticEvent<object, any, any> | undefined) => Promise<void>

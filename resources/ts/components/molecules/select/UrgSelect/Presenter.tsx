@@ -1,5 +1,5 @@
 import { VFC } from 'react'
-import { SFlexContainer, SItemName, SSelect } from '../../../../styles/style/SelectStyle'
+import { SFlexContainer, SItemName, SSelect } from '../../../../styles/commonStyles/SelectStyle'
 import { urgData } from '../../../../constant/urgData'
 
 type propsType = {

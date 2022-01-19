@@ -1,7 +1,7 @@
 import { VFC } from 'react'
 import { DefaultTextField } from '../../atoms/form/DefaultTextField'
 import { ActionButton } from '../../atoms/button/ActionButton'
-import { FormCard } from '../../../styles/style/FormCard'
+import { FormCard } from '../../../styles/commonStyles/FormCard'
 
 type propsType = {
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => Promise<void>

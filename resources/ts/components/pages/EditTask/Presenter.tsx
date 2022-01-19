@@ -1,9 +1,9 @@
 import { VFC } from 'react'
 import { SetterOrUpdater } from 'recoil'
-import { FormCard } from '../../../styles/style/FormCard'
+import { FormCard } from '../../../styles/commonStyles/FormCard'
 import { DefaultTextField } from '../../atoms/form/DefaultTextField'
 import { ActionButton } from '../../atoms/button/ActionButton'
-import { SActionText } from '../../../styles/style/TextStyle'
+import { SActionText } from '../../../styles/commonStyles/TextStyle'
 
 type propsType = {
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => Promise<void>
