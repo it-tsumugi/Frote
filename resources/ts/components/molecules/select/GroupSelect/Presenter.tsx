@@ -1,6 +1,11 @@
 import { VFC } from 'react'
-import { SColumnContainer, SFlexContainer, SItemName, SSelect } from '../../../../styles/commonStyles/SelectStyle'
-import { SText } from '../../../../styles/commonStyles/TextStyle'
+import {
+  SColumnContainer,
+  SFlexContainer,
+  SItemName,
+  SSelect
+} from '../../../../styles/commonStyles/select/SelectStyle'
+import { SText } from '../../../../styles/commonStyles/text/TextStyle'
 import { groupListType } from '../../../../type/dataType'
 
 type propsType = {

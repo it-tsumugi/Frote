@@ -1,12 +1,12 @@
 import styled from 'styled-components'
 import { VFC } from 'react'
 import Grid from '@material-ui/core/Grid'
-import { SCard } from '../../../../styles/commonStyles/SCard'
-import { NavButton } from '../../../../styles/commonStyles/NavButton'
+import { SCard } from '../../../../styles/commonStyles/card/SCard'
+import { NavButton } from '../../../../styles/commonStyles/button/NavButton'
 import { path } from '../../../../constant/path'
-import { SText } from '../../../../styles/commonStyles/TextStyle'
+import { SText } from '../../../../styles/commonStyles/text/TextStyle'
 import { groupListType } from '../../../../type/dataType'
-import { DefaultButton } from '../../../atoms/button/DefaultButton'
+import { DefaultButton } from '../../../../styles/commonStyles/button/DefaultButton'
 
 type propsType = {
   isGroupTaskLists: boolean

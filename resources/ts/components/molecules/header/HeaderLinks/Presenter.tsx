@@ -2,10 +2,10 @@ import { VFC } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import media from '../../../../styles/media'
-import { DefaultButton } from '../../../atoms/button/DefaultButton'
-import { SFlexContainer } from '../../../../styles/commonStyles/SelectStyle'
+import { DefaultButton } from '../../../../styles/commonStyles/button/DefaultButton'
+import { SFlexContainer } from '../../../../styles/commonStyles/select/SelectStyle'
 import { path } from '../../../../constant/path'
-import { DummyButton } from '../../../atoms/button/DummyButton'
+import { DummyButton } from '../../../../styles/commonStyles/button/DummyButton'
 
 type propsType = {
   isLogin: boolean

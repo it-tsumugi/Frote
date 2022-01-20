@@ -2,8 +2,8 @@ import { VFC } from 'react'
 import styled from 'styled-components'
 import media from '../../../../styles/media'
 import { helpQustionDataType } from '../../../../type/dataType'
-import { DefaultButton } from '../../../atoms/button/DefaultButton'
-import { SText } from '../../../../styles/commonStyles/TextStyle'
+import { DefaultButton } from '../../../../styles/commonStyles/button/DefaultButton'
+import { SText } from '../../../../styles/commonStyles/text/TextStyle'
 
 type HiddenAnswerPropsType = {
   isClick: boolean

@@ -1,9 +1,10 @@
-import { VFC } from 'react'
+import { FC, VFC } from 'react'
 import styled from 'styled-components'
-import { NavButton } from '../../../../styles/commonStyles/NavButton'
-import { DefaultButton } from '../../../atoms/button/DefaultButton'
+import { NavButton } from '../../../../styles/commonStyles/button/NavButton'
+import { DefaultButton } from '../../../../styles/commonStyles/button/DefaultButton'
 import { path } from '../../../../constant/path'
 import { taskListType } from '../../../../type/dataType'
+import { HiddenDefaultButton } from '../../../../styles/commonStyles/button/HiddenDefaultButton'
 
 type propsType = {
   taskList: taskListType
@@ -13,21 +14,41 @@ type propsType = {
 }
 
 export const PTaskListButtonArea: VFC<propsType> = ({ taskList, isChecked, deleteHandler, toggleHandler }) => {
+  const displayText = isChecked ? '閉じる' : 'すべて表示'
+  const editTaskListPath = `/${taskList.task_list_id}` + path.editTaskList
+  const addTasksPath = `/${taskList.task_list_id}` + path.addTasks
+
+  const DisplayButton: FC = ({ children }) => {
+    return (
+      <>
+        {taskList.task.length > 1 ? (
+          <DefaultButton onClick={toggleHandler}>{children}</DefaultButton>
+        ) : (
+          <HiddenDefaultButton>{children}</HiddenDefaultButton>
+        )}
+      </>
+    )
+  }
+
+  const AddTasksButton: FC = ({ children }) => {
+    return (
+      <>
+        {taskList.task.length < 20 ? (
+          <NavButton to={addTasksPath}>{children}</NavButton>
+        ) : (
+          <DefaultButton style={{ visibility: 'hidden' }}>{children}</DefaultButton>
+        )}
+      </>
+    )
+  }
+
   return (
     <>
       <SComponentContainer>
-        {taskList.task.length > 1 ? (
-          <DefaultButton onClick={toggleHandler}>{isChecked ? '閉じる' : 'すべて表示'}</DefaultButton>
-        ) : (
-          <DefaultButton style={{ visibility: 'hidden' }}>すべて表示</DefaultButton>
-        )}
+        <DisplayButton>{displayText}</DisplayButton>
         <DefaultButton onClick={deleteHandler}>リストを削除</DefaultButton>
-        <NavButton to={`/${taskList.task_list_id}` + path.editTaskList}>リストを編集</NavButton>
-        {taskList.task.length < 20 ? (
-          <NavButton to={`/${taskList.task_list_id}` + path.addTasks}>末尾にタスクを追加</NavButton>
-        ) : (
-          <DefaultButton style={{ visibility: 'hidden' }}>末尾にタスクを追加</DefaultButton>
-        )}
+        <NavButton to={editTaskListPath}>リストを編集</NavButton>
+        <AddTasksButton>末尾にタスクを追加</AddTasksButton>
       </SComponentContainer>
     </>
   )
@@ -35,8 +56,4 @@ export const PTaskListButtonArea: VFC<propsType> = ({ taskList, isChecked, delet
 
 const SComponentContainer = styled.div`
   display: flex;
-`
-
-const SEmpty = styled(DefaultButton)`
-  visibility: hidden;
 `

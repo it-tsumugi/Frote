@@ -2,7 +2,7 @@ import { VFC } from 'react'
 import styled from 'styled-components'
 import { TaskLists } from '../../organisms/task/TaskLists/Container'
 import { TaskListsButtonArea } from '../../molecules/task/TaskListsButtonArea'
-import { SText } from '../../../styles/commonStyles/TextStyle'
+import { SText } from '../../../styles/commonStyles/text/TextStyle'
 import { groupTaskListsType } from '../../../type/dataType'
 
 type propsType = {

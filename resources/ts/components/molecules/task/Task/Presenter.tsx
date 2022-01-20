@@ -1,11 +1,12 @@
-import { VFC } from 'react'
+import { FC, VFC } from 'react'
 import styled from 'styled-components'
-import { DefaultButton } from '../../../atoms/button/DefaultButton'
-import { NavButton } from '../../../../styles/commonStyles/NavButton'
+import { DefaultButton } from '../../../../styles/commonStyles/button/DefaultButton'
+import { NavButton } from '../../../../styles/commonStyles/button/NavButton'
 import { path } from '../../../../constant/path'
 import { taskType } from '../../../../type/dataType'
-import { SText } from '../../../../styles/commonStyles/TextStyle'
+import { SText } from '../../../../styles/commonStyles/text/TextStyle'
 import media from '../../../../styles/media'
+import { HiddenDefaultButton } from '../../../../styles/commonStyles/button/HiddenDefaultButton'
 
 type propsType = {
   task: taskType
@@ -15,19 +16,42 @@ type propsType = {
 }
 
 export const PTask: VFC<propsType> = ({ task, isDelete, index, onClick }) => {
-  return (
-    <SComponentContainer>
-      <STaskTextarea>
+  const insertTaskPath = `/${task.task_id}` + path.insertTask
+  const editTaskPath = `/${task.task_id}` + path.editTask
+
+  const TaskText = () => {
+    return (
+      <>
         {index < 9 ? (
           <SSText>{'0' + task.order + ' :' + task.text} </SSText>
         ) : (
           <SSText>{task.order + ' :' + task.text} </SSText>
         )}
+      </>
+    )
+  }
+
+  const DeleteTaskButton: FC = ({ children }) => {
+    return (
+      <>
+        {isDelete ? (
+          <DefaultButton onClick={onClick}>{children}</DefaultButton>
+        ) : (
+          <HiddenDefaultButton>{children}</HiddenDefaultButton>
+        )}
+      </>
+    )
+  }
+
+  return (
+    <SComponentContainer>
+      <STaskTextarea>
+        <TaskText />
       </STaskTextarea>
       <STaskButtonAreaContainer>
-        {isDelete ? <DefaultButton onClick={onClick}>削除</DefaultButton> : <EmptyButton>削除</EmptyButton>}
-        <NavButton to={`/${task.task_id}` + path.insertTask}>挿入</NavButton>
-        <NavButton to={`/${task.task_id}` + path.editTask}>編集</NavButton>
+        <DeleteTaskButton>削除</DeleteTaskButton>
+        <NavButton to={insertTaskPath}>挿入</NavButton>
+        <NavButton to={editTaskPath}>編集</NavButton>
       </STaskButtonAreaContainer>
     </SComponentContainer>
   )

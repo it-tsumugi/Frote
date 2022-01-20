@@ -1,7 +1,7 @@
 import { VFC } from 'react'
 import styled from 'styled-components'
 import { helpQustionDataType } from '../../../type/dataType'
-import { STitle } from '../../../styles/commonStyles/TextStyle'
+import { STitle } from '../../../styles/commonStyles/text/TextStyle'
 import { HelpQuestion } from '../../molecules/help/HelpQustion/Container'
 import { helpQuestionData } from '../../../constant/helpQustionData'
 

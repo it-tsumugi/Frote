@@ -2,8 +2,8 @@ import { VFC } from 'react'
 import styled from 'styled-components'
 import media from '../../../styles/media'
 import { Grid } from '@material-ui/core'
-import { BigNavButton } from '../../../styles/commonStyles/BigNavButton'
-import { SCard } from '../../../styles/commonStyles/SCard'
+import { BigNavButton } from '../../../styles/commonStyles/button/BigNavButton'
+import { SCard } from '../../../styles/commonStyles/card/SCard'
 import { path } from '../../../constant/path'
 
 type propsType = {

@@ -1,6 +1,6 @@
 import { VFC } from 'react'
 import styled from 'styled-components'
-import { NavButton } from '../../../styles/commonStyles/NavButton'
+import { NavButton } from '../../../styles/commonStyles/button/NavButton'
 import { path } from '../../../constant/path'
 
 export const Nav: VFC = () => {

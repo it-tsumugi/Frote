@@ -8,9 +8,9 @@ import {
   addTasksRemoveType
 } from '../../../type/action/addTasksType'
 import { AddTaskArea } from '../../organisms/task/AddTaskArea/Container'
-import { ActionButton } from '../../../styles/commonStyles/ActionButton'
-import { FormCard } from '../../../styles/commonStyles/FormCard'
-import { SActionText } from '../../../styles/commonStyles/TextStyle'
+import { ActionButton } from '../../../styles/commonStyles/button/ActionButton'
+import { FormCard } from '../../../styles/commonStyles/card/FormCard'
+import { SActionText } from '../../../styles/commonStyles/text/TextStyle'
 
 type propsType = {
   onSubmit: (e?: React.BaseSyntheticEvent<object, any, any> | undefined) => Promise<void>

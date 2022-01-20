@@ -3,9 +3,9 @@ import { VFC } from 'react'
 import { GroupSelect } from '../../molecules/select/GroupSelect/Container'
 import { ImpSelect } from '../../molecules/select/ImpSelect/Container'
 import { UrgSelect } from '../../molecules/select/UrgSelect/Container'
-import { SActionText } from '../../../styles/commonStyles/TextStyle'
-import { FormCard } from '../../../styles/commonStyles/FormCard'
-import { ActionButton } from '../../../styles/commonStyles/ActionButton'
+import { SActionText } from '../../../styles/commonStyles/text/TextStyle'
+import { FormCard } from '../../../styles/commonStyles/card/FormCard'
+import { ActionButton } from '../../../styles/commonStyles/button/ActionButton'
 
 type propsType = {
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => Promise<void>

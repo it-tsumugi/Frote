@@ -9,9 +9,9 @@ import {
   addTasksRegisterType,
   addTasksRemoveType
 } from '../../../../type/action/addTasksType'
-import { ActionButton } from '../../../../styles/commonStyles/ActionButton'
-import { DummyButton } from '../../../atoms/button/DummyButton'
-import { SColumnContainer, SFlexContainer } from '../../../../styles/commonStyles/SelectStyle'
+import { ActionButton } from '../../../../styles/commonStyles/button/ActionButton'
+import { DummyButton } from '../../../../styles/commonStyles/button/DummyButton'
+import { SColumnContainer, SFlexContainer } from '../../../../styles/commonStyles/select/SelectStyle'
 
 type propsType = {
   fields: addTasksFieldsType

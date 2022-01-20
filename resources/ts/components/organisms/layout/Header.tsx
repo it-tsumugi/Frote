@@ -1,7 +1,7 @@
 import { VFC } from 'react'
 import { HeaderMenu } from '../../molecules/header/HeaderMenu/Container'
 import { HeaderLinks } from '../../molecules/header/HeaderLinks/Container'
-import { SAppBar } from '../../../styles/commonStyles/SAppBar'
+import { SAppBar } from '../../../styles/commonStyles/appbar/SAppBar'
 
 export const Header: VFC = () => {
   return (

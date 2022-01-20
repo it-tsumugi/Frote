@@ -1,9 +1,9 @@
 import { VFC } from 'react'
 import styled from 'styled-components'
 import { DefaultTextField } from '../../atoms/form/DefaultTextField'
-import { FormCard } from '../../../styles/commonStyles/FormCard'
-import { ActionButton } from '../../../styles/commonStyles/ActionButton'
-import { SText, STitle } from '../../../styles/commonStyles/TextStyle'
+import { FormCard } from '../../../styles/commonStyles/card/FormCard'
+import { ActionButton } from '../../../styles/commonStyles/button/ActionButton'
+import { SText, STitle } from '../../../styles/commonStyles/text/TextStyle'
 import { loginPropsType } from '../../../type/action/loginType'
 
 type propsType = {

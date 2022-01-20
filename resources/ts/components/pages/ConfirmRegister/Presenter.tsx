@@ -1,7 +1,7 @@
 import { VFC } from 'react'
 import styled from 'styled-components'
-import { NavButton } from '../../../styles/commonStyles/NavButton'
-import { SText, STitle } from '../../../styles/commonStyles/TextStyle'
+import { NavButton } from '../../../styles/commonStyles/button/NavButton'
+import { SText, STitle } from '../../../styles/commonStyles/text/TextStyle'
 import { path } from '../../../constant/path'
 
 export const PConfirmRegister: VFC = () => {
