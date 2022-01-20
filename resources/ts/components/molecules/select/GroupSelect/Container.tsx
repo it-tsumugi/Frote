@@ -1,6 +1,5 @@
 import { VFC } from 'react'
 import { useRecoilState, useRecoilValue } from 'recoil'
-import { useGetGroupLists } from '../../../../hooks/useGetGroupLists'
 import { useGetGroup } from '../../../../hooks/useGetGroup'
 import { booleanState, groupListsState, stringState } from '../../../../state/atom'
 import { booleanStateKey, stringStateKey } from '../../../../constant/stateKey'
@@ -17,7 +16,6 @@ export const GroupSelect: VFC<propsType> = ({ task_list_id }) => {
   const onChange = (e: React.ChangeEvent<HTMLSelectElement>) => setGroup(String(e.target.value))
 
   useGetGroup(task_list_id, 'task_list')
-  useGetGroupLists()
 
   return <PGroupSelect isComplete={isComplete} group={group} groupLists={groupLists} onChange={onChange} />
 }

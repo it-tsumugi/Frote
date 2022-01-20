@@ -13,7 +13,7 @@ export const fetchGroupList = async (props: propsType) => {
   try {
     const res = await axios.get('/api/read/grouplist')
     if (res.data.result) {
-      console.log('DeleteGroupButton:データ取得に成功しました')
+      console.log('fetchGroupList:データ取得に成功しました')
       dbData = res.data.data
       setGroupList(dbData)
       //groupの初期値の設定
