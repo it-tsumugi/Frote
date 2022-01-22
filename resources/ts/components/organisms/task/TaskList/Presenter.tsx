@@ -30,7 +30,7 @@ export const PTaskList: VFC<propsType> = ({ taskList, priority, isDisplay, isDel
             })
             .filter((task, index) => index > 0)}
         </SHiddenDetail>
-        <TaskListButtonArea taskList={taskList} isChecked={isDisplay} setIsChecked={setIsDisplay} />
+        <TaskListButtonArea taskList={taskList} isDisplay={isDisplay} setIsDisplay={setIsDisplay} />
       </STaskListContainer>
     </SComponetContainer>
   )

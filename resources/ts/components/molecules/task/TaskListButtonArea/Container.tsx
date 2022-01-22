@@ -6,19 +6,19 @@ import { PTaskListButtonArea } from './Presenter'
 
 type propsType = {
   taskList: taskListType
-  isChecked: boolean
-  setIsChecked: React.Dispatch<React.SetStateAction<boolean>>
+  isDisplay: boolean
+  setIsDisplay: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export const TaskListButtonArea: VFC<propsType> = ({ taskList, isChecked, setIsChecked }) => {
+export const TaskListButtonArea: VFC<propsType> = ({ taskList, isDisplay, setIsDisplay }) => {
   const { getAllTaskLists } = useGetActions()
   const deleteHandler = () => deleteTaskList({ getAllTaskLists, task_list_id: taskList.task_list_id })
-  const toggleHandler = () => setIsChecked(!isChecked)
+  const toggleHandler = () => setIsDisplay(!isDisplay)
 
   return (
     <PTaskListButtonArea
       taskList={taskList}
-      isDisplay={isChecked}
+      isDisplay={isDisplay}
       deleteHandler={deleteHandler}
       toggleHandler={toggleHandler}
     />

@@ -10,12 +10,11 @@ export const authApi = async (props: propsType) => {
 
   try {
     const res = await axios.get('/api/auth')
-    const isLogin: boolean = res.data.isLogin
+    const isLogin = res.data.isLogin
     setIsLogin(isLogin)
-    console.log('useAuth:ログイン情報を取得しisLoginセットしました')
     return isLogin
-  } catch (error) {
-    console.log('useAuth:エラー')
+  } catch (err) {
+    console.log(err)
     setIsLogin(false)
     return false
   }

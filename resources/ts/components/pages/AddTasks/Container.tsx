@@ -1,4 +1,4 @@
-import { useState, VFC } from 'react'
+import { VFC } from 'react'
 import { useFieldArray, useForm } from 'react-hook-form'
 import { useParams } from 'react-router'
 import { addTasksFormDataType } from '../../../type/action/addTasksType'
@@ -8,7 +8,6 @@ import { PAddTasks } from './Presenter'
 export const AddTasks: VFC = () => {
   const { id } = useParams<{ id: string }>()
   const task_list_id = Number(id)
-  const [isComplete, setIsComplete] = useState(false)
   const { addTasks } = useGetActions()
   const { control, register, handleSubmit } = useForm<addTasksFormDataType>({
     defaultValues: {
@@ -19,10 +18,7 @@ export const AddTasks: VFC = () => {
     control,
     name: 'tasks'
   })
-  const onClick = () => {
-    setIsComplete(true)
-  }
-  const onSubmit = handleSubmit((data, e) => addTasks({ e, data, isComplete, task_list_id, setIsComplete }))
+  const onSubmit = handleSubmit((data, e) => addTasks({ e, data, task_list_id }))
 
   return (
     <PAddTasks
@@ -32,7 +28,6 @@ export const AddTasks: VFC = () => {
       remove={remove}
       insert={insert}
       register={register}
-      onClick={onClick}
     />
   )
 }

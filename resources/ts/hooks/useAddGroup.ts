@@ -1,6 +1,6 @@
 import { useHistory } from 'react-router'
 import { addGroupApi } from '../api/addGroupApi'
-import { useGetActions } from './useGetActions'
+import { useGetGroupList } from './useGetGroupList'
 
 type addGroupPropsType = {
   e: React.FormEvent<HTMLFormElement>
@@ -10,7 +10,7 @@ type addGroupPropsType = {
 
 export const useAddGroup = () => {
   const history = useHistory()
-  const { getGroupList } = useGetActions()
+  const { getGroupList } = useGetGroupList()
 
   const addGroup = async (props: addGroupPropsType) => {
     const { e, checkIsSuccess, group } = props

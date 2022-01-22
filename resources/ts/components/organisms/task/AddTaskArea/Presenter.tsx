@@ -62,6 +62,7 @@ export const PAddTaskArea: VFC<propsType> = ({ fields, append, remove, insert, r
         </div>
       ))}
       <ActionButton
+        type="button"
         onClick={() => {
           if (fields.length < 20) append({})
           else window.alert('リストが持てるタスクは２０個までです')

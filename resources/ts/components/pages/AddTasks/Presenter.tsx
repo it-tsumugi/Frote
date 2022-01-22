@@ -19,19 +19,16 @@ type propsType = {
   remove: addTasksRemoveType
   insert: addTasksInsertType
   register: addTasksRegisterType
-  onClick: () => void
 }
 
-export const PAddTasks: VFC<propsType> = ({ onSubmit, fields, append, remove, insert, register, onClick }) => {
+export const PAddTasks: VFC<propsType> = ({ onSubmit, fields, append, remove, insert, register }) => {
   return (
     <>
       <SActionText>タスクを追加してください</SActionText>
       <FormCard>
         <SForm onSubmit={onSubmit}>
           <AddTaskArea fields={fields} append={append} remove={remove} insert={insert} register={register} />
-          <ActionButton type="submit" onClick={onClick}>
-            決定
-          </ActionButton>
+          <ActionButton type="submit">決定</ActionButton>
         </SForm>
       </FormCard>
     </>

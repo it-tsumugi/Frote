@@ -1,8 +1,16 @@
 import axios from 'axios'
-import { addTasksApiPropsType } from '../type/action/addTasksType'
+import { tasksType } from '../type/action/addTasksType'
+import * as H from 'history'
+
+type addTasksApiPropsType = {
+  task_list_id: number
+  tasks: tasksType
+  history: H.History
+  getAllTaskLists: () => Promise<void>
+}
 
 export const addTasksApi = async (props: addTasksApiPropsType) => {
-  const { task_list_id, tasks, history, setIsComplete, getAllTaskLists } = props
+  const { task_list_id, tasks, history, getAllTaskLists } = props
 
   try {
     const res = await axios.post('/api/add/tasks', {
@@ -15,7 +23,6 @@ export const addTasksApi = async (props: addTasksApiPropsType) => {
       history.push({ pathname: '/home' })
     } else {
       window.alert('すべてのタスクは１文字以上３０文字以下である必要があります')
-      setIsComplete(false)
     }
   } catch (err) {
     console.log(err)
