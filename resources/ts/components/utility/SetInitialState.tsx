@@ -22,6 +22,8 @@ export const SetInitialState: VFC<propsType> = ({ children }) => {
         getAllTasklists2().then(() => {
           setIsComplete(true)
         })
+      } else {
+        setIsComplete(true)
       }
     })
   }
