@@ -2,7 +2,8 @@ export const booleanStateKey = {
   isGetGroupLists: 'isGetGroupLists',
   isGetGroupList: 'isGetGroupList',
   isLogin: 'isLogin',
-  isComplete: 'isComplete'
+  isComplete: 'isComplete',
+  isLoading: 'isLoading'
 }
 
 export const stringStateKey = {

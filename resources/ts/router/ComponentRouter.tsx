@@ -24,117 +24,240 @@ import { Help } from '../components/pages/Help/Container'
 import { path } from '../constant/path'
 import { Home } from '../components/pages/Home/Container'
 import { Loading } from '../components/utility/Loading'
+import { useRecoilValue } from 'recoil'
+import { booleanState } from '../state/atom'
+import { booleanStateKey } from '../constant/stateKey'
+
+const NonLoadingRoute: VFC = () => {
+  return (
+    <>
+      <Route exact path={path.top}>
+        <NavLessLayout>
+          <Top />
+        </NavLessLayout>
+      </Route>
+      <Route path={path.usage}>
+        <NavLessLayout>
+          <Usage />
+        </NavLessLayout>
+      </Route>
+      <Route path={path.help}>
+        <NavLessLayout>
+          <Help />
+        </NavLessLayout>
+      </Route>
+
+      <GuestRoute path={path.login}>
+        <NavLessLayout>
+          <Login />
+        </NavLessLayout>
+      </GuestRoute>
+      <GuestRoute path={path.register}>
+        <NavLessLayout>
+          <Register />
+        </NavLessLayout>
+      </GuestRoute>
+      <GuestRoute path={path.confirmRegister}>
+        <NavLessLayout>
+          <ConfirmRegister />
+        </NavLessLayout>
+      </GuestRoute>
+      <GuestRoute path={path.confirmRegister}>
+        <NavLessLayout>
+          <ConfirmRegister />
+        </NavLessLayout>
+      </GuestRoute>
+      <GuestRoute path={path.loading}>
+        <Loading />
+      </GuestRoute>
+
+      <AuthRoute path={path.home}>
+        <NavLayout>
+          <Home />
+        </NavLayout>
+      </AuthRoute>
+      <AuthRoute path={path.groupDisplay}>
+        <NavLayout>
+          <GroupDisplay />
+        </NavLayout>
+      </AuthRoute>
+      <AuthRoute path={path.impDisplay}>
+        <NavLayout>
+          <ImpDisplay />
+        </NavLayout>
+      </AuthRoute>
+      <AuthRoute path={path.urgDisplay}>
+        <NavLayout>
+          <UrgDisplay />
+        </NavLayout>
+      </AuthRoute>
+      <AuthRoute path={path.group}>
+        <NavLayout>
+          <Group />
+        </NavLayout>
+      </AuthRoute>
+
+      <AuthRoute path={path.addGroup}>
+        <NavLayout>
+          <AddGroup />
+        </NavLayout>
+      </AuthRoute>
+      <AuthRoute path={'/:id' + path.addTasks}>
+        <NavLayout>
+          <AddTasks />
+        </NavLayout>
+      </AuthRoute>
+      <AuthRoute path={path.addTaskList}>
+        <NavLayout>
+          <AddTaskList />
+        </NavLayout>
+      </AuthRoute>
+      <AuthRoute path={'/:id' + path.editTask}>
+        <NavLayout>
+          <EditTask />
+        </NavLayout>
+      </AuthRoute>
+      <AuthRoute path={'/:id' + path.editTaskList}>
+        <NavLayout>
+          <EditSelectParams />
+        </NavLayout>
+      </AuthRoute>
+      <AuthRoute path={'/:id' + path.editGroup}>
+        <NavLayout>
+          <EditGroup />
+        </NavLayout>
+      </AuthRoute>
+      <AuthRoute path={'/:id' + path.insertTask}>
+        <NavLayout>
+          <InsertTask />
+        </NavLayout>
+      </AuthRoute>
+
+      <Route path="*">
+        <Redirect to={{ pathname: path.top }} />
+      </Route>
+    </>
+  )
+}
 
 export const ComponentRouter: VFC = () => {
+  const isLoading = useRecoilValue(booleanState(booleanStateKey.isLoading))
+
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route exact path={path.top}>
-          <NavLessLayout>
-            <Top />
-          </NavLessLayout>
-        </Route>
-        <Route path={path.usage}>
-          <NavLessLayout>
-            <Usage />
-          </NavLessLayout>
-        </Route>
-        <Route path={path.help}>
-          <NavLessLayout>
-            <Help />
-          </NavLessLayout>
-        </Route>
+    <>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <BrowserRouter>
+          <Switch>
+            <Route exact path={path.top}>
+              <NavLessLayout>
+                <Top />
+              </NavLessLayout>
+            </Route>
+            <Route path={path.usage}>
+              <NavLessLayout>
+                <Usage />
+              </NavLessLayout>
+            </Route>
+            <Route path={path.help}>
+              <NavLessLayout>
+                <Help />
+              </NavLessLayout>
+            </Route>
 
-        <GuestRoute path={path.login}>
-          <NavLessLayout>
-            <Login />
-          </NavLessLayout>
-        </GuestRoute>
-        <GuestRoute path={path.register}>
-          <NavLessLayout>
-            <Register />
-          </NavLessLayout>
-        </GuestRoute>
-        <GuestRoute path={path.confirmRegister}>
-          <NavLessLayout>
-            <ConfirmRegister />
-          </NavLessLayout>
-        </GuestRoute>
-        <GuestRoute path={path.confirmRegister}>
-          <NavLessLayout>
-            <ConfirmRegister />
-          </NavLessLayout>
-        </GuestRoute>
-        <GuestRoute path={path.loading}>
-          <Loading />
-        </GuestRoute>
+            <GuestRoute path={path.login}>
+              <NavLessLayout>
+                <Login />
+              </NavLessLayout>
+            </GuestRoute>
+            <GuestRoute path={path.register}>
+              <NavLessLayout>
+                <Register />
+              </NavLessLayout>
+            </GuestRoute>
+            <GuestRoute path={path.confirmRegister}>
+              <NavLessLayout>
+                <ConfirmRegister />
+              </NavLessLayout>
+            </GuestRoute>
+            <GuestRoute path={path.confirmRegister}>
+              <NavLessLayout>
+                <ConfirmRegister />
+              </NavLessLayout>
+            </GuestRoute>
+            <GuestRoute path={path.loading}>
+              <Loading />
+            </GuestRoute>
 
-        <AuthRoute path={path.home}>
-          <NavLayout>
-            <Home />
-          </NavLayout>
-        </AuthRoute>
-        <AuthRoute path={path.groupDisplay}>
-          <NavLayout>
-            <GroupDisplay />
-          </NavLayout>
-        </AuthRoute>
-        <AuthRoute path={path.impDisplay}>
-          <NavLayout>
-            <ImpDisplay />
-          </NavLayout>
-        </AuthRoute>
-        <AuthRoute path={path.urgDisplay}>
-          <NavLayout>
-            <UrgDisplay />
-          </NavLayout>
-        </AuthRoute>
-        <AuthRoute path={path.group}>
-          <NavLayout>
-            <Group />
-          </NavLayout>
-        </AuthRoute>
+            <AuthRoute path={path.home}>
+              <NavLayout>
+                <Home />
+              </NavLayout>
+            </AuthRoute>
+            <AuthRoute path={path.groupDisplay}>
+              <NavLayout>
+                <GroupDisplay />
+              </NavLayout>
+            </AuthRoute>
+            <AuthRoute path={path.impDisplay}>
+              <NavLayout>
+                <ImpDisplay />
+              </NavLayout>
+            </AuthRoute>
+            <AuthRoute path={path.urgDisplay}>
+              <NavLayout>
+                <UrgDisplay />
+              </NavLayout>
+            </AuthRoute>
+            <AuthRoute path={path.group}>
+              <NavLayout>
+                <Group />
+              </NavLayout>
+            </AuthRoute>
 
-        <AuthRoute path={path.addGroup}>
-          <NavLayout>
-            <AddGroup />
-          </NavLayout>
-        </AuthRoute>
-        <AuthRoute path={'/:id' + path.addTasks}>
-          <NavLayout>
-            <AddTasks />
-          </NavLayout>
-        </AuthRoute>
-        <AuthRoute path={path.addTaskList}>
-          <NavLayout>
-            <AddTaskList />
-          </NavLayout>
-        </AuthRoute>
-        <AuthRoute path={'/:id' + path.editTask}>
-          <NavLayout>
-            <EditTask />
-          </NavLayout>
-        </AuthRoute>
-        <AuthRoute path={'/:id' + path.editTaskList}>
-          <NavLayout>
-            <EditSelectParams />
-          </NavLayout>
-        </AuthRoute>
-        <AuthRoute path={'/:id' + path.editGroup}>
-          <NavLayout>
-            <EditGroup />
-          </NavLayout>
-        </AuthRoute>
-        <AuthRoute path={'/:id' + path.insertTask}>
-          <NavLayout>
-            <InsertTask />
-          </NavLayout>
-        </AuthRoute>
+            <AuthRoute path={path.addGroup}>
+              <NavLayout>
+                <AddGroup />
+              </NavLayout>
+            </AuthRoute>
+            <AuthRoute path={'/:id' + path.addTasks}>
+              <NavLayout>
+                <AddTasks />
+              </NavLayout>
+            </AuthRoute>
+            <AuthRoute path={path.addTaskList}>
+              <NavLayout>
+                <AddTaskList />
+              </NavLayout>
+            </AuthRoute>
+            <AuthRoute path={'/:id' + path.editTask}>
+              <NavLayout>
+                <EditTask />
+              </NavLayout>
+            </AuthRoute>
+            <AuthRoute path={'/:id' + path.editTaskList}>
+              <NavLayout>
+                <EditSelectParams />
+              </NavLayout>
+            </AuthRoute>
+            <AuthRoute path={'/:id' + path.editGroup}>
+              <NavLayout>
+                <EditGroup />
+              </NavLayout>
+            </AuthRoute>
+            <AuthRoute path={'/:id' + path.insertTask}>
+              <NavLayout>
+                <InsertTask />
+              </NavLayout>
+            </AuthRoute>
 
-        <Route path="*">
-          <Redirect to={{ pathname: path.top }} />
-        </Route>
-      </Switch>
-    </BrowserRouter>
+            <Route path="*">
+              <Redirect to={{ pathname: path.top }} />
+            </Route>
+          </Switch>
+        </BrowserRouter>
+      )}
+    </>
   )
 }

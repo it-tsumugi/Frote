@@ -15,10 +15,9 @@ use App\Http\Controllers\Api\FunctionController;
 
 class GetGroupTaskListsController extends Controller
 {
-    public function __invoke(Request $request)
+    public static function getGroupTaskLists(Request $request)
     {
         $id = Auth::id();
-        
         $isGroup = DB::table("groups")
                 ->select("groups.id")
                 ->where("user_id",$id)

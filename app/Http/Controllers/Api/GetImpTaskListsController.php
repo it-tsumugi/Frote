@@ -22,7 +22,7 @@ class GetImpTaskListsController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function __invoke(Request $request)
+    public static function getImpTaskLists(Request $request)
     {
         $impData = $request->impData;
         for($i=0;$i<count($impData);$i++){

@@ -5,6 +5,7 @@ import { booleanStateKey } from '../../constant/stateKey'
 import { useGetActions } from '../../hooks/useGetActions'
 import { useEffect } from 'react'
 import { useRecoilState } from 'recoil'
+import { useGetAllTaskLists2 } from '../../hooks/useGetAllTasklists2'
 
 type propsType = {
   children: React.ReactNode
@@ -13,20 +14,36 @@ type propsType = {
 export const SetInitialState: VFC<propsType> = ({ children }) => {
   const [isComplete, setIsComplete] = useRecoilState(booleanState(booleanStateKey.isComplete))
   const { auth, setAllInitialData } = useGetActions()
+  const { getAllTasklists2 } = useGetAllTaskLists2()
 
-  useEffect(() => {
-    const promise = auth()
-    promise.then((isLogin) => {
+  const test = async () => {
+    auth().then((isLogin) => {
       if (isLogin) {
-        const promiseArray = setAllInitialData()
-        Promise.all(promiseArray).then(() => {
+        getAllTasklists2().then(() => {
           setIsComplete(true)
         })
-      } else {
-        setIsComplete(true)
       }
     })
+  }
+
+  useEffect(() => {
+    test()
   }, [])
+  // useEffect(() => {
+  //   const promise = auth()
+  //   promise.then((isLogin) => {
+  //     if (isLogin) {
+  //       // const promiseArray = setAllInitialData()
+  //       const promise = getAllTasklists2
+  //       const promiseArray = [promise]
+  //       Promise.all(promiseArray).then(() => {
+  //         setIsComplete(true)
+  //       })
+  //     } else {
+  //       setIsComplete(true)
+  //     }
+  //   })
+  // }, [])
 
   return <>{isComplete ? children : <Loading />}</>
 }

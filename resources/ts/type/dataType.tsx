@@ -45,3 +45,10 @@ export type helpQustionDataType = {
   qustion: string
   answer: string
 }
+
+export type allTaskListsType = {
+  groupTaskLists: groupTaskListsType
+  impTaskLists: impTaskListsType
+  urgTaskLists: urgTaskListsType
+  taskLists: taskListType[]
+}

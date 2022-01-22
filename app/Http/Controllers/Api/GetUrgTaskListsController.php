@@ -22,7 +22,7 @@ class GetUrgTaskListsController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function __invoke(Request $request)
+    public static function getUrgTaskLists(Request $request)
     {
         $urgData = $request->urgData;
         for($i=0;$i<count($urgData);$i++){
