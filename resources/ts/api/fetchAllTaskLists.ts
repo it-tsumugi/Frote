@@ -1,13 +1,9 @@
 import axios from 'axios'
-import { allTaskListsType, impTaskListsType, taskListType } from '../type/dataType'
+import { allTaskListsType } from '../type/dataType'
 import { impData } from '../constant/impData'
 import { urgData } from '../constant/urgData'
 
-type propsType = {}
-
-export const fetchAllTaskLists = async (props: propsType) => {
-  const {} = props
-
+export const fetchAllTaskLists = async () => {
   let dbData: allTaskListsType = {
     groupTaskLists: [],
     impTaskLists: [],

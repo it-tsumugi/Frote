@@ -9,28 +9,28 @@ type propsType = {
   taskList: taskListType
   priority: number
   isDelete: boolean
-  isChecked: boolean
-  setIsChecked: React.Dispatch<React.SetStateAction<boolean>>
+  isDisplay: boolean
+  setIsDisplay: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 type SHiddenDetailPropsType = {
   isChecked: boolean
 }
 
-export const PTaskList: VFC<propsType> = ({ taskList, priority, isChecked, isDelete, setIsChecked }) => {
+export const PTaskList: VFC<propsType> = ({ taskList, priority, isDisplay, isDelete, setIsDisplay }) => {
   return (
     <SComponetContainer>
       <STaskListContainer>
         <SText>{'優先度:' + (priority + 1) + '　'}</SText>
         <Task task={taskList.task[0]} task_list_id={taskList.task_list_id} isDelete={isDelete} index={0} />
-        <SHiddenDetail isChecked={isChecked}>
+        <SHiddenDetail isChecked={isDisplay}>
           {taskList.task
             .map((task, index) => {
               return <Task task={task} task_list_id={taskList.task_list_id} isDelete index={index} key={task.task_id} />
             })
             .filter((task, index) => index > 0)}
         </SHiddenDetail>
-        <TaskListButtonArea taskList={taskList} isChecked={isChecked} setIsChecked={setIsChecked} />
+        <TaskListButtonArea taskList={taskList} isChecked={isDisplay} setIsChecked={setIsDisplay} />
       </STaskListContainer>
     </SComponetContainer>
   )

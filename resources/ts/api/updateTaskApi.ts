@@ -11,12 +11,9 @@ export const updateTaskApi = async (props: updateTaskApiPropsType) => {
       task
     })
     if (res.data.result) {
-      console.log('updateTask:タスクの更新に成功')
-      const promiseArray = getAllTaskLists()
-      Promise.all(promiseArray).then(() => {
-        window.alert('グループを更新しました')
-        history.push({ pathname: path.home })
-      })
+      await getAllTaskLists()
+      window.alert('グループを更新しました')
+      history.push({ pathname: path.home })
     } else {
       console.log('updateTask:タスクの追加に失敗')
     }

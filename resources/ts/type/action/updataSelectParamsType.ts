@@ -6,7 +6,7 @@ export type updateSelectParamsApiPropsType = {
   imp: number
   urg: number
   history: H.History
-  getAllTaskLists: () => Promise<void>[]
+  getAllTaskLists: () => Promise<void>
 }
 
 export type updateSelectParamsPropsType = {

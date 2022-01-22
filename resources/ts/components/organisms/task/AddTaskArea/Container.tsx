@@ -16,8 +16,6 @@ type propsType = {
   register: addTasksRegisterType
 }
 
-export const AddTaskArea: VFC<propsType> = (props) => {
-  const { fields, append, remove, insert, register } = props
-
+export const AddTaskArea: VFC<propsType> = ({ fields, append, remove, insert, register }) => {
   return <PAddTaskArea fields={fields} append={append} remove={remove} insert={insert} register={register} />
 }

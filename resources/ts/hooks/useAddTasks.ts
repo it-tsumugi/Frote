@@ -13,8 +13,7 @@ export const useAddTasks = () => {
     e?.preventDefault()
     if (isComplete) {
       addTasksApi({ task_list_id, tasks, history, setIsComplete, getAllTaskLists })
-      const promiseArray = getAllTaskLists()
-      Promise.all(promiseArray)
+      await getAllTaskLists()
     }
   }
 

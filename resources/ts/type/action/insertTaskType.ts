@@ -4,7 +4,7 @@ export type insertTaskApiPropsType = {
   task: string
   task_id: number
   history: H.History
-  getAllTaskLists: () => Promise<void>[]
+  getAllTaskLists: () => Promise<void>
 }
 
 export type insertTaskPropsType = {

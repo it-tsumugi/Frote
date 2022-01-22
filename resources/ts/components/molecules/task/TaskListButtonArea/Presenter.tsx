@@ -8,13 +8,13 @@ import { HiddenDefaultButton } from '../../../../styles/commonStyles/button/Hidd
 
 type propsType = {
   taskList: taskListType
-  isChecked: boolean
+  isDisplay: boolean
   deleteHandler: () => Promise<void>
   toggleHandler: () => void
 }
 
-export const PTaskListButtonArea: VFC<propsType> = ({ taskList, isChecked, deleteHandler, toggleHandler }) => {
-  const displayText = isChecked ? '閉じる' : 'すべて表示'
+export const PTaskListButtonArea: VFC<propsType> = ({ taskList, isDisplay, deleteHandler, toggleHandler }) => {
+  const displayText = isDisplay ? '閉じる' : 'すべて表示'
   const editTaskListPath = `/${taskList.task_list_id}` + path.editTaskList
   const addTasksPath = `/${taskList.task_list_id}` + path.addTasks
 

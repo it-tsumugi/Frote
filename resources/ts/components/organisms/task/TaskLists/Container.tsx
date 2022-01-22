@@ -6,8 +6,6 @@ type propsType = {
   taskLists: taskListType[]
 }
 
-export const TaskLists: VFC<propsType> = (props) => {
-  const { taskLists } = props
-
+export const TaskLists: VFC<propsType> = ({ taskLists }) => {
   return <PTaskLists taskLists={taskLists} />
 }

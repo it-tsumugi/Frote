@@ -10,11 +10,9 @@ export const addTasksApi = async (props: addTasksApiPropsType) => {
       tasks
     })
     if (res.data.result) {
-      const promiseArray = getAllTaskLists()
+      await getAllTaskLists()
       window.alert('タスクを追加しました')
-      Promise.all(promiseArray).then(() => {
-        history.push({ pathname: '/home' })
-      })
+      history.push({ pathname: '/home' })
     } else {
       window.alert('すべてのタスクは１文字以上３０文字以下である必要があります')
       setIsComplete(false)

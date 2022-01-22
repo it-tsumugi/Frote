@@ -6,7 +6,7 @@ export type addTasksApiPropsType = {
   tasks: tasksType
   history: H.History
   setIsComplete: React.Dispatch<React.SetStateAction<boolean>>
-  getAllTaskLists: () => Promise<void>[]
+  getAllTaskLists: () => Promise<void>
 }
 
 export type tasksType = {

@@ -9,15 +9,15 @@ type propsType = {
 
 export const TaskList: VFC<propsType> = ({ taskList, priority }) => {
   const isDelete = taskList.task.length !== 1
-  const [isChecked, setIsChecked] = useState(false)
+  const [isDisplay, setIsDisplay] = useState(false)
 
   return (
     <PTaskList
       taskList={taskList}
       priority={priority}
-      isChecked={isChecked}
+      isDisplay={isDisplay}
       isDelete={isDelete}
-      setIsChecked={setIsChecked}
+      setIsDisplay={setIsDisplay}
     />
   )
 }

@@ -13,12 +13,9 @@ export const updateSelectParamsApi = async (props: updateSelectParamsApiPropsTyp
       urg
     })
     if (res.data.result) {
-      console.log('updateSelectParams:セレクトパラメータの更新に成功')
-      const promiseArray = getAllTaskLists()
-      Promise.all(promiseArray).then(() => {
-        window.alert('リストを更新しました')
-        history.push(path.home)
-      })
+      await getAllTaskLists()
+      window.alert('リストを更新しました')
+      history.push(path.home)
     } else {
       window.alert('更新に失敗しました')
     }

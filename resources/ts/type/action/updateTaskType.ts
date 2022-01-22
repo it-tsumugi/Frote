@@ -4,7 +4,7 @@ export type updateTaskApiPropsType = {
   task_id: number
   task: string
   history: H.History
-  getAllTaskLists: () => Promise<void>[]
+  getAllTaskLists: () => Promise<void>
 }
 
 export type updateTaskPropsType = {

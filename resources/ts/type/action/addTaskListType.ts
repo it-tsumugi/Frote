@@ -9,7 +9,7 @@ export type addTaskListDataType = {
   urg: number
   group: string
   history: H.History
-  getAllTaskLists: () => void
+  getAllTaskLists: () => Promise<void>
 }
 
 export type addTaskListOnSubmitType = {

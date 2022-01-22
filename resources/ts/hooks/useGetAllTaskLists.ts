@@ -1,23 +1,19 @@
-import { useGetUrgTaskLists } from './useGetUrgTaskLists'
-import { useGetImpTaskLists } from './useGetImpTaskLists'
-import { useGetGroupTaskLists } from './useGetGroupTaskLists'
-import { useGetTaskLists } from './useGetTaskLists'
+import { fetchAllTaskLists } from '../api/fetchAllTaskLists'
+import { useSetRecoilState } from 'recoil'
+import { taskListsState, impTaskListsState, urgTaskListsState, groupTaskListsState } from '../state/atom'
 
 export const useGetAllTaskLists = () => {
-  const { getUrgTaskLists } = useGetUrgTaskLists()
-  const { getImpTaskLists } = useGetImpTaskLists()
-  const { getGroupTaskLists } = useGetGroupTaskLists()
-  const { getTaskLists } = useGetTaskLists()
+  const setTaskLists = useSetRecoilState(taskListsState)
+  const setImpTaskLists = useSetRecoilState(impTaskListsState)
+  const setUrgTaskLists = useSetRecoilState(urgTaskListsState)
+  const setGroupTaskLists = useSetRecoilState(groupTaskListsState)
 
-  const getAllTaskLists = () => {
-    const promise1 = getTaskLists()
-    const promise2 = getUrgTaskLists()
-    const promise3 = getImpTaskLists()
-    const promise4 = getGroupTaskLists()
-    const promiseArray = [promise1, promise2, promise3, promise4]
-
-    return promiseArray
+  const getAllTaskLists = async () => {
+    const data = await fetchAllTaskLists()
+    setTaskLists(data.taskLists)
+    setImpTaskLists(data.impTaskLists)
+    setGroupTaskLists(data.groupTaskLists)
+    setUrgTaskLists(data.urgTaskLists)
   }
-
-  return { getAllTaskLists: () => getAllTaskLists() }
+  return { getAllTaskLists: getAllTaskLists }
 }

@@ -1,23 +1,27 @@
 import axios from 'axios'
-import { addGroupApiPropsType } from '../type/action/addGroupType'
 import { path } from '../constant/path'
+import * as H from 'history'
+
+type addGroupApiPropsType = {
+  group: string
+  history: H.History
+  getGroupList: () => Promise<void>
+}
 
 export const addGroupApi = async (props: addGroupApiPropsType) => {
-  const { group, history } = props
+  const { group, history, getGroupList } = props
   try {
     const res = await axios.post('/api/add/group', {
       group
     })
     if (res.data.result) {
-      console.log('AddGroup:グループの追加に成功')
       window.alert('グループを追加しました')
+      await getGroupList()
       history.push(path.group)
     } else {
-      console.log('AddGroup:グループの追加に失敗')
       window.alert('既に同名のグループが存在します')
     }
   } catch (err) {
-    console.log('AddGroup:エラー')
     console.log(err)
   }
 }
