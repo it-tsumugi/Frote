@@ -16,7 +16,6 @@ export const fetchAllTaskLists = async () => {
       impData,
       urgData
     })
-    console.log('fetchAllTaskLists:データ取得に成功しました')
     dbData = res.data
   } catch (err) {
     console.log(err)

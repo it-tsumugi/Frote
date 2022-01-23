@@ -14,7 +14,6 @@ export const fetchGroupList = async (props: propsType) => {
   try {
     const res = await axios.get('/api/read/grouplist')
     if (res.data.result) {
-      console.log('fetchGroupList:データ取得に成功しました')
       dbData = res.data.data
       //groupの初期値の設定
       setGroup(dbData[0].group)

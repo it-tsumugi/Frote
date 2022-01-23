@@ -14,7 +14,6 @@ export const updateTaskApi = async (props: updateTaskApiPropsType) => {
     window.alert('グループを更新しました')
     history.push({ pathname: path.home })
   } catch (err) {
-    console.log('updateTask:接続に失敗')
     console.log(err)
   }
 }

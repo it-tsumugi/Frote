@@ -1,7 +1,6 @@
 import axios from 'axios'
 import { useEffect } from 'react'
 import { useSetRecoilState } from 'recoil'
-
 import { numberState } from '../state/atom'
 import { numberStateKey } from '../constant/stateKey'
 
@@ -18,10 +17,8 @@ export const useGetUrg = (id: number) => {
           task_list_id: id
         }
       })
-      console.log('useGetUrg:データ取得に成功しました')
       dbData = res.data
     } catch (err) {
-      console.log('useGetUrg:エラー')
       console.log(err)
     }
     setUrg(dbData.urgency)

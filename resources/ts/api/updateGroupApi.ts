@@ -24,7 +24,6 @@ export const updateGroupApi = async (props: updateGroupApiPropsType) => {
       window.alert('同名のグループが既に存在します')
     }
   } catch (err) {
-    console.log('updateGroup:接続に失敗')
     console.log(err)
   }
 }
