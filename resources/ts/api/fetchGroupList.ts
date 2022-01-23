@@ -16,12 +16,12 @@ export const fetchGroupList = async (props: propsType) => {
     if (res.data.result) {
       console.log('fetchGroupList:データ取得に成功しました')
       dbData = res.data.data
-      setGroupList(dbData)
       //groupの初期値の設定
       setGroup(dbData[0].group)
     } else {
       //グループが存在しない場合の処理
     }
+    setGroupList(dbData)
   } catch (err) {
     console.log(err)
     window.alert('エラーが発生しました')

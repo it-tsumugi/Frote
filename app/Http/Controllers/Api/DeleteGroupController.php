@@ -10,17 +10,12 @@ use App\Models\TaskList;
 
 class DeleteGroupController extends Controller
 {
-    /**
-     * Handle the incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function __invoke(Request $request)
     {
         $id = $request->id;
-        $isExist = TaskList::where("group_id",$id)->exists();
-        if($isExist){
+        //削除しようとしているグループを使用しているタスクがあるか確認
+        $isTaskExist = TaskList::where("group_id",$id)->exists();
+        if($isTaskExist){
             $result =false;
         }
         else {

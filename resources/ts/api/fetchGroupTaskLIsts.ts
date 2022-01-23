@@ -9,7 +9,7 @@ export const fetchGroupTaskLists = async () => {
     if (res.data.result) {
       dbData = res.data.data
     } else {
-      //グループ自体が存在しない
+      //グループ自体が存在しない場合の処理
     }
   } catch (err) {
     console.log('useGetGroupTaskLists:エラー')

@@ -1,7 +1,7 @@
 import { useHistory } from 'react-router'
 import { booleanStateKey } from '../constant/stateKey'
 import { booleanState } from '../state/atom'
-import { useRecoilState, useSetRecoilState } from 'recoil'
+import { useSetRecoilState } from 'recoil'
 import { logoutApi } from '../api/logoutApi'
 
 export const useLogout = () => {

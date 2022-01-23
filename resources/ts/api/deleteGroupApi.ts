@@ -7,7 +7,6 @@ type propsType = {
 
 export const deleteGroupApi = async (props: propsType) => {
   const { id, getGroupList } = props
-
   try {
     const res = await axios.delete('/api/delete/group', {
       data: { id: id }
@@ -19,6 +18,5 @@ export const deleteGroupApi = async (props: propsType) => {
     }
   } catch (err) {
     console.log(err)
-    window.alert('エラーが発生しました')
   }
 }
