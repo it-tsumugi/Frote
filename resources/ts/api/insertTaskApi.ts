@@ -11,17 +11,13 @@ export const insertTaskApi = async (props: insertTaskApiPropsType) => {
       task
     })
     if (res.data.result) {
-      console.log('InsertTask:タスクの挿入に成功')
-      const promiseArray = getAllTaskLists()
-      Promise.all([promiseArray]).then(() => {
-        window.alert('タスクを挿入しました')
-        history.push(path.home)
-      })
+      await getAllTaskLists()
+      window.alert('タスクを挿入しました')
+      history.push(path.home)
     } else {
-      console.log('InsertTask:エラー')
+      window.alert('エラーが発生しました')
     }
   } catch (err) {
-    console.log('InsertTask:エラー')
     console.log(err)
   }
 }

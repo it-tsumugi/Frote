@@ -10,21 +10,37 @@ type propsType = {
 }
 
 export const PGroupDisplay: VFC<propsType> = ({ groupTaskLists }) => {
-  return (
-    <>
-      {groupTaskLists.map((groupTaskLists) => {
-        return (
-          <SGroupTaskLists key={groupTaskLists.group_id}>
-            <SText>{groupTaskLists.group}</SText>
-            <TaskLists taskLists={groupTaskLists.taskLists} />
-          </SGroupTaskLists>
-        )
-      })}
-      <TaskListsButtonArea />
-    </>
-  )
+  if (groupTaskLists.length !== 0) {
+    return (
+      <>
+        {groupTaskLists.map((groupTaskLists) => {
+          return (
+            <SGroupTaskLists key={groupTaskLists.group_id}>
+              <SText>{groupTaskLists.group}</SText>
+              <TaskLists taskLists={groupTaskLists.taskLists} />
+            </SGroupTaskLists>
+          )
+        })}
+        <TaskListsButtonArea />
+      </>
+    )
+  } else {
+    return (
+      <>
+        <STextWrapper>
+          <SText>タスクは存在しません</SText>
+        </STextWrapper>
+        <TaskListsButtonArea />
+      </>
+    )
+  }
 }
 
 const SGroupTaskLists = styled.div`
   margin-top: 20px;
+`
+
+const STextWrapper = styled.div`
+  margin-top: 20px;
+  margin-left: 20px;
 `

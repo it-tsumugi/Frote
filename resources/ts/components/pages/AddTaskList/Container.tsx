@@ -1,8 +1,8 @@
-import { useState, VFC } from 'react'
+import { VFC } from 'react'
 import { useFieldArray, useForm } from 'react-hook-form'
 import { useRecoilValue } from 'recoil'
 import { numberStateKey, stringStateKey } from '../../../constant/stateKey'
-import { numberState, stringState } from '../../../state/atom'
+import { groupListsState, numberState, stringState } from '../../../state/atom'
 import { useGetActions } from '../../../hooks/useGetActions'
 import { PAddTaskList } from './Presenter'
 import { addTaskListOnSubmitType } from '../../../type/action/addTaskListType'
@@ -12,6 +12,8 @@ export const AddTaskList: VFC = () => {
   const imp = useRecoilValue(numberState(numberStateKey.imp))
   const urg = useRecoilValue(numberState(numberStateKey.urg))
   const group = useRecoilValue(stringState(stringStateKey.group))
+  const groupLists = useRecoilValue(groupListsState)
+  const isGroupExist = groupLists.length !== 0
   const { control, register, handleSubmit } = useForm<addTasksFormDataType>({
     defaultValues: {
       tasks: [{ task: '' }]
@@ -21,12 +23,11 @@ export const AddTaskList: VFC = () => {
     control,
     name: 'tasks'
   })
-  const [isComplete, setIsComplete] = useState(false)
-  const onClick = () => setIsComplete(true)
+
   const { addTaskList } = useGetActions()
   const onSubmit = (props: addTaskListOnSubmitType) => {
     const { e, data } = props
-    addTaskList({ e, data, isComplete, group, imp, urg })
+    addTaskList({ e, data, isGroupExist, group, imp, urg })
   }
 
   return (
@@ -38,7 +39,6 @@ export const AddTaskList: VFC = () => {
       remove={remove}
       insert={insert}
       register={register}
-      onClick={onClick}
     />
   )
 }

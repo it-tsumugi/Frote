@@ -7,7 +7,7 @@ import { useGetAllTaskLists } from './useGetAllTaskLists'
 type addTaskListDataType = {
   e: React.BaseSyntheticEvent<object, any, any> | undefined
   data: addTasksFormDataType
-  isComplete: boolean
+  isGroupExist: boolean
   imp: number
   urg: number
   group: string
@@ -17,15 +17,13 @@ export const useAddTaskList = () => {
   const history = useHistory()
   const { getAllTaskLists } = useGetAllTaskLists()
 
-  const addTaskList: SubmitHandler<addTaskListDataType> = async ({ e, data, isComplete, group, imp, urg }) => {
+  const addTaskList: SubmitHandler<addTaskListDataType> = async ({ e, data, isGroupExist, group, imp, urg }) => {
     const tasks = data.tasks
     e?.preventDefault()
-    if (isComplete) {
-      if (group !== '') {
-        addTaskListApi({ imp, urg, group, tasks, getAllTaskLists, history })
-      } else {
-        window.alert('グループを追加してください')
-      }
+    if (isGroupExist) {
+      addTaskListApi({ imp, urg, group, tasks, getAllTaskLists, history })
+    } else {
+      window.alert('グループを追加してください')
     }
   }
 

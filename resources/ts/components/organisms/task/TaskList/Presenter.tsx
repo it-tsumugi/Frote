@@ -14,7 +14,7 @@ type propsType = {
 }
 
 type SHiddenDetailPropsType = {
-  isChecked: boolean
+  isDisplay: boolean
 }
 
 export const PTaskList: VFC<propsType> = ({ taskList, priority, isDisplay, isDelete, setIsDisplay }) => {
@@ -23,7 +23,7 @@ export const PTaskList: VFC<propsType> = ({ taskList, priority, isDisplay, isDel
       <STaskListContainer>
         <SText>{'優先度:' + (priority + 1) + '　'}</SText>
         <Task task={taskList.task[0]} task_list_id={taskList.task_list_id} isDelete={isDelete} index={0} />
-        <SHiddenDetail isChecked={isDisplay}>
+        <SHiddenDetail isDisplay={isDisplay}>
           {taskList.task
             .map((task, index) => {
               return <Task task={task} task_list_id={taskList.task_list_id} isDelete index={index} key={task.task_id} />
@@ -50,6 +50,6 @@ const STaskListContainer = styled.div`
 const SHiddenDetail = styled.div<SHiddenDetailPropsType>`
   overflow: hidden;
   transition: 0.8s;
-  height: ${(props) => (props.isChecked ? 'auto' : 0)};
-  opacity: ${(props) => (props.isChecked ? 1 : 0)};
+  height: ${(props) => (props.isDisplay ? 'auto' : 0)};
+  opacity: ${(props) => (props.isDisplay ? 1 : 0)};
 `

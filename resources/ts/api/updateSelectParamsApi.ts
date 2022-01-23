@@ -12,13 +12,9 @@ export const updateSelectParamsApi = async (props: updateSelectParamsApiPropsTyp
       imp,
       urg
     })
-    if (res.data.result) {
-      await getAllTaskLists()
-      window.alert('リストを更新しました')
-      history.push(path.home)
-    } else {
-      window.alert('更新に失敗しました')
-    }
+    await getAllTaskLists()
+    window.alert('リストを更新しました')
+    history.push(path.home)
   } catch (err) {
     console.log(err)
   }

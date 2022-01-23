@@ -14,11 +14,9 @@ export const registerUserInfoApi = async (props: registerUserInfoApiPropsType) =
         password
       })
       if (res.data.result) {
-        console.log('registerUserName:登録成功')
         window.alert(res.data.message)
         history.push(path.login)
       } else {
-        console.log('registerUserName:登録失敗')
         window.alert(res.data.message)
       }
     } catch (err) {

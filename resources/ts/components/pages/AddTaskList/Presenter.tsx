@@ -28,19 +28,9 @@ type propsType = {
   remove: addTasksRemoveType
   insert: addTasksInsertType
   register: addTasksRegisterType
-  onClick: () => void
 }
 
-export const PAddTaskList: VFC<propsType> = ({
-  handleSubmit,
-  onSubmit,
-  fields,
-  append,
-  remove,
-  insert,
-  register,
-  onClick
-}) => {
+export const PAddTaskList: VFC<propsType> = ({ handleSubmit, onSubmit, fields, append, remove, insert, register }) => {
   return (
     <>
       <SActionText>リストの内容を入力してください</SActionText>
@@ -52,9 +42,7 @@ export const PAddTaskList: VFC<propsType> = ({
             <UrgSelect task_list_id={-1} />
             <GroupSelect task_list_id={-1} />
           </div>
-          <ActionButton type="submit" onClick={onClick}>
-            決定
-          </ActionButton>
+          <ActionButton type="submit">決定</ActionButton>
         </SForm>
       </FormCard>
       <NavButton to={path.addGroup}>グループの追加へ</NavButton>

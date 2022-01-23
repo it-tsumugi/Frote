@@ -18,6 +18,7 @@ import { useLogout } from './useLogout'
 import { useGetGroupList } from './useGetGroupList'
 import { useDeleteGroup } from './useDeleteGroup'
 import { useAddTaskList } from './useAddTaskList'
+import { useDeleteTaskList } from './useDeleteTaskList'
 
 export const useGetActions = () => {
   const { getTaskLists } = useGetTaskLists()
@@ -40,6 +41,7 @@ export const useGetActions = () => {
   const { getGroupList } = useGetGroupList()
   const { deleteGroup } = useDeleteGroup()
   const { addTaskList } = useAddTaskList()
+  const { deleteTaskList } = useDeleteTaskList()
 
   return {
     getTaskLists,
@@ -61,6 +63,7 @@ export const useGetActions = () => {
     logout,
     getGroupList,
     deleteGroup,
-    addTaskList
+    addTaskList,
+    deleteTaskList
   }
 }

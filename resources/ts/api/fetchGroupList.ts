@@ -10,6 +10,7 @@ type propsType = {
 export const fetchGroupList = async (props: propsType) => {
   const { setGroup, setGroupList } = props
   let dbData: groupListType[] = []
+
   try {
     const res = await axios.get('/api/read/grouplist')
     if (res.data.result) {
@@ -19,7 +20,7 @@ export const fetchGroupList = async (props: propsType) => {
       //groupの初期値の設定
       setGroup(dbData[0].group)
     } else {
-      window.alert('データの取得に失敗しました')
+      //グループが存在しない場合の処理
     }
   } catch (err) {
     console.log(err)

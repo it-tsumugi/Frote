@@ -15,7 +15,6 @@ export const loginApi = async (props: propsType) => {
   const { email, password, setIsLogin, history, setAllInitialData } = props
 
   try {
-    // ログイン時にCSRFトークンを初期化
     await axios.get('/sanctum/csrf-cookie')
     try {
       const res = await axios.post('/api/login', {

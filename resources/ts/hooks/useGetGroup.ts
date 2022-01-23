@@ -19,10 +19,8 @@ export const useGetGroup = (id: number, key: 'group' | 'task_list') => {
           key: key
         }
       })
-      console.log('useGetGroup:データ取得に成功しました')
       dbData = res.data.data
     } catch (err) {
-      console.log('useGetGroup:エラー')
       console.log(err)
     }
     setGroup(dbData.group)

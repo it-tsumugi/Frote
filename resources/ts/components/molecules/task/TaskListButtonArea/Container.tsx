@@ -1,6 +1,5 @@
 import { VFC } from 'react'
 import { taskListType } from '../../../../type/dataType'
-import { deleteTaskList } from '../../../../api/deleteTaskList'
 import { useGetActions } from '../../../../hooks/useGetActions'
 import { PTaskListButtonArea } from './Presenter'
 
@@ -11,8 +10,8 @@ type propsType = {
 }
 
 export const TaskListButtonArea: VFC<propsType> = ({ taskList, isDisplay, setIsDisplay }) => {
-  const { getAllTaskLists } = useGetActions()
-  const deleteHandler = () => deleteTaskList({ getAllTaskLists, task_list_id: taskList.task_list_id })
+  const { deleteTaskList } = useGetActions()
+  const deleteHandler = () => deleteTaskList({ task_list_id: taskList.task_list_id })
   const toggleHandler = () => setIsDisplay(!isDisplay)
 
   return (

@@ -10,13 +10,9 @@ export const updateTaskApi = async (props: updateTaskApiPropsType) => {
       task_id,
       task
     })
-    if (res.data.result) {
-      await getAllTaskLists()
-      window.alert('グループを更新しました')
-      history.push({ pathname: path.home })
-    } else {
-      console.log('updateTask:タスクの追加に失敗')
-    }
+    await getAllTaskLists()
+    window.alert('グループを更新しました')
+    history.push({ pathname: path.home })
   } catch (err) {
     console.log('updateTask:接続に失敗')
     console.log(err)

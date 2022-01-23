@@ -9,12 +9,6 @@ use Illuminate\Support\Facades\Log;
 
 class UpdateSelectParamsController extends Controller
 {
-    /**
-     * Handle the incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function __invoke(Request $request)
     {
         $group_id = DB::table("groups")
@@ -28,7 +22,6 @@ class UpdateSelectParamsController extends Controller
             "urgency"=>$request->urg,
             "group_id"=>$group_id
         ]);
-        $result = true;
-        return response()->json(["result"=>$result]);
+        return response()->json();
     }
 }
