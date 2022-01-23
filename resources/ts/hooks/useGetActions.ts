@@ -19,6 +19,8 @@ import { useGetGroupList } from './useGetGroupList'
 import { useDeleteGroup } from './useDeleteGroup'
 import { useAddTaskList } from './useAddTaskList'
 import { useDeleteTaskList } from './useDeleteTaskList'
+import { useGetGroup } from './useGetGroup'
+import { useGetSelectParams } from './useGetSelectParams'
 
 export const useGetActions = () => {
   const { getTaskLists } = useGetTaskLists()
@@ -42,6 +44,8 @@ export const useGetActions = () => {
   const { deleteGroup } = useDeleteGroup()
   const { addTaskList } = useAddTaskList()
   const { deleteTaskList } = useDeleteTaskList()
+  const { getGroup } = useGetGroup()
+  const { getSelectParams } = useGetSelectParams()
 
   return {
     getTaskLists,
@@ -64,6 +68,8 @@ export const useGetActions = () => {
     getGroupList,
     deleteGroup,
     addTaskList,
-    deleteTaskList
+    deleteTaskList,
+    getGroup,
+    getSelectParams
   }
 }

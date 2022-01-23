@@ -28,6 +28,7 @@ use App\Http\Controllers\Api\GetGroupTaskListsController;
 use App\Http\Controllers\Api\GetImpTaskListsController;
 use App\Http\Controllers\Api\GetUrgTaskListsController;
 use App\Http\Controllers\Api\GetAllTaskListsController;
+use App\Http\Controllers\Api\GetSelectParamsController;
 
 Route::get('/logout', LogoutController::class);
 Route::get('/auth', CheckIsLoginController::class);
@@ -46,6 +47,7 @@ Route::middleware('auth:sanctum')->get('/read/urg',GetUrgController::class);
 Route::middleware('auth:sanctum')->post('/read/imp-tasklists',[GetImpTaskListsController::class,"getImpTaskLists"]);
 Route::middleware('auth:sanctum')->post('/read/urg-tasklists',[GetUrgTaskListsController::class,"getUrgTaskLists"]);
 Route::middleware('auth:sanctum')->post('/read/all-tasklists',GetAllTaskListsController::class);
+Route::middleware('auth:sanctum')->get('/read/select-params', GetSelectParamsController::class);
 Route::middleware('auth:sanctum')->post('/add/group', AddGroupController::class);
 Route::middleware('auth:sanctum')->post('/add/tasklist', AddTaskListController::class);
 Route::middleware('auth:sanctum')->post('/add/tasks', AddTasksController::class);

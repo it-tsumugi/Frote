@@ -11,43 +11,45 @@ type propsType = {
   isDisplay: boolean
   deleteHandler: () => Promise<void>
   toggleHandler: () => void
+  fetchParamsHandler: () => void
 }
 
-export const PTaskListButtonArea: VFC<propsType> = ({ taskList, isDisplay, deleteHandler, toggleHandler }) => {
+export const PTaskListButtonArea: VFC<propsType> = ({
+  taskList,
+  isDisplay,
+  deleteHandler,
+  toggleHandler,
+  fetchParamsHandler
+}) => {
   const displayText = isDisplay ? '閉じる' : 'すべて表示'
-  const editTaskListPath = `/${taskList.task_list_id}` + path.editTaskList
   const addTasksPath = `/${taskList.task_list_id}` + path.addTasks
 
-  const DisplayButton: FC = ({ children }) => {
-    return (
-      <>
-        {taskList.task.length > 1 ? (
-          <DefaultButton onClick={toggleHandler}>{children}</DefaultButton>
-        ) : (
-          <HiddenDefaultButton>{children}</HiddenDefaultButton>
-        )}
-      </>
-    )
-  }
+  const DisplayButton: FC = ({ children }) => (
+    <>
+      {taskList.task.length > 1 ? (
+        <DefaultButton onClick={toggleHandler}>{children}</DefaultButton>
+      ) : (
+        <HiddenDefaultButton>{children}</HiddenDefaultButton>
+      )}
+    </>
+  )
 
-  const AddTasksButton: FC = ({ children }) => {
-    return (
-      <>
-        {taskList.task.length < 20 ? (
-          <NavButton to={addTasksPath}>{children}</NavButton>
-        ) : (
-          <DefaultButton style={{ visibility: 'hidden' }}>{children}</DefaultButton>
-        )}
-      </>
-    )
-  }
+  const AddTasksButton: FC = ({ children }) => (
+    <>
+      {taskList.task.length < 20 ? (
+        <NavButton to={addTasksPath}>{children}</NavButton>
+      ) : (
+        <DefaultButton style={{ visibility: 'hidden' }}>{children}</DefaultButton>
+      )}
+    </>
+  )
 
   return (
     <>
       <SComponentContainer>
         <DisplayButton>{displayText}</DisplayButton>
         <DefaultButton onClick={deleteHandler}>リストを削除</DefaultButton>
-        <NavButton to={editTaskListPath}>リストを編集</NavButton>
+        <DefaultButton onClick={fetchParamsHandler}>リストを編集</DefaultButton>
         <AddTasksButton>末尾にタスクを追加</AddTasksButton>
       </SComponentContainer>
     </>

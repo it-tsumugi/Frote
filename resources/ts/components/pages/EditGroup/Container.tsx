@@ -1,7 +1,6 @@
 import { useEffect, useState, VFC } from 'react'
 import { useParams } from 'react-router'
 import { useRecoilState } from 'recoil'
-import { useGetGroup } from '../../../hooks/useGetGroup'
 import { stringState } from '../../../state/atom'
 import { errorMessages } from '../../../constant/errorMessages'
 import { stringStateKey } from '../../../constant/stateKey'
@@ -29,8 +28,6 @@ export const EditGroup: VFC = () => {
   useEffect(() => {
     validateLogin()
   }, [group])
-
-  useGetGroup(group_id, 'group')
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => updateGroup({ e, id: group_id, group, checkIsSuccess })
 

@@ -2,6 +2,8 @@ import { VFC } from 'react'
 import { taskListType } from '../../../../type/dataType'
 import { useGetActions } from '../../../../hooks/useGetActions'
 import { PTaskListButtonArea } from './Presenter'
+import { useHistory } from 'react-router'
+import { path } from '../../../../constant/path'
 
 type propsType = {
   taskList: taskListType
@@ -10,9 +12,17 @@ type propsType = {
 }
 
 export const TaskListButtonArea: VFC<propsType> = ({ taskList, isDisplay, setIsDisplay }) => {
-  const { deleteTaskList } = useGetActions()
+  const { deleteTaskList, getSelectParams } = useGetActions()
+  const history = useHistory()
   const deleteHandler = () => deleteTaskList({ task_list_id: taskList.task_list_id })
   const toggleHandler = () => setIsDisplay(!isDisplay)
+  const editTaskListPath = `/${taskList.task_list_id}` + path.editTaskList
+
+  const fetchParamsHandler = () => {
+    getSelectParams({ task_list_id: taskList.task_list_id }).then(() => {
+      history.push(editTaskListPath)
+    })
+  }
 
   return (
     <PTaskListButtonArea
@@ -20,6 +30,7 @@ export const TaskListButtonArea: VFC<propsType> = ({ taskList, isDisplay, setIsD
       isDisplay={isDisplay}
       deleteHandler={deleteHandler}
       toggleHandler={toggleHandler}
+      fetchParamsHandler={fetchParamsHandler}
     />
   )
 }

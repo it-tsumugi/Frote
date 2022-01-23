@@ -8,12 +8,6 @@ use Illuminate\Support\Facades\DB;
 
 class GetTaskController extends Controller
 {
-    /**
-     * Handle the incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function __invoke(Request $request)
     {
         $task_id = $request->task_id;

@@ -1,32 +1,20 @@
-import axios from 'axios'
-import { useEffect } from 'react'
 import { useSetRecoilState } from 'recoil'
-
 import { stringStateKey } from '../constant/stateKey'
 import { stringState } from '../state/atom'
+import { fetchGroupApi } from '../api/fetchGroupApi'
 
-export const useGetGroup = (id: number, key: 'group' | 'task_list') => {
+type propsType = {
+  id: number
+  key: 'group' | 'task_list'
+}
+
+export const useGetGroup = () => {
   const setGroup = useSetRecoilState(stringState(stringStateKey.group))
 
-  const getGroup = async () => {
-    let dbData: {
-      group: string
-    } = { group: '' }
-    try {
-      const res = await axios.get('/api/read/group', {
-        params: {
-          id: id,
-          key: key
-        }
-      })
-      dbData = res.data.data
-    } catch (err) {
-      console.log(err)
-    }
-    setGroup(dbData.group)
+  const getGroup = async (props: propsType) => {
+    const { id, key } = props
+    await fetchGroupApi({ setGroup, id, key })
   }
 
-  useEffect(() => {
-    if (id !== -1) getGroup()
-  }, [])
+  return { getGroup: getGroup }
 }

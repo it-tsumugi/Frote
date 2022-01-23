@@ -8,12 +8,6 @@ use Illuminate\Support\Facades\DB;
 
 class GetImpController extends Controller
 {
-    /**
-     * Handle the incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function __invoke(Request $request)
     {
         $imp = DB::table("task_lists")

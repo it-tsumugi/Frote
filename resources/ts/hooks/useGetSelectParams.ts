@@ -1,31 +1,24 @@
-import axios from 'axios'
 import { useSetRecoilState } from 'recoil'
-import { useEffect } from 'react'
+import { numberState, stringState } from './../state/atom'
+import { numberStateKey, stringStateKey } from '../constant/stateKey'
+import { fetchSelectParamsApi } from '../api/fetchSelectParamsApi'
 
-import { groupListsState, stringState } from './../state/atom'
-import { groupListType } from '../type/dataType'
-import { stringStateKey } from '../constant/stateKey'
+type propsType = {
+  task_list_id: number
+}
 
 export const useGetSelectParams = () => {
-  const setGroupList = useSetRecoilState(groupListsState)
   const setGroup = useSetRecoilState(stringState(stringStateKey.group))
+  const setImp = useSetRecoilState(numberState(numberStateKey.imp))
+  const setUrg = useSetRecoilState(numberState(numberStateKey.urg))
 
-  const getSelectParams = async () => {
-    let dbData: groupListType[] = []
-    try {
-      const res = await axios.get('/api/read/select-params')
-      console.log('useGetGroupLists:データ取得に成功しました')
-      dbData = res.data.data
-      //groupの初期値の設定
-      if (dbData.length !== 0) setGroup(dbData[0].group)
-    } catch (err) {
-      console.log('useGetGroupLists:エラー')
-      console.log(err)
-    }
-    setGroupList(dbData)
+  const getSelectParams = async (props: propsType) => {
+    const { task_list_id } = props
+    const dbData = await fetchSelectParamsApi({ task_list_id })
+    setGroup(dbData.group)
+    setImp(dbData.imp)
+    setUrg(dbData.urg)
   }
 
-  useEffect(() => {
-    getSelectParams()
-  }, [])
+  return { getSelectParams: getSelectParams }
 }
