@@ -16,7 +16,6 @@ export const fetchTaskApi = async (props: propsType) => {
       }
     })
     dbData = res.data.data[0].task
-    console.log(dbData)
   } catch (err) {
     console.log(err)
   }
