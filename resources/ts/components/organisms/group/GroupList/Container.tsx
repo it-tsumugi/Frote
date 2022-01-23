@@ -1,14 +1,14 @@
 import { VFC } from 'react'
 import { useRecoilValue } from 'recoil'
-import { booleanState, groupListsState } from '../../../../state/atom'
-import { booleanStateKey } from '../../../../constant/stateKey'
+import { groupListsState } from '../../../../state/atom'
 import { PGroupList } from './Presenter'
 import { useGetActions } from '../../../../hooks/useGetActions'
+import { useHistory } from 'react-router'
 
 export const GroupList: VFC = () => {
   const groupLists = useRecoilValue(groupListsState)
-  const isGroupTaskLists = useRecoilValue(booleanState(booleanStateKey.isGetGroupLists))
-  const { deleteGroup } = useGetActions()
+  const { deleteGroup, getGroup } = useGetActions()
+  const history = useHistory()
 
-  return <PGroupList groupLists={groupLists} isGroupTaskLists={isGroupTaskLists} deleteGroup={deleteGroup} />
+  return <PGroupList groupLists={groupLists} deleteGroup={deleteGroup} getGroup={getGroup} history={history} />
 }

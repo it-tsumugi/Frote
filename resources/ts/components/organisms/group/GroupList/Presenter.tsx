@@ -7,38 +7,42 @@ import { path } from '../../../../constant/path'
 import { SText } from '../../../../styles/commonStyles/text/TextStyle'
 import { groupListType } from '../../../../type/dataType'
 import { DefaultButton } from '../../../../styles/commonStyles/button/DefaultButton'
+import * as H from 'history'
 
 type propsType = {
-  isGroupTaskLists: boolean
   groupLists: groupListType[]
   deleteGroup: (id: number) => Promise<void>
+  getGroup: (props: getGroupPropsType) => Promise<void>
+  history: H.History
 }
 
-export const PGroupList: VFC<propsType> = ({ isGroupTaskLists, groupLists, deleteGroup }) => {
-  if (isGroupTaskLists) {
-    if (groupLists.length !== 0) {
-      return (
-        <Grid container spacing={2}>
-          {groupLists.map((item) => {
-            const deleteHandler = () => deleteGroup(item.id)
+export const PGroupList: VFC<propsType> = ({ groupLists, deleteGroup, getGroup, history }) => {
+  if (groupLists.length !== 0) {
+    return (
+      <Grid container spacing={2}>
+        {groupLists.map((item) => {
+          const deleteHandler = () => deleteGroup(item.id)
+          const editGroupPath = `/${item.id}` + path.editGroup
+          const editTaskHandler = () => {
+            getGroup({ id: item.id, key: 'group' }).then(() => {
+              history.push(editGroupPath)
+            })
+          }
 
-            return (
-              <Grid item xs={12} sm={12} md={6} lg={4} key={item.id}>
-                <SSCard>
-                  <div>{item.group}</div>
-                  <NavButton to={`/${item.id}` + path.editGroup}>編集</NavButton>
-                  <DefaultButton onClick={deleteHandler}>削除</DefaultButton>
-                </SSCard>
-              </Grid>
-            )
-          })}
-        </Grid>
-      )
-    } else {
-      return <SText>グループが存在しません。追加してください</SText>
-    }
+          return (
+            <Grid item xs={12} sm={12} md={6} lg={4} key={item.id}>
+              <SSCard>
+                <div>{item.group}</div>
+                <DefaultButton onClick={editTaskHandler}>編集</DefaultButton>
+                <DefaultButton onClick={deleteHandler}>削除</DefaultButton>
+              </SSCard>
+            </Grid>
+          )
+        })}
+      </Grid>
+    )
   } else {
-    return <SText>ローディング中です</SText>
+    return <SText>グループが存在しません。追加してください</SText>
   }
 }
 
