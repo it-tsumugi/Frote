@@ -13,11 +13,11 @@ type propsType = {
   onClick: () => Promise<void>
   isDelete: boolean
   index: number
+  editTaskHandler: () => void
 }
 
-export const PTask: VFC<propsType> = ({ task, isDelete, index, onClick }) => {
+export const PTask: VFC<propsType> = ({ task, isDelete, index, onClick, editTaskHandler }) => {
   const insertTaskPath = `/${task.task_id}` + path.insertTask
-  const editTaskPath = `/${task.task_id}` + path.editTask
 
   const TaskText = () => {
     return (
@@ -51,7 +51,7 @@ export const PTask: VFC<propsType> = ({ task, isDelete, index, onClick }) => {
       <STaskButtonAreaContainer>
         <DeleteTaskButton>削除</DeleteTaskButton>
         <NavButton to={insertTaskPath}>挿入</NavButton>
-        <NavButton to={editTaskPath}>編集</NavButton>
+        <DefaultButton onClick={editTaskHandler}>編集</DefaultButton>
       </STaskButtonAreaContainer>
     </SComponentContainer>
   )

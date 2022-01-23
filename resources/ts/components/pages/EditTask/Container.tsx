@@ -1,7 +1,6 @@
 import { useEffect, useState, VFC } from 'react'
 import { useParams } from 'react-router'
 import { useRecoilState } from 'recoil'
-import { useGetTask } from '../../../hooks/useGetTask'
 import { stringState } from '../../../state/atom'
 import { errorMessages } from '../../../constant/errorMessages'
 import { stringStateKey } from '../../../constant/stateKey'
@@ -13,7 +12,7 @@ export const EditTask: VFC = () => {
   const task_id = Number(id)
   const [task, setTask] = useRecoilState(stringState(stringStateKey.task))
   const [taskError, setTaskError] = useState('')
-  const { updateTask } = useGetActions()
+  const { updateTask, getTask } = useGetActions()
 
   const validateLogin = () => {
     if (task.length === 0) setTaskError(errorMessages.task.blank)
@@ -30,7 +29,9 @@ export const EditTask: VFC = () => {
     validateLogin()
   }, [task])
 
-  useGetTask(task_id)
+  useEffect(() => {
+    getTask({ task_id })
+  }, [])
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => updateTask({ e, task, task_id, checkIsSuccess })
 
