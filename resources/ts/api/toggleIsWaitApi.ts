@@ -9,7 +9,6 @@ export const toggleIsWaitApi = async (props: toggleIsWaitApiPropsType) => {
     const res = await axios.put('/api/put/toggle-is-wait', {
       task_list_id: task_list_id
     })
-    console.log(res)
     await getAllTaskLists()
     history.push({ pathname: path.home })
   } catch (err) {
