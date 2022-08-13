@@ -10,7 +10,7 @@ class TaskList extends Model
     use HasFactory;
     protected $table = 'task_lists';
     protected $fillable = [
-        'group_id','importance','urgency','user_id'
+        'group_id','importance','urgency','user_id','is_wait'
     ];
 
     public function tasks(){

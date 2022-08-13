@@ -12,6 +12,7 @@ type propsType = {
   deleteHandler: () => Promise<void>
   toggleHandler: () => void
   fetchParamsHandler: () => void
+  toggleIswaitHandler: () => Promise<void>
 }
 
 export const PTaskListButtonArea: VFC<propsType> = ({
@@ -19,7 +20,8 @@ export const PTaskListButtonArea: VFC<propsType> = ({
   isDisplay,
   deleteHandler,
   toggleHandler,
-  fetchParamsHandler
+  fetchParamsHandler,
+  toggleIswaitHandler
 }) => {
   const displayText = isDisplay ? '閉じる' : 'すべて表示'
   const addTasksPath = `/${taskList.task_list_id}` + path.addTasks
@@ -51,7 +53,7 @@ export const PTaskListButtonArea: VFC<propsType> = ({
         <DefaultButton onClick={deleteHandler}>リストを削除</DefaultButton>
         <DefaultButton onClick={fetchParamsHandler}>リストを編集</DefaultButton>
         <AddTasksButton>末尾にタスクを追加</AddTasksButton>
-        <DefaultButton>待ち状態に変更</DefaultButton>
+        <DefaultButton onClick={toggleIswaitHandler}>待ち状態に変更</DefaultButton>
       </SComponentContainer>
     </>
   )

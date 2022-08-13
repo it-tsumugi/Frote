@@ -10,6 +10,7 @@ export const useGetAllTaskLists = () => {
 
   const getAllTaskLists = async () => {
     const data = await fetchAllTaskLists()
+    console.log(data.taskLists)
     setTaskLists(data.taskLists)
     setImpTaskLists(data.impTaskLists)
     setGroupTaskLists(data.groupTaskLists)

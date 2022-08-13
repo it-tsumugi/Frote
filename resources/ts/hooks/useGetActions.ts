@@ -22,6 +22,7 @@ import { useDeleteTaskList } from './useDeleteTaskList'
 import { useGetGroup } from './useGetGroup'
 import { useGetSelectParams } from './useGetSelectParams'
 import { useGetTask } from './useGetTask'
+import { useToggleIsWait } from './useToggleIsWait'
 
 export const useGetActions = () => {
   const { getTaskLists } = useGetTaskLists()
@@ -48,6 +49,7 @@ export const useGetActions = () => {
   const { getGroup } = useGetGroup()
   const { getSelectParams } = useGetSelectParams()
   const { getTask } = useGetTask()
+  const { toggleIsWait } = useToggleIsWait()
 
   return {
     getTaskLists,
@@ -73,6 +75,7 @@ export const useGetActions = () => {
     deleteTaskList,
     getGroup,
     getSelectParams,
-    getTask
+    getTask,
+    toggleIsWait
   }
 }

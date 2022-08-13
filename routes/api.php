@@ -29,6 +29,7 @@ use App\Http\Controllers\Api\GetImpTaskListsController;
 use App\Http\Controllers\Api\GetUrgTaskListsController;
 use App\Http\Controllers\Api\GetAllTaskListsController;
 use App\Http\Controllers\Api\GetSelectParamsController;
+use App\Http\Controllers\Api\ToggleIsWaitController;
 
 Route::get('/logout', LogoutController::class);
 Route::get('/auth', CheckIsLoginController::class);
@@ -60,3 +61,4 @@ Route::middleware('auth:sanctum')->delete('/delete/group', DeleteGroupController
 Route::middleware('auth:sanctum')->put('/put/group', UpdateGroupController::class);
 Route::middleware('auth:sanctum')->put('/put/task', UpdateTaskController::class);
 Route::middleware('auth:sanctum')->put('/put/select-params', UpdateSelectParamsController::class);
+Route::middleware('auth:sanctum')->put('/put/toggle-is-wait', ToggleIsWaitController::class);

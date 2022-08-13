@@ -12,10 +12,11 @@ type propsType = {
 }
 
 export const TaskListButtonArea: VFC<propsType> = ({ taskList, isDisplay, setIsDisplay }) => {
-  const { deleteTaskList, getSelectParams } = useGetActions()
+  const { deleteTaskList, getSelectParams, toggleIsWait } = useGetActions()
   const history = useHistory()
   const deleteHandler = () => deleteTaskList({ task_list_id: taskList.task_list_id })
   const toggleHandler = () => setIsDisplay(!isDisplay)
+  const toggleIsWaitHandler = () => toggleIsWait({ task_list_id: taskList.task_list_id })
   const editTaskListPath = `/${taskList.task_list_id}` + path.editTaskList
 
   const fetchParamsHandler = () => {
@@ -31,6 +32,7 @@ export const TaskListButtonArea: VFC<propsType> = ({ taskList, isDisplay, setIsD
       deleteHandler={deleteHandler}
       toggleHandler={toggleHandler}
       fetchParamsHandler={fetchParamsHandler}
+      toggleIswaitHandler={toggleIsWaitHandler}
     />
   )
 }

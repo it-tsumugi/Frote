@@ -19,6 +19,8 @@ class CreateTaskListsTable extends Migration
             $table->unsignedBigInteger("user_id");
             $table->integer("importance");
             $table->integer("urgency");
+            $table->tinyInteger("is_wait");
+
             $table->dateTime('created_at')->nullable();
             $table->dateTime('updated_at')->nullable();
             

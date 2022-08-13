@@ -23,13 +23,13 @@ class FunctionController extends Controller
     public static function convert($isDefault,$colum ,$value){
         $id = Auth::id();
         if($isDefault){
-            $data = TaskList::select("id","group_id","importance","urgency")
+            $data = TaskList::select("id","group_id","importance","urgency","is_wait")
                         ->with(["tasks:task_list_id,task,id,order","group:id,group"])
                         ->where("user_id",$id)
                         ->get();
         }
         else {
-            $data = TaskList::select("id","group_id","importance","urgency")
+            $data = TaskList::select("id","group_id","importance","urgency","is_wait")
                         ->with(["tasks:task_list_id,task,id,order","group:id,group"])
                         ->where("user_id",$id)
                         ->where($colum,$value)
@@ -54,6 +54,7 @@ class FunctionController extends Controller
                 "priority" => $priority,
                 "group" => $data[$i]["group"]["group"],
                 "task" => $tasks,
+                "is_wait" => $data[$i]["is_wait"],
             ];
         }
         $priorities =  array_column($edit_data, "priority");
