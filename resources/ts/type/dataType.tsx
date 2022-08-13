@@ -3,6 +3,7 @@ export type taskListType = {
   priority: number
   group: string
   task: taskType[]
+  is_wait: boolean
 }
 
 export type taskType = {

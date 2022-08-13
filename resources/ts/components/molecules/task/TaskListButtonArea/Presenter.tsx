@@ -51,6 +51,7 @@ export const PTaskListButtonArea: VFC<propsType> = ({
         <DefaultButton onClick={deleteHandler}>リストを削除</DefaultButton>
         <DefaultButton onClick={fetchParamsHandler}>リストを編集</DefaultButton>
         <AddTasksButton>末尾にタスクを追加</AddTasksButton>
+        <DefaultButton>待ち状態に変更</DefaultButton>
       </SComponentContainer>
     </>
   )

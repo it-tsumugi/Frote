@@ -13,17 +13,34 @@ type propsType = {
 export const PTaskLists: VFC<propsType> = ({ taskLists }) => {
   if (taskLists.length !== 0) {
     return (
-      <Grid container spacing={2}>
-        {taskLists.map((taskList, index) => {
-          return (
-            <Grid item xs={12} sm={12} md={12} lg={12} key={taskList.task_list_id}>
-              <SCard>
-                <TaskList taskList={taskList} priority={index} />
-              </SCard>
-            </Grid>
-          )
-        })}
-      </Grid>
+      <>
+        <Grid container spacing={2}>
+          {taskLists.map((taskList, index) => {
+            return (
+              taskList.is_wait && (
+                <Grid item xs={12} sm={12} md={12} lg={12} key={taskList.task_list_id}>
+                  <SCard>
+                    <TaskList taskList={taskList} priority={index} />
+                  </SCard>
+                </Grid>
+              )
+            )
+          })}
+        </Grid>
+        <Grid container spacing={2}>
+          {taskLists.map((taskList, index) => {
+            return (
+              taskList.is_wait || (
+                <Grid item xs={12} sm={12} md={12} lg={12} key={taskList.task_list_id}>
+                  <SCard>
+                    <TaskList taskList={taskList} priority={index} />
+                  </SCard>
+                </Grid>
+              )
+            )
+          })}
+        </Grid>
+      </>
     )
   } else {
     return (
