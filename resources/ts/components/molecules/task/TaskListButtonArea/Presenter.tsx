@@ -24,6 +24,7 @@ export const PTaskListButtonArea: VFC<propsType> = ({
   toggleIswaitHandler
 }) => {
   const displayText = isDisplay ? '閉じる' : 'すべて表示'
+  const waitDisplayText = taskList.is_wait ? '実行可能に変更' : '待ち状態に変更'
   const addTasksPath = `/${taskList.task_list_id}` + path.addTasks
 
   const DisplayButton: FC = ({ children }) => (
@@ -53,7 +54,7 @@ export const PTaskListButtonArea: VFC<propsType> = ({
         <DefaultButton onClick={deleteHandler}>リストを削除</DefaultButton>
         <DefaultButton onClick={fetchParamsHandler}>リストを編集</DefaultButton>
         <AddTasksButton>末尾にタスクを追加</AddTasksButton>
-        <DefaultButton onClick={toggleIswaitHandler}>待ち状態に変更</DefaultButton>
+        <DefaultButton onClick={toggleIswaitHandler}>{waitDisplayText}</DefaultButton>
       </SComponentContainer>
     </>
   )
